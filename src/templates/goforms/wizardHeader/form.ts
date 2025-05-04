@@ -1,19 +1,32 @@
-export default (ctx: Record<string, any>) => `<nav aria-label="navigation" id="${ctx.wizardKey}-header" ref="${ctx.wizardKey}-header">
-  <div class="ui steps">
-    ${ ctx.panels.forEach(function(panel, index) { }
-    <a class="${ctx.currentPage === index ? ' active' : ''} step" ref="${ctx.wizardKey}-link">
-      <div class="content">
-        <div class="title">
-        ${panel.title}
-        ${ if (panel.tooltip && ctx.currentPage === index) { }
-        <span data-tooltip="${ctx.wizardPageTooltip}" data-position="right center">
-        <i class="${ctx.iconClass('question-sign')}"></i>
-        </span>
-        ${ } }
+import { TemplateContext } from "../types";
+
+export default (ctx: TemplateContext) => {
+  const wizardKey = ctx.wizardKey as string;
+  const panels = ctx.panels as { title: string; tooltip?: boolean }[];
+  const currentPage = ctx.currentPage as number;
+  const wizardPageTooltip = ctx.wizardPageTooltip as string;
+  const iconClass = ctx.iconClass as (icon: string) => string;
+  const steps = panels
+    .map((panel, index) => {
+      const tooltip =
+        panel.tooltip && currentPage === index
+          ? `<span data-tooltip="${wizardPageTooltip}" data-position="right center">
+            <i class="${iconClass("question-sign")}"></i>
+          </span>`
+          : "";
+      return `<a class="${currentPage === index ? " active" : ""} step" ref="${wizardKey}-link">
+        <div class="content">
+          <div class="title">
+            ${panel.title}
+            ${tooltip}
+          </div>
         </div>
-      </div>
-    </a>
-    ${ }) }
-  </div>
-</nav>
-`;
+      </a>`;
+    })
+    .join("");
+  return `<nav aria-label="navigation" id="${wizardKey}-header" ref="${wizardKey}-header">
+    <div class="ui steps">
+      ${steps}
+    </div>
+  </nav>`;
+};

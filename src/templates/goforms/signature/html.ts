@@ -1,4 +1,6 @@
+import { TemplateContext } from "../types";
+
 export default (
-  ctx: Record<string, any>,
+  _ctx: TemplateContext,
 ) => `<img style="width: 100%;" ref="signatureImage">
 `;

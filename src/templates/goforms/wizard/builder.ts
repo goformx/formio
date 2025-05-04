@@ -1,4 +1,6 @@
+import { TemplateContext } from "../types";
+
 export default (
-  ctx: Record<string, any>,
-) => `<div class="formio-wizard-builder-component-title">${ctx.t(ctx.component.title)}</div>
+  ctx: TemplateContext,
+) => `<div class="formio-wizard-builder-component-title">${ctx.t ? (ctx.t as (s: string) => string)(ctx.component && (ctx.component as { title: string }).title) : ctx.component && (ctx.component as { title: string }).title}</div>
 `;
