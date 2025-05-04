@@ -1,15 +1,18 @@
 import { TemplateContext } from "../types";
 
 export default (ctx: TemplateContext) => {
+  const t = ctx.t as (s: string) => string;
+  const iconClass = ctx.iconClass as (s: string) => string;
+  const componentInfo = ctx.componentInfo as { title: string; documentation?: string; help?: string };
   const colWidth = ctx.preview ? "eight" : "sixteen";
   return `<div class="ui grid">
     <div class="eight wide column">
-      <h3 class="lead">${ctx.t(ctx.componentInfo.title)} ${ctx.t("Component")}</h3>
+      <h3 class="lead">${t(componentInfo.title)} ${t("Component")}</h3>
     </div>
     <div class="eight wide column">
       <div class="right floated" style="margin-right: 20px; margin-top: 10px">
-        <a href="${ctx.componentInfo.documentation}" target="_blank">
-          <i class="${ctx.iconClass("new-window")}"> ${ctx.t("Help")}</i>
+        <a href="${componentInfo.documentation}" target="_blank">
+          <i class="${iconClass("new-window")}"> ${t("Help")}</i>
         </a>
       </div>
     </div>
@@ -23,9 +26,9 @@ export default (ctx: TemplateContext) => {
         !ctx.preview
           ? `
       <div style="margin-top: 10px;">
-        <button class="ui button primary" style="margin-right: 10px;" ref="saveButton">${ctx.t("Save")}</button>
-        <button class="ui button default" style="margin-right: 10px;" ref="cancelButton">${ctx.t("Cancel")}</button>
-        <button class="ui button negative" ref="removeButton">${ctx.t("Remove")}</button>
+        <button class="ui button primary" style="margin-right: 10px;" ref="saveButton">${t("Save")}</button>
+        <button class="ui button default" style="margin-right: 10px;" ref="cancelButton">${t("Cancel")}</button>
+        <button class="ui button negative" ref="removeButton">${t("Remove")}</button>
       </div>
       `
           : ""
@@ -36,24 +39,24 @@ export default (ctx: TemplateContext) => {
         ? `
     <div class="eight wide column">
       <div class="ui top attached block header">
-        ${ctx.t("Preview")}
+        ${t("Preview")}
       </div>
       <div class="ui bottom attached segment" ref="preview">
         ${ctx.preview}
       </div>
       ${
-        ctx.componentInfo.help
+        componentInfo.help
           ? `
       <div class="ui secondary segment formio-settings-help">
-        ${ctx.componentInfo.help}
+        ${componentInfo.help}
       </div>
       `
           : ""
       }
       <div style="margin-top: 10px;">
-        <button class="ui button primary" style="margin-right: 10px;" ref="saveButton">${ctx.t("Save")}</button>
-        <button class="ui button default" style="margin-right: 10px;" ref="cancelButton">${ctx.t("Cancel")}</button>
-        <button class="ui button negative" ref="removeButton">${ctx.t("Remove")}</button>
+        <button class="ui button primary" style="margin-right: 10px;" ref="saveButton">${t("Save")}</button>
+        <button class="ui button default" style="margin-right: 10px;" ref="cancelButton">${t("Cancel")}</button>
+        <button class="ui button negative" ref="removeButton">${t("Remove")}</button>
       </div>
     </div>
     `

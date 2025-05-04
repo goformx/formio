@@ -7,7 +7,9 @@
     "test:coverage": "nyc --reporter=text mocha --reporter spec './{,!(node_modules)/**/}*.spec.js'",
     "test": "mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",
     "watch": "tsc -w",
-    "build": "vite build",
+    "build:ts": "tsc --outDir lib",
+    "build:webpack": "webpack",
+    "build": "npm run build:ts && npm run build:webpack",
     "lint": "eslint src --ext .ts --fix",
     "prepublish": "npm run build"
   },
@@ -46,7 +48,6 @@
     "ts-sinon": "^2.0.2",
     "typescript": "^4.4.3",
     "typescript-eslint": "^8.31.1",
-    "vite": "^6.3.4",
     "webpack": "^5.55.1",
     "webpack-cli": "^4.8.0"
   },
