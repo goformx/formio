@@ -1,4 +1,4 @@
-import flat from './flat.ejs';
-import form from './form.ejs';
+import value from "./form.ejs";
+import flat from "./flat.ejs";
 
-export default { flat, form };
+export default { form: value, flat };
