@@ -3,7 +3,11 @@ import { TemplateContext } from "../types";
 export default (ctx: TemplateContext) => {
   const t = ctx.t as (s: string) => string;
   const iconClass = ctx.iconClass as (s: string) => string;
-  const componentInfo = ctx.componentInfo as { title: string; documentation?: string; help?: string };
+  const componentInfo = ctx.componentInfo as {
+    title: string;
+    documentation?: string;
+    help?: string;
+  };
   const colWidth = ctx.preview ? "eight" : "sixteen";
   return `<div class="ui grid">
     <div class="eight wide column">

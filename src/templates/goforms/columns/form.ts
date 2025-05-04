@@ -7,7 +7,8 @@ export default (ctx: TemplateContext) => {
     <div class="columns-row">
       ${component.columns
         .map(
-          (column) => `<div class="${transform("columns", column.width)} wide column" ref="${ctx.columnKey}">${ctx.children}</div>`
+          (column) =>
+            `<div class="${transform("columns", column.width)} wide column" ref="${ctx.columnKey}">${ctx.children}</div>`,
         )
         .join("")}
     </div>
