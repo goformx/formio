@@ -55,6 +55,5 @@
     "type": "git",
     "url": "git+https://github.com/jonesrussell/goforms-template.git"
   },
-  "license": "MIT",
-  "type": "module"
+  "license": "MIT"
 }
