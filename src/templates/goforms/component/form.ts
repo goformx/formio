@@ -1,7 +1,14 @@
-export default (ctx: Record<string, any>) => `<div id="${ctx.id}" class="field ${ctx.classes}"${ if (ctx.styles) { } style="${ctx.styles}"${ } } ref="component">
-  ${ if (ctx.visible) { }
-  ${ctx.children}
-  <div ref="messageContainer"></div>
-  ${ } }
-</div>
-`;
+import { TemplateContext } from "../types";
+
+export default (ctx: TemplateContext) => {
+  return `<div id="${ctx.id}" class="field ${ctx.classes}"${ctx.styles ? ` style="${ctx.styles}"` : ""} ref="component">
+    ${
+      ctx.visible
+        ? `
+    ${ctx.children}
+    <div ref="messageContainer"></div>
+    `
+        : ""
+    }
+  </div>`;
+};

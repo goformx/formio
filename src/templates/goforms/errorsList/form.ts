@@ -1,14 +1,5 @@
-export default (ctx: Record<string, any>) => `<p>${ctx.t('error')}</p>
-<ul>
-  ${ ctx.errors.forEach(function(err) { }
-    <li
-      data-component-key = "${err.keyOrPath}"
-      aria-label = "${err.message}. ${ctx.t('errorsListNavigationMessage')}"
-      ref = "errorRef"
-      tabIndex = "0",
-      style = "cursor:pointer;"
-    ><span>${err.message}</span></li>
-  ${ }) }
-</ul>
+import { TemplateContext } from "../types";
 
-`;
+export default (_ctx: TemplateContext) => {
+  return "";
+};

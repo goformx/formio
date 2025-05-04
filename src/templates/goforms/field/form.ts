@@ -1,16 +1,5 @@
-export default (ctx: Record<string, any>) => `${ if (!ctx.label.hidden && ctx.label.labelPosition !== 'bottom') { }
-  ${ctx.labelMarkup}
-${ } }
+import { TemplateContext } from "../types";
 
-${ if (ctx.label.hidden && ctx.label.className && ctx.component.validate.required) { }
-    <label class="${ctx.label.className}"></label>
-${ } }
-
-${ctx.element}
-${ if (!ctx.label.hidden && ctx.label.labelPosition === 'bottom') { }
-  ${ctx.labelMarkup}
-${ } }
-${ if (ctx.component.description) { }
-  <div class="help-block">${ctx.t(ctx.component.description)}</div>
-${ } }
-`;
+export default (_ctx: TemplateContext) => {
+  return "";
+};

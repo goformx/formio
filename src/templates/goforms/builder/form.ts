@@ -1,4 +1,6 @@
-export default (ctx: any) => `
+import { TemplateContext } from "../types";
+
+export default (ctx: TemplateContext) => `
 <div class="formio builder ui grid formbuilder">
   <div class="four wide column formcomponents">
     ${ctx.sidebar}

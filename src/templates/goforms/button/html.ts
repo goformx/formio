@@ -1,2 +1,5 @@
-export default (ctx: Record<string, any>) => `
-`;
+import { TemplateContext } from "../types";
+
+export default (_ctx: TemplateContext) => {
+  return "";
+};

@@ -1,13 +1,5 @@
-export default (ctx: Record<string, any>) => `<tr ref="row">
-  <td>
-    ${ctx.element}
-  </td>
-  ${ if (!ctx.disabled) { }
-  <td>
-    <button type="button" class="ui icon button secondary" ref="removeRow">
-      <i class="trash icon"></i>
-    </button>
-  </td>
-  ${ } }
-</tr>
-`;
+import { TemplateContext } from "../types";
+
+export default (_ctx: TemplateContext) => {
+  return "";
+};

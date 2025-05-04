@@ -1,2 +1,5 @@
-export default (ctx: Record<string, any>) => `<div ref="value">${ if (ctx.value) { }${ctx.value}${ } else { }-${ } }</div>
-`;
+import { TemplateContext } from "../types";
+
+export default (_ctx: TemplateContext) => {
+  return "";
+};

@@ -72,11 +72,14 @@ export default {
     };
     switch (type) {
       case "columns":
-        return columns.hasOwnProperty(text.toString())
+        return Object.prototype.hasOwnProperty.call(columns, text.toString())
           ? columns[text.toString()]
           : text;
       case "class":
-        return this.cssClasses.hasOwnProperty(text.toString())
+        return Object.prototype.hasOwnProperty.call(
+          this.cssClasses,
+          text.toString(),
+        )
           ? this.cssClasses[text.toString()]
           : text;
     }

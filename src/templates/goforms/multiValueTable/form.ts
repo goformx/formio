@@ -1,13 +1,5 @@
-export default (ctx: Record<string, any>) => `<table class="ui celled table">
-  <tbody>
-  ${ctx.rows}
-  ${ if (!ctx.disabled) { }
-  <tr>
-    <td colspan="2">
-      <button class="ui button primary" ref="addButton"><i class="${ctx.iconClass('plus')}"></i> ${ctx.t(ctx.addAnother)}</button>
-    </td>
-  </tr>
-  ${ } }
-  </tbody>
-</table>
-`;
+import { TemplateContext } from "../types";
+
+export default (_ctx: TemplateContext) => {
+  return "";
+};

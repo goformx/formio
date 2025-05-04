@@ -9,7 +9,7 @@ export default (iconset, name, spinning) => {
     move: "arrows alternate",
     link: "linkify",
   };
-  if (icons.hasOwnProperty(name)) {
+  if (Object.prototype.hasOwnProperty.call(icons, name)) {
     name = icons[name];
   }
   name = name || "";

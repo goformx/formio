@@ -1,43 +1,63 @@
-export default (ctx: Record<string, any>) => `<div class="ui segment secondary form-builder-panel" style="padding: 0" ref="group-panel-${ctx.groupKey}">
-  <div class="form-builder-group-header">
-    <h5 class="panel-title">
-      <button
-        class="ui button basic fluid builder-group-button"
-        type="button"
-        data-toggle="collapse"
-        data-target="#group-${ctx.groupKey}"
-        data-parent="${ctx.groupId}"
-        ref="sidebar-anchor"
-      >
-        ${ctx.t(ctx.group.title)}
-      </button>
-    </h5>
-  </div>
-</div>
-<div class="ui segment" style="padding: 0">
-  <div
-    class="panel-collapse collapse ${ctx.group.default ? ' in' : ''}"
-    data-parent="#${ctx.groupId}"
-    data-default="${ctx.group.default}"
-    id="group-${ctx.groupKey}"
-    ref="sidebar-group"
-  >
-    <div id="group-container-${ctx.groupKey}" class="card-body panel-body no-drop" ref="sidebar-container">
-      ${ ctx.group.componentOrder.forEach(function(componentKey) { }
-      <span
-        data-group="${ctx.groupKey}"
-        data-key="${ctx.group.components[componentKey].key}"
-        data-type="${ctx.group.components[componentKey].schema.type}"
-        class="ui button mini primary fluid formcomponent drag-copy"
-      >
-        ${ if (ctx.group.components[componentKey].icon) { }
-          <i class="${ctx.iconClass(ctx.group.components[componentKey].icon)}" style="margin-right: 5px;"></i>
-        ${ } }
-        ${ctx.t(ctx.group.components[componentKey].title)}
-        </span>
-      ${ }) }
-      ${ctx.subgroups.join('')}
+import { TemplateContext } from "../types";
+
+export default (ctx: TemplateContext) => {
+  // Type assertions for known structure
+  const group = ctx.group as {
+    componentOrder: string[];
+    components: Record<
+      string,
+      { key: string; schema: { type: string }; icon?: string; title: string }
+    >;
+    title: string;
+    default?: boolean;
+  };
+  const t = ctx.t as (s: string) => string;
+  const iconClass = ctx.iconClass as (icon: string) => string;
+  const subgroups = ctx.subgroups as string[];
+
+  const components = group.componentOrder
+    .map((componentKey: string) => {
+      const component = group.components[componentKey];
+      return `<span
+      data-group="${ctx.groupKey}"
+      data-key="${component.key}"
+      data-type="${component.schema.type}"
+      class="ui button mini primary fluid formcomponent drag-copy"
+    >
+      ${component.icon ? `<i class="${iconClass(component.icon)}" style="margin-right: 5px;"></i>` : ""}
+      ${t(component.title)}
+    </span>`;
+    })
+    .join("");
+
+  return `<div class="ui segment secondary form-builder-panel" style="padding: 0" ref="group-panel-${ctx.groupKey}">
+    <div class="form-builder-group-header">
+      <h5 class="panel-title">
+        <button
+          class="ui button basic fluid builder-group-button"
+          type="button"
+          data-toggle="collapse"
+          data-target="#group-${ctx.groupKey}"
+          data-parent="${ctx.groupId}"
+          ref="sidebar-anchor"
+        >
+          ${t(group.title)}
+        </button>
+      </h5>
     </div>
   </div>
-</div>
-`;
+  <div class="ui segment" style="padding: 0">
+    <div
+      class="panel-collapse collapse ${group.default ? " in" : ""}"
+      data-parent="#${ctx.groupId}"
+      data-default="${group.default}"
+      id="group-${ctx.groupKey}"
+      ref="sidebar-group"
+    >
+      <div id="group-container-${ctx.groupKey}" class="card-body panel-body no-drop" ref="sidebar-container">
+        ${components}
+        ${subgroups.join("")}
+      </div>
+    </div>
+  </div>`;
+};

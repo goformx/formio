@@ -1,79 +1,98 @@
-export default (ctx: Record<string, any>) => `<table class="ui table datagrid-table
-    ${ctx.component.striped ? 'striped' : ''}
-    ${ctx.component.bordered ? 'celled' : ''}
-    ${ctx.component.hover ? 'selectable' : ''}
-    ${ctx.component.condensed ? 'compact' : 'padded'}
-    " ${ if (ctx.component.layoutFixed) { }style="table-layout: fixed;"${ } }>
-  ${ if (ctx.hasHeader) { }
-  <thead>
-    <tr>
-      ${ if (ctx.component.reorder) { }<th></th>${ } }
-      ${ ctx.columns.forEach(function(col) { }
-        <th class="${col.validate && col.validate.required ? 'field-required' : ''}">
-          ${col.hideLabel ? '' : ctx.t(col.label || col.title)}
-          ${ if (col.tooltip) { } <i ref="tooltip" data-title="${col.tooltip}" class="${ctx.iconClass('question-sign')} text-muted" data-tooltip="${col.tooltip}"></i>${ } }
-        </th>
-      ${ }) }
-      ${ if (ctx.hasExtraColumn) { }
-      <th>
-        ${ if (ctx.hasAddButton && ctx.hasTopSubmit) { }
-        <button class="ui button primary" ref="${ctx.datagridKey}-addRow">
-          <i class="${ctx.iconClass('plus')}"></i> ${ctx.t(ctx.component.addAnother || 'Add Another')}
-        </button>
-        ${ } }
-      </th>
-      ${ } }
-    </tr>
-  </thead>
-  ${ } }
-  <tbody ref="${ctx.datagridKey}-tbody">
-    ${ ctx.rows.forEach(function(row, index) { }
-    ${ if (ctx.hasGroups && ctx.groups[index]) { }
-    <tr ref="${ctx.datagridKey}-group-header" class="datagrid-group-header${ctx.hasToggle ? ' clickable' : ''}">
-      <td
-        ref="${ctx.datagridKey}-group-label"
-        colspan="${ctx.numColumns}"
-        class="datagrid-group-label">${ctx.groups[index].label}</td>
-    </tr>
-    ${ } }
-    <tr ref="${ctx.datagridKey}-row">
-      ${ if (ctx.component.reorder) { }
-        <td>
-          <button type="button" class="formio-drag-button ui icon button"><i aria-hidden="true" class="bars icon"></i></button>
-        </td>
-      ${ } }
-      ${ ctx.columns.forEach(function(col) { }
-        <td ref="${ctx.datagridKey}">
-          ${row[col.key]}
-        </td>
-      ${ }) }
-      ${ if (ctx.hasExtraColumn) { }
-        ${ if (ctx.hasRemoveButtons) { }
-        <td>
-          <button type="button" class="btn-xss ui icon button secondary formio-${ctx.component.type}-remove" ref="${ctx.datagridKey}-removeRow">
-            <i class="${ctx.iconClass('remove')}"></i>
+import { TemplateContext } from "../types";
+
+export default (ctx: TemplateContext) => {
+  // Type assertions for known structure
+  const component = ctx.component as {
+    layoutFixed?: boolean;
+    reorder?: boolean;
+    striped?: boolean;
+    bordered?: boolean;
+    hover?: boolean;
+    condensed?: boolean;
+    addAnother?: string;
+  };
+  const columns = ctx.columns as Array<{
+    validate?: { required?: boolean };
+    hideLabel?: boolean;
+    label?: string;
+    title?: string;
+    tooltip?: string;
+  }>;
+  const rows = ctx.rows as unknown[];
+  const t = ctx.t as (s: string) => string;
+  const iconClass = ctx.iconClass as (icon: string) => string;
+  const datagridKey = ctx.datagridKey as string;
+  const hasAddButton = !!ctx.hasAddButton;
+  const hasBottomSubmit = !!ctx.hasBottomSubmit;
+  const hasHeader = !!ctx.hasHeader;
+  const hasExtraColumn = !!ctx.hasExtraColumn;
+  const addButtonLocation = ctx.addButtonLocation as string;
+  const addButton = ctx.addButton as string;
+  const numColumns = Number(ctx.numColumns);
+
+  const tableStyle = component.layoutFixed
+    ? 'style="table-layout: fixed;"'
+    : "";
+  const header = hasHeader
+    ? `
+    <thead>
+      <tr>
+        ${component.reorder ? "<th></th>" : ""}
+        ${columns
+          .map(
+            (col) => `
+          <th class="${col.validate && col.validate.required ? "field-required" : ""}">
+            ${col.hideLabel ? "" : t(col.label || col.title || "")}
+            ${col.tooltip ? ` <i ref="tooltip" data-title="${col.tooltip}" class="${iconClass("question-sign")} text-muted" data-tooltip="${col.tooltip}"></i>` : ""}
+          </th>
+        `,
+          )
+          .join("")}
+        ${
+          hasExtraColumn
+            ? `<th>
+          ${hasAddButton && addButtonLocation === "header" ? addButton : ""}
+        </th>`
+            : ""
+        }
+      </tr>
+    </thead>
+  `
+    : "";
+
+  const body = rows
+    .map(
+      (row) => `
+    <tr>${row}</tr>
+  `,
+    )
+    .join("");
+
+  const footer =
+    hasAddButton && hasBottomSubmit
+      ? `
+    <tfoot>
+      <tr>
+        <td colspan="${numColumns + 1}">
+          <button class="ui button primary" ref="${datagridKey}-addRow">
+            <i class="${iconClass("plus")}"></i> ${t(component.addAnother || "Add Another")}
           </button>
         </td>
-        ${ } }
-        ${ if (ctx.canAddColumn) { }
-        <td ref="${ctx.key}-container">
-          ${ctx.placeholder}
-        </td>
-        ${ } }
-      ${ } }
-    </tr>
-    ${ }) }
-  </tbody>
-  ${ if (ctx.hasAddButton && ctx.hasBottomSubmit) { }
-  <tfoot>
-    <tr>
-      <td colspan="${ctx.numColumns + 1}">
-        <button class="ui button primary" ref="${ctx.datagridKey}-addRow">
-          <i class="${ctx.iconClass('plus')}"></i> ${ctx.t(ctx.component.addAnother || 'Add Another')}
-        </button>
-      </td>
-    </tr>
-  </tfoot>
-  ${ } }
-</table>
-`;
+      </tr>
+    </tfoot>
+  `
+      : "";
+
+  return `<table class="ui table datagrid-table
+    ${component.striped ? "striped" : ""}
+    ${component.bordered ? "celled" : ""}
+    ${component.hover ? "selectable" : ""}
+    ${component.condensed ? "compact" : "padded"}
+    " ${tableStyle}>
+    ${header}
+    <tbody ref="${datagridKey}-tbody">
+      ${body}
+    </tbody>
+    ${footer}
+  </table>`;
+};

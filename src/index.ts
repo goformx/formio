@@ -9,8 +9,8 @@ export default goforms;
 export { goforms };
 
 // For CJS consumers (optional, but robust)
-// @ts-ignore
+// @ts-expect-error: CJS export for Node consumers
 if (typeof module !== "undefined") {
-  // @ts-ignore
+  // @ts-expect-error: CJS export for Node consumers
   module.exports = goforms;
 }

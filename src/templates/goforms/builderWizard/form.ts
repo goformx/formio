@@ -1,18 +1,34 @@
-export default (ctx: Record<string, any>) => `<div class="formio builder ui grid formbuilder">
-  <div class="four wide column formcomponents">
-    ${ctx.sidebar}
-  </div>
-  <div class="twelve wide column formarea">
-    <div class="ui breadcrumb" style="margin-bottom: 0.5em">
-      ${ ctx.pages.forEach(function(page, pageIndex) { }
-        <div title="${page.title}" class="${ if (pageIndex === ctx.self.page) { } active section ${ } else { } section ${ } } wizard-page-label" ref="gotoPage">${page.title}</div>
+import { TemplateContext } from "../types";
+
+export default (ctx: TemplateContext) => {
+  // Type assertions for known structure
+  const pages = ctx.pages as Array<{ title: string }>;
+  const self = ctx.self as { page: number };
+  const t = ctx.t as (s: string) => string;
+  const iconClass = ctx.iconClass as (icon: string) => string;
+  const sidebar = ctx.sidebar as string;
+  const form = ctx.form as string;
+
+  const pageBreadcrumbs = pages
+    .map(
+      (page, pageIndex: number) => `
+        <div title="${page.title}" class="${pageIndex === self.page ? "active section" : "section"} wizard-page-label" ref="gotoPage">${page.title}</div>
         <div class="divider">/</div>
-      ${ }) }
-      <div title="${ctx.t('Create Page')}" class="section wizard-page-label" ref="addPage"><i class="${ctx.iconClass('plus')}"></i> ${ctx.t('Page')}</div>
+      `,
+    )
+    .join("");
+  return `<div class="formio builder ui grid formbuilder">
+    <div class="four wide column formcomponents">
+      ${sidebar}
     </div>
-    <div ref="form">
-      ${ctx.form}
+    <div class="twelve wide column formarea">
+      <div class="ui breadcrumb" style="margin-bottom: 0.5em">
+        ${pageBreadcrumbs}
+        <div title="${t("Create Page")}" class="section wizard-page-label" ref="addPage"><i class="${iconClass("plus")}"></i> ${t("Page")}</div>
+      </div>
+      <div ref="form">
+        ${form}
+      </div>
     </div>
-  </div>
-</div>
-`;
+  </div>`;
+};

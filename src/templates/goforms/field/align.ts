@@ -1,27 +1,5 @@
-export default (ctx: Record<string, any>) => `<div class="field-wrapper
-  ${ctx.isRightPosition ? 'field-wrapper--reverse' : ''}">
-  ${ if (!ctx.label.hidden) { }
-    <div class="field-label
-      ${ctx.isRightAlign ? 'field-label--right' : ''}"
-      style="${ctx.labelStyles}">
-    ${ctx.labelMarkup}
-    </div>
-  ${ } }
+import { TemplateContext } from "../types";
 
-  ${ if (ctx.label.hidden && ctx.label.className && ctx.component.validate.required) { }
-    <div class="field-label
-      ${ctx.isRightAlign ? 'field-label--right' : ''}"
-      style="${ctx.labelStyles}">
-      <label class="${ctx.label.className}"></label>
-    </div>
-  ${ } }
-
-  <div class="filed-content" style="${ctx.contentStyles}">
-    ${ctx.element}
-  </div>
-</div>
-
-${ if (ctx.component.description) { }
-  <div class="form-text text-muted">${ctx.t(ctx.component.description)}</div>
-${ } }
-`;
+export default (_ctx: TemplateContext) => {
+  return "";
+};

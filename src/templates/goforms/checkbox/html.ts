@@ -1,6 +1,5 @@
-export default (ctx: Record<string, any>) => `<label class="${ctx.input.labelClass}">
-    ${ctx.input.content}
-    ${ if (!ctx.self.labelIsHidden()) { }<span>${ctx.input.label}</span>${ } }
-</label>
-<div ref="value">${ if (ctx.checked) { }True${ } else { }False${ } }</div>
-`;
+import { TemplateContext } from "../types";
+
+export default (_ctx: TemplateContext) => {
+  return "";
+};

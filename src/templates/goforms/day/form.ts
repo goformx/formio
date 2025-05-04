@@ -1,28 +1,48 @@
-export default (ctx: Record<string, any>) => `<div class="ui grid">
-  ${ if (ctx.dayFirst && ctx.showDay) { }
-  <div class="four wide column">
-    <label for="${ctx.component.key}-day" class="">${ctx.t('Day')}</label>
-    ${ctx.day}
-  </div>
-  ${ } }
-  ${ if (ctx.showMonth) { }
-  <div class="five wide column">
-    <label for="${ctx.component.key}-month" class="">${ctx.t('Month')}</label>
-    ${ctx.month}
-  </div>
-  ${ } }
-  ${ if (!ctx.dayFirst && ctx.showDay) { }
-  <div class="four wide column">
-    <label for="${ctx.component.key}-day" class="">${ctx.t('Day')}</label>
-    ${ctx.day}
-  </div>
-  ${ } }
-  ${ if (ctx.showYear) { }
-  <div class="seven wide column">
-    <label for="${ctx.component.key}-year" class="">${ctx.t('Year')}</label>
-    ${ctx.year}
-  </div>
-  ${ } }
-</div>
-<input name="data[day]" type="hidden" class="form-control" lang="en" value="" ref="input">
-`;
+import { TemplateContext } from "../types";
+
+export default (ctx: TemplateContext) => {
+  const component = ctx.component as { key: string };
+  const t = ctx.t as (s: string) => string;
+  return `<div class="ui grid">
+    ${
+      ctx.dayFirst && ctx.showDay
+        ? `
+      <div class="four wide column">
+        <label for="${component.key}-day" class="">${t("Day")}</label>
+        ${ctx.day}
+      </div>
+    `
+        : ""
+    }
+    ${
+      ctx.showMonth
+        ? `
+      <div class="five wide column">
+        <label for="${component.key}-month" class="">${t("Month")}</label>
+        ${ctx.month}
+      </div>
+    `
+        : ""
+    }
+    ${
+      !ctx.dayFirst && ctx.showDay
+        ? `
+      <div class="four wide column">
+        <label for="${component.key}-day" class="">${t("Day")}</label>
+        ${ctx.day}
+      </div>
+    `
+        : ""
+    }
+    ${
+      ctx.showYear
+        ? `
+      <div class="seven wide column">
+        <label for="${component.key}-year" class="">${t("Year")}</label>
+        ${ctx.year}
+      </div>
+    `
+        : ""
+    }
+  </div>`;
+};

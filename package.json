@@ -7,8 +7,8 @@
     "test:coverage": "nyc --reporter=text mocha --reporter spec './{,!(node_modules)/**/}*.spec.js'",
     "test": "mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",
     "watch": "tsc -w",
-    "build": "tsc && gulp templates && webpack",
-    "lint": "eslint . --ext .ts --fix",
+    "build": "vite build",
+    "lint": "eslint src --ext .ts --fix",
     "prepublish": "npm run build"
   },
   "pre-commit": [
