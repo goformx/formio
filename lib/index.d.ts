@@ -1,7 +1,7 @@
 declare const _default: {
     framework: string;
     templates: {
-        semantic: {
+        goforms: {
             table: {
                 form: string;
             };

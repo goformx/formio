@@ -1,5 +1,5 @@
 declare const _default: {
-    semantic: {
+    goforms: {
         table: {
             form: string;
         };
