@@ -1,0 +1,6 @@
+export default (ctx: Record<string, any>) => `<div class="formio-loader">
+  <div class="loader-wrapper">
+    <div class="ui active centered inline loader"></div>
+  </div>
+</div>
+`;

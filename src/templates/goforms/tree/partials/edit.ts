@@ -1,0 +1,10 @@
+export default (ctx: Record<string, any>) => `<div class="node-edit">
+  <div ref="nodeEdit">${ctx.children}</div>
+  ${ if (!ctx.readOnly) { }
+    <div class="node-actions">
+      <button ref="saveNode" class="ui mini primary button saveNode">${ctx.t('Save')}</button>
+      <button ref="cancelNode" class="ui mini negative button cancelNode">${ctx.t('Cancel')}
+    </div>
+  ${ } }
+</div>
+`;

@@ -1,0 +1,8 @@
+export default (ctx: Record<string, any>) => `<div class="ui grid" style="width: 100%">
+    ${ ctx.component.columns.forEach(function(column, index) { }
+    <div class="${ctx.transform('columns', column.width)} wide column" ref="${ctx.columnKey}">
+      ${ctx.columnComponents[index]}
+    </div>
+    ${ }) }
+</div>
+`;

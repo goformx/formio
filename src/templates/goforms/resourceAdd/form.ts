@@ -1,0 +1,18 @@
+export default (ctx: Record<string, any>) => `<table class="ui table celled">
+  <tbody>
+    <tr>
+      <td>
+        ${ctx.element}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button class="ui button primary" ref="addResource">
+          <i class="${ctx.iconClass("plus")}"></i>
+          ${ctx.t(ctx.component.addResourceLabel || "Add Resource")}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

@@ -1,4 +1,4 @@
-import value from "./form.ejs";
-import align from "./align.ejs";
+import value from "./form";
+import align from "./align";
 
 export default { form: value, align };

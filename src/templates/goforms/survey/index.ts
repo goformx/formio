@@ -1,4 +1,4 @@
-import value from "./form.ejs";
-import html from "./html.ejs";
+import value from "./form";
+import html from "./html";
 
 export default { form: value, html };

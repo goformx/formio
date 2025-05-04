@@ -1,0 +1,5 @@
+export default (ctx: Record<string, any>) => `<div ref="value">
+  ${ var filtered = ctx.values.filter(function(item) {return ctx.value === item.value || (typeof ctx.value === 'object' && ctx.value.hasOwnProperty(item.value) && ctx.value[item.value])}).map(function(item) { return ctx.t(item.label)}).join(', ') }
+  ${filtered}
+  </div>
+`;

@@ -1,0 +1,4 @@
+export default (
+  ctx: Record<string, any>,
+) => `<div class="ui visible message"><p>${ctx.t(ctx.component.title)}</p></div>
+`;

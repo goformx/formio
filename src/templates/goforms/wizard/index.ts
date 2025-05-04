@@ -1,4 +1,4 @@
-import builder from "./builder.ejs";
-import value from "./form.ejs";
+import builder from "./builder";
+import value from "./form";
 
 export default { form: value };

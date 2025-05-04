@@ -1,0 +1,7 @@
+export default (ctx: Record<string, any>) => `${ ctx.component.components.forEach(function(tab, index) { }
+  <h4 class="ui top attached block header">${ctx.t(tab.label)}</h4>
+  <div class="ui bottom attached segment">
+    ${ctx.tabComponents[index]}
+  </div>
+${ }) }
+`;
