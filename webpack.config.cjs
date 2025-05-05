@@ -3,10 +3,10 @@ const path = require('path');
 module.exports = {
   entry: path.join(path.resolve(__dirname, 'lib'), 'index.js'),
   output: {
-    library: 'semantic',
+    library: 'goforms',
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'semantic.js',
+    filename: 'goforms.js',
   },
   mode: 'production',
   performance: { hints: false },
