@@ -1,4 +1,6 @@
-export interface BaseContext {
+import { TemplateContext } from "../templates/goforms/types";
+
+export interface BaseContext extends TemplateContext {
   t: (key: string) => string;
   iconClass: (name: string) => string;
 }
@@ -95,6 +97,7 @@ export interface FormContext extends BaseContext {
     value: string;
     ref: string;
   };
+  children?: string;
 }
 
 export interface HTMLElementContext extends BaseContext {

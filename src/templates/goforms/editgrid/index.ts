@@ -1,12 +1,12 @@
-import value from "./form";
+import { EditGridContext } from "../../../types/contexts";
+import form from "./form";
 import html from "./html";
-import type { EditGridContext } from "../../../types/contexts";
 
 interface EditGrid {
   form: (ctx: EditGridContext) => string;
   html: (ctx: EditGridContext) => string;
 }
 
-const editgrid: EditGrid = { form: value, html };
+const editgrid: EditGrid = { form, html };
 
 export default editgrid;
