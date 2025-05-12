@@ -11,13 +11,17 @@
   "scripts": {
     "build": "vite build && tsc",
     "dev": "vite",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:coverage": "nyc --reporter=text mocha --reporter spec './{,!(node_modules)/**/}*.spec.js'",
+    "test": "mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json}\"",
-    "format:check": "prettier --check \"**/*.{ts,js,json}\"",
-    "pre-commit": "npm run build"
+    "format:check": "prettier --check \"**/*.{ts,js,json}\""
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "keywords": [
     "formio",
     "goforms",
@@ -31,13 +35,16 @@
   "devDependencies": {
     "@eslint/js": "^9.26.0",
     "@types/jest": "^29.5.14",
+    "@types/mocha": "^10.0.6",
     "@types/node": "^20.11.19",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
     "eslint-plugin-prettier": "^5.4.0",
     "globals": "^16.1.0",
+    "mocha": "^10.3.0",
     "pre-commit": "^1.2.2",
     "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.32.1",
     "vite": "^5.1.3"
