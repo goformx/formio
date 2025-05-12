@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
+    "target": "es5",
+    "module": "commonjs",
+    "preserveConstEnums": true,
+    "outDir": "lib",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "declaration": true,
+    "rootDir": "src",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "strict": true,
-    "declaration": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist",
-    "sourceMap": true,
     "skipLibCheck": true,
-    "isolatedModules": true,
-    "noEmit": false,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

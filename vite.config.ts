@@ -10,7 +10,7 @@ export default defineConfig({
       fileName: "index",
       formats: ["es", "umd"],
     },
-    outDir: "dist",
+    outDir: "lib",
     rollupOptions: {
       external: ["@formio/js"],
       output: {
