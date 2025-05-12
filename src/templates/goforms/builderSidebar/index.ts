@@ -1,3 +1,10 @@
 import value from "./form";
+import type { BuilderSidebarContext } from "../../../types/contexts";
 
-export default { form: value };
+interface BuilderSidebar {
+  form: (ctx: BuilderSidebarContext) => string;
+}
+
+const builderSidebar: BuilderSidebar = { form: value };
+
+export default builderSidebar;

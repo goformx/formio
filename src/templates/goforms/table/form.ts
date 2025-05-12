@@ -1,26 +1,59 @@
-export default (ctx: Record<string, any>) => `<table class="ui table
-    ${ctx.component.striped ? 'striped' : ''}
-    ${ctx.component.bordered ? 'celled' : ''}
-    ${ctx.component.hover ? 'selectable' : ''}
-    ${ctx.component.condensed ? 'compact' : 'padded'}
-  ">
-  ${ if (ctx.component.header && ctx.component.header.length > 0) { }
-  <thead>
-    <tr>
-      ${ ctx.component.header.forEach(function(header) { }
-      <th>${ctx.t(header)}</th>
-      ${ }) }
-    </tr>
-  </thead>
-  ${ } }
-  <tbody>
-    ${ ctx.tableComponents.forEach(function(row, rowIndex) { }
-    <tr ref="row-${ctx.id}">
-      ${ row.forEach(function(column, colIndex) { }
-      <td ref="${ctx.tableKey}-${ctx.rowIndex}"${ if (ctx.cellClassName) { } class="${ctx.cellClassName}"${ } }>${column}</td>
-      ${ }) }
-    </tr>
-    ${ }) }
-  </tbody>
-</table>
-`;
+interface TableHeader {
+  label: string;
+  key: string;
+}
+
+interface TableCell {
+  value: string;
+  className?: string;
+}
+
+interface TableContext {
+  component: {
+    condensed?: boolean;
+    header?: TableHeader[];
+    striped?: boolean;
+    bordered?: boolean;
+    hover?: boolean;
+  };
+  rows: string;
+  tableComponents: TableCell[][];
+  t: (key: string) => string;
+}
+
+export default (ctx: TableContext) => `<table class="ui table
+      ${ctx.component.striped ? "striped" : ""}
+      ${ctx.component.bordered ? "celled" : ""}
+      ${ctx.component.hover ? "selectable" : ""}
+      ${ctx.component.condensed ? "compact" : "padded"}
+    ">
+    ${
+      ctx.component.header && ctx.component.header.length > 0
+        ? `
+    <thead>
+      <tr>
+        ${ctx.component.header
+          .map((header: TableHeader) => `<th>${ctx.t(header.label)}</th>`)
+          .join("")}
+      </tr>
+    </thead>
+    `
+        : ""
+    }
+    <tbody>
+      ${ctx.tableComponents
+        .map(
+          (row: TableCell[], _rowIndex: number) => `
+        <tr>
+          ${row
+            .map(
+              (cell: TableCell, _cellIndex: number) =>
+                `<td${cell.className ? ` class="${cell.className}"` : ""}>${cell.value}</td>`
+            )
+            .join("")}
+        </tr>
+      `
+        )
+        .join("")}
+    </tbody>
+  </table>`;

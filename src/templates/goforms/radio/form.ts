@@ -1,26 +1,33 @@
-export default (ctx: Record<string, any>) => `<div class="fields ${ctx.inline ? 'inline' : 'grouped'}">
-  ${ ctx.values.forEach(function(item) { }
-  <div class="field">
-    <div class="ui ${ctx.input.attr.type==='radio' ? 'radio' : ''} checkbox" ref="wrapper">
-      <${ctx.input.type}
-        ref="input"
-        ${ for (var attr in ctx.input.attr) { }
-        ${attr}="${ctx.input.attr[attr]}"
-        ${ } }
-        value="${item.value}"
-        ${ if (ctx.value === item.value || (typeof ctx.value === 'object' && ctx.value.hasOwnProperty(item.value) && ctx.value[item.value])) { }
-          checked=true
-        ${ } }
-        ${ if (item.disabled) { }
-          disabled=true
-        ${ } }
-        id="${ctx.instance.root && ctx.instance.root.id}-${ctx.id}-${ctx.row}-${item.value}"
-      >
-      <label class="" for="${ctx.instance.root && ctx.instance.root.id}-${ctx.id}-${ctx.row}-${item.value}">
-        <span>${ctx.t(item.label)}</span>
-      </label>
+interface RadioFormContext {
+  inline?: boolean;
+  values: Array<{
+    label: string;
+    value: string;
+    selected?: boolean;
+  }>;
+  input: {
+    type: string;
+    attr: {
+      type?: string;
+    };
+  };
+}
+
+export default (ctx: RadioFormContext) => `<div class="fields ${ctx.inline ? "inline" : "grouped"}">
+  ${ctx.values
+    .map(
+      (item) => `
+    <div class="field">
+      <div class="ui ${ctx.input.attr.type === "radio" ? "radio" : ""} checkbox" ref="wrapper">
+        <${ctx.input.type}
+          type="${ctx.input.attr.type || "radio"}"
+          value="${item.value}"
+          ${item.selected ? "checked" : ""}
+        />
+        <label>${item.label}</label>
+      </div>
     </div>
-  </div>
-  ${ }) }
-</div>
-`;
+  `
+    )
+    .join("")}
+</div>`;

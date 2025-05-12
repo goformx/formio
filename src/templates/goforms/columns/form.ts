@@ -1,15 +1,26 @@
-import { TemplateContext } from "../types";
+interface ColumnsContext {
+  t: (key: string) => string;
+  component: {
+    columns: Array<{
+      width: number;
+      components: unknown[];
+    }>;
+  };
+  transform: (type: string, value: string | number) => string;
+  columnComponents: unknown[];
+  columnKey: string;
+}
 
-export default (
-  ctx: TemplateContext,
-) => `<div class="ui grid" style="width: 100%">
-  ${(ctx.component.columns as Record<string, unknown>[])
-    .map(
-      (column, index: number) => `
-    <div class="${ctx.transform("columns", column.width)} wide column" ref="${ctx.columnKey}">
-      ${ctx.columnComponents[index]}
-    </div>
-  `,
-    )
-    .join("")}
-</div>`;
+export default (ctx: ColumnsContext) => `
+  <div class="formio-columns">
+    ${ctx.component.columns
+      .map(
+        (column, index) => `
+      <div class="${ctx.transform("columns", column.width)} wide column" ref="${ctx.columnKey}">
+        ${ctx.columnComponents[index]}
+      </div>
+    `
+      )
+      .join("")}
+  </div>
+`;

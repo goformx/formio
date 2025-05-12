@@ -1,4 +1,11 @@
+interface WebformContext {
+  component: {
+    title: string;
+  };
+  t: (key: string) => string;
+}
+
 export default (
-  ctx: Record<string, any>,
+  ctx: WebformContext
 ) => `<div class="ui visible message"><p>${ctx.t(ctx.component.title)}</p></div>
 `;

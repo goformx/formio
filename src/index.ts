@@ -1,6 +1,12 @@
 import templates from "./templates";
+import type { Templates } from "./templates";
 
-const goforms = {
+interface GoForms {
+  framework: string;
+  templates: Templates;
+}
+
+const goforms: GoForms = {
   framework: "goforms",
   templates,
 };
@@ -8,9 +14,10 @@ const goforms = {
 export default goforms;
 export { goforms };
 
-// For CJS consumers (optional, but robust)
-// @ts-expect-error: CJS export for Node consumers
-if (typeof module !== "undefined") {
-  // @ts-expect-error: CJS export for Node consumers
+// For CJS consumers
+if (typeof module !== "undefined" && module.exports) {
   module.exports = goforms;
+  module.exports.default = goforms;
 }
+
+export * from "./components";

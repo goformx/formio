@@ -1,7 +1,10 @@
-import { TemplateContext } from "../types";
+interface BuilderSidebarContext {
+  t: (key: string) => string;
+  groups: string[];
+}
 
-export default (
-  ctx: TemplateContext,
-) => `<div id="builder-sidebar-${ctx.id}" class="ui segments" ref="sidebar">
-  ${ctx.groups.map((group: string) => `${group}`).join("")}
-</div>`;
+export default (ctx: BuilderSidebarContext) => `
+  <div class="formio-builder-sidebar">
+    ${ctx.groups.map((group: string) => `${group}`).join("")}
+  </div>
+`;

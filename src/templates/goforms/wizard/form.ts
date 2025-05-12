@@ -1,27 +1,32 @@
-export default (ctx: Record<string, any>) => `<div class="${ctx.className}">
+interface WizardFormContext {
+  className: string;
+  wizardHeaderType: string;
+  content: string;
+}
+
+export default (ctx: WizardFormContext) => `<div class="${ctx.className}">
   <div style="position: relative;">
-    ${ if (ctx.wizardHeaderType === 'wizardHeaderVertical') { }
-      <div class="ui stackable grid">
-        <div class="three wide computer sixteen wide tablet sixteen wide mobile column">
-          ${ctx.wizardHeader}
-        </div>
-        <div class="one wide computer one wide mobile one wide tablet column"></div>
-        <div class="wizard-page ten wide computer fourteen wide tablet fourteen wide mobiles column" ref="${ctx.wizardKey}">
-          ${ctx.components}
-        </div>
-      </div>
-      <div class="ui grid" style="margin-top: 10px;">
-        <div class="four wide column"></div>
-        <div class="twelve wide column">
-          ${ctx.wizardNav}
-        </div>
-      </div>
-    ${ } else { } 
-      ${ctx.wizardHeader}
-      <div class="wizard-page" ref="${ctx.wizardKey}">
-        ${ctx.components}
-      </div>
-      ${ctx.wizardNav}
-    ${ } } 
+    ${
+      ctx.wizardHeaderType === "wizardHeaderVertical"
+        ? `<div class="ui stackable grid">
+            <div class="three wide computer sixteen wide tablet sixteen wide mobile column">
+              <div class="ui vertical steps">
+                ${ctx.content}
+              </div>
+            </div>
+            <div class="thirteen wide computer sixteen wide tablet sixteen wide mobile column">
+              <div class="ui segment">
+                <div class="ui form">
+                  ${ctx.content}
+                </div>
+              </div>
+            </div>
+          </div>`
+        : `<div class="ui segment">
+            <div class="ui form">
+              ${ctx.content}
+            </div>
+          </div>`
+    }
   </div>
 </div>`;

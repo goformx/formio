@@ -1,58 +1,42 @@
 {
   "name": "goforms-template",
-  "version": "0.1.0",
-  "description": "GoForms template for form.io forms.",
-  "main": "lib/index.js",
+  "version": "1.0.0",
+  "description": "GoForms template for Form.io",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test:coverage": "nyc --reporter=text mocha --reporter spec './{,!(node_modules)/**/}*.spec.js'",
-    "test": "mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",
-    "watch": "tsc -w",
-    "build": "vite build",
-    "lint": "eslint src --ext .ts --fix",
-    "prepublish": "npm run build"
+    "build": "vite build && tsc",
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"**/*.{ts,js,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json}\""
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
   "keywords": [
-    "UI",
-    "form.io",
-    "forms"
+    "formio",
+    "goforms",
+    "template"
   ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@formio/js": "^5.0.0-beta.25"
+  },
   "devDependencies": {
     "@eslint/js": "^9.26.0",
-    "@types/chai": "^4.2.22",
-    "@types/ejs": "^3.1.0",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^16.10.2",
-    "@types/sinon": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
-    "chai": "^4.3.4",
-    "eslint": "^9.26.0",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.3.1",
-    "gulp": "^5.0.0",
-    "gulp-insert": "^0.5.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-template": "^5.0.0",
-    "mocha": "^9.1.2",
-    "nyc": "^15.0.0",
-    "pre-commit": "^1.2.2",
+    "@types/node": "^20.11.19",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint-plugin-prettier": "^5.4.0",
+    "globals": "^16.1.0",
     "prettier": "^3.5.3",
-    "sinon": "^17.0.1",
-    "ts-node": "^10.2.1",
-    "ts-sinon": "^2.0.2",
-    "typescript": "^4.4.3",
-    "typescript-eslint": "^8.31.1",
-    "webpack": "^5.55.1",
-    "webpack-cli": "^4.8.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jonesrussell/goforms-template.git"
-  },
-  "license": "MIT",
-  "type": "module"
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.32.1",
+    "vite": "^5.1.3"
+  }
 }

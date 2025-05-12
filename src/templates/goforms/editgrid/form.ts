@@ -1,69 +1,81 @@
-import { TemplateContext } from "../types";
-
-export default (ctx: TemplateContext) => {
-  const t = ctx.t as (s: string) => string;
-  const ref = ctx.ref as {
-    row: string;
-    saveRow: string;
-    cancelRow: string;
-    addRow: string;
+interface EditGridContext {
+  t: (key: string) => string;
+  errors: Record<number, string>;
+  ref: {
+    addRow: () => void;
+    removeRow: (index: number) => void;
   };
-  const openRows = ctx.openRows as boolean[];
-  const readOnly = !!ctx.readOnly;
-  const component = ctx.component as { saveRow?: string; removeRow?: string };
-  const rows = ctx.rows as string[];
-  const header = ctx.header as string;
-  const preview = ctx.preview as string;
-  const iconClass = ctx.iconClass as (icon: string) => string;
-  const addAnother = ctx.addAnother as string;
+  openRows: Record<number, boolean>;
+  readOnly: boolean;
+  component: {
+    label: string;
+    key: string;
+  };
+  rows: Array<{
+    index: number;
+    data: Record<string, unknown>;
+  }>;
+  header: string;
+  preview: string;
+  iconClass: (name: string) => string;
+  addAnother: string;
+  footer: string;
+}
 
-  const rowsHtml = rows
-    .map(
-      (row, rowIndex) => `
-    <div class="item" ref="${ref.row}">
-      ${row}
-      ${
-        openRows[rowIndex] && !readOnly
-          ? `
-        <div class="editgrid-actions">
-          <button class="ui button primary" ref="${ref.saveRow}">${t(component.saveRow || "Save")}</button>
-          ${component.removeRow ? `<button class="ui button secondary" ref="${ref.cancelRow}">${t(component.removeRow || "Cancel")}</button>` : ""}
+export default (ctx: EditGridContext) => `
+  <div class="formio-editgrid">
+    <div class="formio-editgrid-header">
+      ${ctx.header}
+    </div>
+    <div class="formio-editgrid-body">
+      ${ctx.rows
+        .map(
+          (row, index) => `
+        <div class="formio-editgrid-row">
+          <div class="formio-editgrid-row-header">
+            <div class="formio-editgrid-row-title">
+              ${ctx.t("Row")} ${index + 1}
+            </div>
+            <div class="formio-editgrid-row-actions">
+              ${
+                !ctx.readOnly
+                  ? `
+                <button class="ui button" onclick="event.preventDefault(); ${ctx.ref.removeRow(index)}">
+                  <i class="${ctx.iconClass("remove")}"></i>
+                </button>
+              `
+                  : ""
+              }
+            </div>
+          </div>
+          <div class="formio-editgrid-row-content">
+            ${ctx.preview}
+          </div>
+          ${
+            ctx.errors[index]
+              ? `
+            <div class="formio-editgrid-row-error">
+              ${ctx.errors[index]}
+            </div>
+          `
+              : ""
+          }
         </div>
+      `
+        )
+        .join("")}
+    </div>
+    <div class="formio-editgrid-footer">
+      ${
+        !ctx.readOnly
+          ? `
+        <button class="ui button primary" onclick="event.preventDefault(); ${ctx.ref.addRow()}">
+          <i class="${ctx.iconClass("plus")}"></i> ${ctx.addAnother}
+        </button>
       `
           : ""
       }
-      <div class="has-error">
-        <div class="editgrid-row-error help-block">
-          ${ctx.errors[rowIndex]}
-        </div>
-      </div>
-    </div>
-  `,
-    )
-    .join("");
-
-  const footer = ctx.footer
-    ? `
-    <div class="item list-group-footer">
       ${ctx.footer}
     </div>
-  `
-    : "";
-
-  const addButton =
-    !readOnly && ctx.hasAddButton
-      ? `
-    <button class="ui button primary" ref="${ref.addRow}">
-      <i class="${iconClass("plus")}"></i> ${addAnother || t("Add Another")}
-    </button>
-  `
-      : "";
-
-  return `<div class="editgrid-listgroup ui celled list">
-    ${header ? `<div class="item list-group-header">${header}</div>` : ""}
-    ${rowsHtml}
-    ${footer}
   </div>
-  ${addButton}
-  ${preview ? `<div class="ui segment" ref="preview">${preview}</div>` : ""}`;
-};
+`;

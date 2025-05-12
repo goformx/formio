@@ -1,4 +1,15 @@
-import value from "./form";
+import { SelectContext, SelectHTMLContext } from "../../../types/contexts";
+import form from "./form";
 import html from "./html";
 
-export default { form: value, html };
+interface Select {
+  form: (context: SelectContext) => string;
+  html: (context: SelectHTMLContext) => string;
+}
+
+const select: Select = {
+  form,
+  html,
+};
+
+export default select;

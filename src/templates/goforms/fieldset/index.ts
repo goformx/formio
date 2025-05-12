@@ -1,3 +1,12 @@
-import value from "./form";
+import { FieldsetContext } from "../../../types/contexts";
+import form from "./form";
 
-export default { form: value };
+interface Fieldset {
+  form: (context: FieldsetContext) => string;
+}
+
+const fieldset: Fieldset = {
+  form,
+};
+
+export default fieldset;

@@ -3,19 +3,19 @@
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "outDir": "lib",
-    "noImplicitAny": false,
-    "sourceMap": false,
+    "esModuleInterop": true,
+    "strict": true,
     "declaration": true,
-    "rootDir": "src",
-    "esModuleInterop": true
+    "declarationDir": "dist/types",
+    "outDir": "dist",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

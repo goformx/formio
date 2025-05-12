@@ -1,11 +1,35 @@
-export default (ctx: Record<string, any>) => `<div class="tab-container${ctx.component.verticalLayout ? ' card-vertical' : ''}">
-  <div class="ui top attached tabular menu${ctx.component.verticalLayout ? ' nav-tabs-vertical' : ''}">
-    ${ ctx.component.components.forEach(function(tab, index) { }
-    <a class="item${ctx.currentTab === index ? ' active' : ''}" role="presentation" ref="${ctx.tabLinkKey}">${ctx.t(tab.label)}</a>
-    ${ }) }
+interface TabFormContext {
+  component: {
+    verticalLayout?: boolean;
+    components: Array<{
+      label: string;
+    }>;
+  };
+  currentTab: number;
+  tabLinkKey: string;
+  tabKey: string;
+  tabComponents: string[];
+  t: (key: string) => string;
+}
+
+export default (
+  ctx: TabFormContext
+) => `<div class="tab-container${ctx.component.verticalLayout ? " card-vertical" : ""}">
+  <div class="ui top attached tabular menu${ctx.component.verticalLayout ? " nav-tabs-vertical" : ""}">
+    ${ctx.component.components
+      .map(
+        (tab, index) => `
+    <a class="item${ctx.currentTab === index ? " active" : ""}" role="presentation" ref="${ctx.tabLinkKey}">${ctx.t(tab.label)}</a>
+    `
+      )
+      .join("")}
   </div>
-  ${ ctx.component.components.forEach(function(tab, index) { }
-  <div role="tabpanel" class="ui bottom attached tab segment${ctx.currentTab === index ? ' active' : ''}" ref="${ctx.tabKey}"">${ctx.tabComponents[index]}</div>
-  ${ }) }
+  ${ctx.component.components
+    .map(
+      (tab, index) => `
+  <div role="tabpanel" class="ui bottom attached tab segment${ctx.currentTab === index ? " active" : ""}" ref="${ctx.tabKey}"">${ctx.tabComponents[index]}</div>
+    `
+    )
+    .join("")}
 </div>
 `;

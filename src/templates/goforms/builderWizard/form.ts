@@ -14,7 +14,7 @@ export default (ctx: TemplateContext) => {
       (page, pageIndex: number) => `
         <div title="${page.title}" class="${pageIndex === self.page ? "active section" : "section"} wizard-page-label" ref="gotoPage">${page.title}</div>
         <div class="divider">/</div>
-      `,
+      `
     )
     .join("");
   return `<div class="formio builder ui grid formbuilder">

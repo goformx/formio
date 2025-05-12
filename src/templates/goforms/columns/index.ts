@@ -1,3 +1,10 @@
 import value from "./form";
+import type { ColumnsContext } from "../../../types/contexts";
 
-export default { form: value };
+interface Columns {
+  form: (ctx: ColumnsContext) => string;
+}
+
+const columns: Columns = { form: value };
+
+export default columns;

@@ -1,3 +1,12 @@
-import value from "./form";
+import { PanelContext } from "../../../types/contexts";
+import form from "./form";
 
-export default { form: value };
+interface Panel {
+  form: (context: PanelContext) => string;
+}
+
+const panel: Panel = {
+  form,
+};
+
+export default panel;

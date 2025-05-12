@@ -1,2 +1,10 @@
-export default (ctx: Record<string, any>) => `<div ref="value">${ if (ctx.value) { }${ctx.self.itemValueForHTMLMode(ctx.value)}${ } else { }-${ } }</div>
-`;
+interface SelectHTMLContext {
+  value: string | number | null;
+  self: {
+    itemValueForHTMLMode: (value: string | number) => string;
+  };
+}
+
+export default (ctx: SelectHTMLContext) => `<div ref="value">
+  ${ctx.value ? ctx.self.itemValueForHTMLMode(ctx.value) : "-"}
+</div>`;

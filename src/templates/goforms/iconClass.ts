@@ -1,5 +1,5 @@
-export default (iconset, name, spinning) => {
-  const icons = {
+export default (iconset: string, name: string, spinning?: boolean): string => {
+  const icons: Record<string, string> = {
     "plus-squre-o": "plus square outline",
     "minus-squre-o": "minus square outline",
     "question-sign": "question circle",

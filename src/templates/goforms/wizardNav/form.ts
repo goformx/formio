@@ -1,4 +1,17 @@
-export default (ctx: Record<string, any>) => {
+interface WizardNavButtons {
+  cancel?: boolean;
+  previous?: boolean;
+  next?: boolean;
+  submit?: boolean;
+}
+
+interface WizardNavContext {
+  buttons: WizardNavButtons;
+  wizardKey: string;
+  t: (key: string) => string;
+}
+
+export default (ctx: WizardNavContext) => {
   const cancelButton = ctx.buttons.cancel
     ? `<div class="item">
     <button class="ui button secondary btn-wizard-nav-cancel" ref="${ctx.wizardKey}-cancel">${ctx.t("cancel")}</button>

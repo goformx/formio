@@ -30,9 +30,7 @@ export default (ctx: TemplateContext) => {
   const addButton = ctx.addButton as string;
   const numColumns = Number(ctx.numColumns);
 
-  const tableStyle = component.layoutFixed
-    ? 'style="table-layout: fixed;"'
-    : "";
+  const tableStyle = component.layoutFixed ? 'style="table-layout: fixed;"' : "";
   const header = hasHeader
     ? `
     <thead>
@@ -45,7 +43,7 @@ export default (ctx: TemplateContext) => {
             ${col.hideLabel ? "" : t(col.label || col.title || "")}
             ${col.tooltip ? ` <i ref="tooltip" data-title="${col.tooltip}" class="${iconClass("question-sign")} text-muted" data-tooltip="${col.tooltip}"></i>` : ""}
           </th>
-        `,
+        `
           )
           .join("")}
         ${
@@ -64,7 +62,7 @@ export default (ctx: TemplateContext) => {
     .map(
       (row) => `
     <tr>${row}</tr>
-  `,
+  `
     )
     .join("");
 

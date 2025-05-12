@@ -1,17 +1,32 @@
-export default (ctx: Record<string, any>) => `<nav aria-label="navigation" id="${ctx.wizardKey}-header">
-  <div class=" ui stackable grid" style="border-bottom:0;">
-    ${ ctx.panels.forEach(function(panel, index) { }
-      <div class="classic-pagination-page four wide computer eight wide tablet sixteen wide mobile column
-          ${ctx.currentPage < index ? ' disabled' : ''}
-          ${ctx.currentPage === index ? ' active' : ''}
-          ${ctx.currentPage > index ? ' complete' : ''}" style="padding: 0;">
-        <div class="ui center aligned header classic-pagination-title">${ctx.t(panel.title, { _userInput: true })}</div>
-        ${ if (ctx.panels.length > 1) { }
-          <div class="classic-pagination-progress" style="border-radius: 0;"><div class="classic-pagination-progress-bar"></div></div>
-        ${ } } 
-        <span ref="${ctx.wizardKey}-link" class="classic-pagination-dot" style="top: 45px;"></span>
+interface WizardHeaderClassicFormContext {
+  panels: Array<{
+    title: string;
+    tooltip: string;
+  }>;
+  currentPage: number;
+  wizardKey: string;
+}
+
+export default (
+  ctx: WizardHeaderClassicFormContext
+) => `<div class="ui stackable grid" style="border-bottom:0;">
+  ${ctx.panels
+    .map(
+      (panel, index) => `
+    <div class="classic-pagination-page four wide computer eight wide tablet sixteen wide mobile column
+      ${ctx.currentPage < index ? " disabled" : ""}
+      ${ctx.currentPage === index ? " active" : ""}"
+      ref="${ctx.wizardKey}-link">
+      <div class="content">
+        <div class="title">
+          ${panel.title}
+        </div>
+        <div class="description">
+          ${panel.tooltip}
+        </div>
       </div>
-    ${ }) }
-  </div>
-</nav>
-`;
+    </div>
+  `
+    )
+    .join("")}
+</div>`;

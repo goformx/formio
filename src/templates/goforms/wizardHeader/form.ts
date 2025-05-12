@@ -1,19 +1,27 @@
-export default (ctx: Record<string, any>) => `<nav aria-label="navigation" id="${ctx.wizardKey}-header" ref="${ctx.wizardKey}-header">
-  <div class="ui steps">
-    ${ ctx.panels.forEach(function(panel, index) { }
-    <a class="${ctx.currentPage === index ? ' active' : ''} step" ref="${ctx.wizardKey}-link">
+interface WizardHeaderFormContext {
+  panels: Array<{
+    title: string;
+    tooltip: string;
+  }>;
+  currentPage: number;
+  wizardKey: string;
+}
+
+export default (ctx: WizardHeaderFormContext) => `<div class="ui steps">
+  ${ctx.panels
+    .map(
+      (panel, index) => `
+    <a class="${ctx.currentPage === index ? " active" : ""} step" ref="${ctx.wizardKey}-link">
       <div class="content">
         <div class="title">
-        ${panel.title}
-        ${ if (panel.tooltip && ctx.currentPage === index) { }
-        <span data-tooltip="${ctx.wizardPageTooltip}" data-position="right center">
-        <i class="${ctx.iconClass('question-sign')}"></i>
-        </span>
-        ${ } }
+          ${panel.title}
+        </div>
+        <div class="description">
+          ${panel.tooltip}
         </div>
       </div>
     </a>
-    ${ }) }
-  </div>
-</nav>
-`;
+  `
+    )
+    .join("")}
+</div>`;
