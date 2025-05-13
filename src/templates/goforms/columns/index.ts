@@ -1,10 +1,3 @@
-import value from "./form";
-import type { ColumnsContext } from "../../../types/contexts";
+import form from './form.ejs';
 
-interface Columns {
-  form: (ctx: ColumnsContext) => string;
-}
-
-const columns: Columns = { form: value };
-
-export default columns;
+export default { form };

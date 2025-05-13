@@ -1,12 +1,3 @@
-import { FieldsetContext } from "../../../types/contexts";
-import form from "./form";
+import form from './form.ejs';
 
-interface Fieldset {
-  form: (context: FieldsetContext) => string;
-}
-
-const fieldset: Fieldset = {
-  form,
-};
-
-export default fieldset;
+export default { form };

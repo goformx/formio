@@ -1,3 +1,3 @@
-import value from "./form";
+import form from './form.ejs';
 
-export default { form: value };
+export default { form };

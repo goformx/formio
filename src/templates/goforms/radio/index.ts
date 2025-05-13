@@ -1,15 +1,4 @@
-import { RadioFormContext, RadioHTMLContext } from "../../../types/contexts";
-import form from "./form";
-import html from "./html";
+import form from './form.ejs';
+import html from './html.ejs';
 
-interface Radio {
-  form: (context: RadioFormContext) => string;
-  html: (context: RadioHTMLContext) => string;
-}
-
-const radio: Radio = {
-  form,
-  html,
-};
-
-export default radio;
+export default { form, html };

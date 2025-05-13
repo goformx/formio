@@ -1,7 +1,5 @@
 import goforms from "./goforms";
 
-const templates = {
+export default {
   goforms,
 };
-
-export default templates;

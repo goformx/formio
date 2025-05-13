@@ -5,7 +5,7 @@
     "preserveConstEnums": true,
     "outDir": "lib",
     "noImplicitAny": false,
-    "sourceMap": false,
+    "sourceMap": true,
     "declaration": true,
     "rootDir": "src",
     "moduleResolution": "node",
@@ -28,6 +28,14 @@
     "allowJs": true,
     "checkJs": false
   },
-  "include": ["src/**/*.ts", "src/**/*.spec.ts"],
-  "exclude": ["node_modules", "dist", "lib"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "lib",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }

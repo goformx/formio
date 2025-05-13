@@ -7,18 +7,18 @@
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "clean": "rimraf lib dist",
+    "build": "npm run clean && vite build",
     "dev": "vite",
-    "clean": "npx rimraf lib dist",
-    "postinstall": "husky",
-    "test:coverage": "nyc --reporter=text mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",
-    "test": "mocha -r ts-node/register 'src/**/*.spec.ts'",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
-    "format:check": "prettier --check \"**/*.{ts,js,json}\""
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "prepare": "npm run build"
   },
   "pre-commit": [
     "lint",
