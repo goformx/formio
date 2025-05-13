@@ -1,0 +1,47 @@
+---
+description: 
+globs: src/templates/goforms/**/*.ts
+alwaysApply: false
+---
+# Template Development Guide
+
+## Creating New Templates
+
+1. Create a new directory under `src/templates/goforms/` for your component
+2. Implement the required template files:
+   - `index.ts` - Register the template
+   - `form.ts` - Form view implementation
+   - `html.ts` - HTML view implementation
+   - `edit.ts` - Edit view implementation (if needed)
+
+## Template Context Types
+
+Each template receives a context object with component-specific properties. These are defined in [src/types/contexts.ts](mdc:src/types/contexts.ts).
+
+Example template structure:
+```typescript
+import { FormContext } from "../../../types/contexts";
+
+const form = (context: FormContext): string => {
+  const { component, input } = context;
+  // Template implementation
+  return `<div>...</div>`;
+};
+
+export default { form };
+```
+
+## Best Practices
+
+1. Always use TypeScript types from the contexts file
+2. Follow the existing template patterns for consistency
+3. Use template literals for HTML generation
+4. Keep templates focused on rendering only
+5. Use the provided CSS classes from [cssClasses.ts](mdc:src/templates/goforms/cssClasses.ts)
+
+## Testing Templates
+
+1. Create test files with `.spec.ts` extension
+2. Use Mocha for testing
+3. Test both form and HTML views
+4. Verify template output matches expected HTML structure

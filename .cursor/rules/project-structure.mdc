@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Structure Guide
+
+This is a Form.io template library that provides custom templates for form components. The main structure is as follows:
+
+## Entry Points
+- Main entry: [src/index.ts](mdc:src/index.ts) - Exports the template library for consumption by @formio/js
+- Templates entry: [src/templates/index.ts](mdc:src/templates/index.ts) - Registers all form templates
+
+## Core Directories
+- `src/templates/goforms/` - Contains all form component templates
+- `src/types/` - TypeScript type definitions
+- `src/components/` - Shared component implementations
+
+## Template Structure
+Each form component template follows this structure:
+- `index.ts` - Main template registration
+- `form.ts` - Form view template
+- `html.ts` - HTML view template
+- `edit.ts` - Edit view template (if applicable)
+
+## Build Configuration
+- [vite.config.ts](mdc:vite.config.ts) - Build configuration for both ESM and CommonJS formats
+- Output is generated in the `lib/` directory with source maps and type declarations

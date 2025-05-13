@@ -1,0 +1,51 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Build and Deployment Guide
+
+## Build Process
+
+The project uses Vite for building and TypeScript for type checking. The build process:
+
+1. Compiles TypeScript to JavaScript
+2. Generates type declarations
+3. Creates both ESM and CommonJS outputs
+4. Generates source maps
+
+## Build Commands
+
+- `npm run build` - Build the library
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix linting issues
+- `npm test` - Run tests
+
+## Output Structure
+
+The build generates the following in the `lib/` directory:
+- `index.js` - Main entry point
+- `index.d.ts` - Type declarations
+- `chunks/` - Code splitting chunks
+- `styles/` - CSS files
+- `assets/` - Other assets
+
+## Integration with @formio/js
+
+To use this template library with Form.io:
+
+```javascript
+import { goforms } from 'goforms-template';
+import Formio from '@formio/js';
+
+// Register the templates
+Formio.use(goforms);
+```
+
+## Development Workflow
+
+1. Make changes to templates
+2. Run tests: `npm test`
+3. Fix linting: `npm run lint:fix`
+4. Build: `npm run build`
+5. Verify the output in `lib/`
