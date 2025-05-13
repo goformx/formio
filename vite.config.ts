@@ -18,19 +18,18 @@ export default defineConfig({
         globals: {
           "@formio/js": "Formio",
         },
+        preserveModules: true,
+        preserveModulesRoot: "src",
         entryFileNames: (chunkInfo) => {
-          return chunkInfo.name === "index" ? "index.js" : "chunks/[name].js";
+          const name = chunkInfo.name.replace("src/", "");
+          return name.endsWith(".js") ? name : `${name}.js`;
         },
-        chunkFileNames: "chunks/[name].js",
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith(".css")) {
-            return "styles/[name][extname]";
-          }
-          return "assets/[name][extname]";
-        },
+        format: "cjs",
+        compact: false,
       },
     },
     sourcemap: true,
+    minify: false,
   },
   plugins: [
     dts({
