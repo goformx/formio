@@ -1,22 +1,14 @@
-interface TabFlatContext {
-  component: {
-    components: Array<{
-      label: string;
-    }>;
-  };
-  tabComponents: string[];
-  t: (key: string) => string;
-}
+import { TabFlatContext } from "../../../types/contexts";
 
-export default (ctx: TabFlatContext) => `
-  ${ctx.component.components
-    .map(
-      (tab, index) => `
-    <h4 class="ui top attached block header">${ctx.t(tab.label)}</h4>
-    <div class="ui bottom attached segment">
-      ${ctx.tabComponents[index]}
+export default function flat(context: TabFlatContext): string {
+  const { component, input } = context;
+  const { key, label } = component;
+  const { value } = input;
+
+  return `<div class="tab-flat" id="${key}">
+    <label>${label}</label>
+    <div class="tab-content">
+      ${value || "-"}
     </div>
-  `
-    )
-    .join("")}
-`;
+  </div>`;
+}

@@ -1,3 +1,3 @@
 export interface TemplateContext {
-  [key: string]: unknown;
+    [key: string]: unknown;
 }

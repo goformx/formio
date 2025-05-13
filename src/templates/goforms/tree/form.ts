@@ -1,43 +1,13 @@
-interface TreeFormContext {
-  node: {
-    isRoot: boolean;
-  };
-  view: string;
-  content?: string;
-  childNodes?: string[];
-}
+import { TreeFormContext } from "../../../types/contexts";
 
-export default (ctx: TreeFormContext) => `
-  ${
-    ctx.node.isRoot
-      ? `
-    <div class="ui relaxed list">
-      <div class="item" ref="root" role="listitem">
-        ${ctx.view}
-      </div>
+export default function form(context: TreeFormContext): string {
+  const { view, content, childNodes } = context;
+
+  return `<div class="tree-form">
+    <div class="tree-content">
+      ${view}
+      ${content ? `<div class="tree-node-content">${content}</div>` : ""}
+      ${childNodes && childNodes.length ? `<div class="tree-node-children">${childNodes.join("")}</div>` : ""}
     </div>
-  `
-      : `
-    <div ref="node" class="item tree__level" role="listitem">
-      ${
-        ctx.content
-          ? `
-      <div ref="content" class="tree__node-content content">
-        ${ctx.content}
-      </div>
-      `
-          : ""
-      }
-      ${
-        ctx.childNodes && ctx.childNodes.length
-          ? `
-      <div ref="childNodes" class="tree__node-children list" role="list">
-        ${ctx.childNodes.join("")}
-      </div>
-      `
-          : ""
-      }
-    </div>
-  `
-  }
-`;
+  </div>`;
+}

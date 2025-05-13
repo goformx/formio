@@ -1,4 +1,6 @@
-declare const _default: {
-  form: (_ctx: import("../types").TemplateContext) => string;
-};
-export default _default;
+import { PanelContext } from "../../../types/contexts";
+interface Panel {
+    form: (context: PanelContext) => string;
+}
+declare const panel: Panel;
+export default panel;

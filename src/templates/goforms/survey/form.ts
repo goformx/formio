@@ -1,52 +1,14 @@
-interface SurveyFormContext {
-  component: {
-    values: Array<{
-      label: string;
-      value: string;
-    }>;
-    questions: Array<{
-      label: string;
-      value: string;
-    }>;
-  };
-  self: {
-    getInputName: (question: { value: string }) => string;
-  };
-  key: string;
-  t: (key: string) => string;
-}
+import { SurveyFormContext } from "../../../types/contexts";
 
-export default (ctx: SurveyFormContext) => `<table class="ui table striped celled">
-  <thead>
-    <tr>
-      <th></th>
-      ${ctx.component.values
-        .map(
-          (value) => `
-      <th style="text-align: center;">${ctx.t(value.label)}</th>
-      `
-        )
-        .join("")}
-    </tr>
-  </thead>
-  <tbody>
-    ${ctx.component.questions
-      .map(
-        (question) => `
-    <tr>
-      <td>${ctx.t(question.label)}</td>
-      ${ctx.component.values
-        .map(
-          (value) => `
-      <td style="text-align: center;">
-        <input type="radio" name="${ctx.self.getInputName(question)}" value="${value.value}" id="${ctx.key}-${question.value}-${value.value}" ref="input">
-      </td>
-      `
-        )
-        .join("")}
-    </tr>
-    `
-      )
-      .join("")}
-  </tbody>
-</table>`;
+export default function form(context: SurveyFormContext): string {
+  const { component, input } = context;
+  const { key, label } = component;
+  const { value } = input;
+
+  return `<div class="survey-form">
+    <label for="${key}">${label}</label>
+    <div class="survey-questions">
+      ${value || "-"}
+    </div>
+  </div>`;
+}

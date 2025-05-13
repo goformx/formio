@@ -1,4 +1,5 @@
+import { FormContext } from '../../../types/contexts';
 declare const _default: {
-  form: (ctx: Record<string, any>) => string;
+    form: (context: FormContext) => string;
 };
 export default _default;

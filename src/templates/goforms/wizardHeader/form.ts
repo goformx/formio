@@ -1,27 +1,14 @@
-interface WizardHeaderFormContext {
-  panels: Array<{
-    title: string;
-    tooltip: string;
-  }>;
-  currentPage: number;
-  wizardKey: string;
-}
+import { WizardHeaderFormContext } from "../../../types/contexts";
 
-export default (ctx: WizardHeaderFormContext) => `<div class="ui steps">
-  ${ctx.panels
-    .map(
-      (panel, index) => `
-    <a class="${ctx.currentPage === index ? " active" : ""} step" ref="${ctx.wizardKey}-link">
-      <div class="content">
-        <div class="title">
-          ${panel.title}
-        </div>
-        <div class="description">
-          ${panel.tooltip}
-        </div>
-      </div>
-    </a>
-  `
-    )
-    .join("")}
-</div>`;
+export default function form(context: WizardHeaderFormContext): string {
+  const { component, input } = context;
+  const { key, label } = component;
+  const { value } = input;
+
+  return `<div class="wizard-header-form">
+    <label for="${key}">${label}</label>
+    <div class="wizard-header-content">
+      ${value || "-"}
+    </div>
+  </div>`;
+}

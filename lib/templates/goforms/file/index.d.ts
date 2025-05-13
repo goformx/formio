@@ -1,4 +1,7 @@
-declare const _default: {
-  form: (_ctx: import("../types").TemplateContext) => string;
-};
-export default _default;
+import { FileContext } from "../../../types/contexts";
+interface File {
+    form: (context: FileContext) => string;
+    html: (context: FileContext) => string;
+}
+declare const file: File;
+export default file;

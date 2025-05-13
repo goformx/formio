@@ -1,12 +1,12 @@
 import { SignatureFormContext } from "../../../types/contexts";
 
 interface Signature {
-  form: (ctx: SignatureFormContext) => string;
+  form: (context: SignatureFormContext) => string;
 }
 
 const signature: Signature = {
-  form: (ctx) => {
-    const { component, input, element } = ctx;
+  form: (context) => {
+    const { component, input, element } = context;
     const width = element?.width || 300;
     const height = element?.height || 200;
     const backgroundColor = element?.backgroundColor || "#ffffff";

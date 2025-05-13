@@ -1,32 +1,14 @@
-interface WizardHeaderClassicFormContext {
-  panels: Array<{
-    title: string;
-    tooltip: string;
-  }>;
-  currentPage: number;
-  wizardKey: string;
-}
+import { WizardHeaderClassicFormContext } from "../../../types/contexts";
 
-export default (
-  ctx: WizardHeaderClassicFormContext
-) => `<div class="ui stackable grid" style="border-bottom:0;">
-  ${ctx.panels
-    .map(
-      (panel, index) => `
-    <div class="classic-pagination-page four wide computer eight wide tablet sixteen wide mobile column
-      ${ctx.currentPage < index ? " disabled" : ""}
-      ${ctx.currentPage === index ? " active" : ""}"
-      ref="${ctx.wizardKey}-link">
-      <div class="content">
-        <div class="title">
-          ${panel.title}
-        </div>
-        <div class="description">
-          ${panel.tooltip}
-        </div>
-      </div>
+export default function form(context: WizardHeaderClassicFormContext): string {
+  const { component, input } = context;
+  const { key, label } = component;
+  const { value } = input;
+
+  return `<div class="wizard-header-classic-form">
+    <label for="${key}">${label}</label>
+    <div class="wizard-header-classic-content">
+      ${value || "-"}
     </div>
-  `
-    )
-    .join("")}
-</div>`;
+  </div>`;
+}

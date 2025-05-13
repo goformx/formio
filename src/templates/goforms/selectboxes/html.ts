@@ -1,24 +1,17 @@
 import { SelectBoxesContext } from "../../../types/contexts";
 
-export default (ctx: SelectBoxesContext) => `
-  <div class="ui selectboxes ${ctx.component.inline ? "inline" : ""}">
-    ${ctx.component.values
-      .map(
-        (option) => `
-      <div class="field">
-        <div class="ui checkbox">
-          <input
-            type="checkbox"
-            name="${ctx.input.name}"
-            value="${option.value}"
-            ${ctx.input.value === option.value ? "checked" : ""}
-            ref="${ctx.input.ref}"
-          />
-          <label>${option.label}</label>
-        </div>
-      </div>
-    `
-      )
-      .join("")}
-  </div>
-`;
+export default function html(context: SelectBoxesContext): string {
+  const { component, input } = context;
+  const { key, values } = component;
+  const { value } = input;
+
+  const selectedValues = value ? value.split(",") : [];
+  const selectedLabels = values
+    .filter((item) => selectedValues.includes(item.value))
+    .map((item) => item.label)
+    .join(", ");
+
+  return `<div class="selectboxes-display" id="${key}">
+    ${selectedLabels || "-"}
+  </div>`;
+}

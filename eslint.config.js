@@ -35,18 +35,18 @@ export default [
       "prettier/prettier": "error",
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/explicit-module-boundary-types": "off",
-      "quotes": ["error", "single", { "avoidEscape": true, "avoidTemplate": true }],
+      quotes: ["error", "single", { avoidEscape: true, avoidTemplate: true }],
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": "off",
-      "camelcase": "off",
+      camelcase: "off",
       "@typescript-eslint/naming-convention": [
         "error",
         {
-          "selector": "variable",
-          "format": ["camelCase", "PascalCase"],
-          "leadingUnderscore": "allow"
-        }
-      ]
+          selector: "variable",
+          format: ["camelCase", "PascalCase"],
+          leadingUnderscore: "allow",
+        },
+      ],
     },
   },
   prettier,

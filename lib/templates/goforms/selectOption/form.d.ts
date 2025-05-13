@@ -1,10 +1,2 @@
-interface SelectOptionContext {
-  selected?: boolean;
-  option: {
-    value: string;
-    label: string;
-  };
-  attrs?: Record<string, string>;
-}
-declare const _default: (ctx: SelectOptionContext) => string;
-export default _default;
+import { SelectOptionContext } from "../../../types/contexts";
+export default function form(context: SelectOptionContext): string;

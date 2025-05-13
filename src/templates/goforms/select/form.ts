@@ -1,30 +1,24 @@
-interface SelectContext {
-  input: {
-    multiple?: boolean;
-    attr?: Record<string, string>;
-    ref?: string;
-  };
-  instance: {
-    id: string;
-  };
-  component: {
-    key: string;
-  };
-  options: string;
-}
+import { SelectContext } from "../../../types/contexts";
 
-export default (ctx: SelectContext) => `<select
-  ref="${ctx.input.ref || "selectContainer"}"
-  class="ui search dropdown"
-  ${ctx.input.multiple ? "multiple" : ""}
-  ${Object.entries(ctx.input.attr || {})
-    .map(([attr, value]) => `${attr}="${value}"`)
-    .join(" ")}
-  ${!ctx.input.attr?.id ? `id="${ctx.instance.id}-${ctx.component.key}"` : ""}
->${ctx.options}</select>
-<input type="text"
-       class="formio-select-autocomplete-input"
-       ref="autocompleteInput"
-       ${ctx.input.attr?.autocomplete ? `autocomplete="${ctx.input.attr.autocomplete}"` : ""}
-       tabindex="-1"
-/>`;
+export default function form(context: SelectContext): string {
+  const { input, instance, component, options } = context;
+  const { multiple, attr, ref } = input;
+  const { id } = instance;
+  const { key } = component;
+
+  return `<select
+    ref="${ref || "selectContainer"}"
+    class="ui search dropdown"
+    ${multiple ? "multiple" : ""}
+    ${Object.entries(attr || {})
+      .map(([attr, value]) => `${attr}="${value}"`)
+      .join(" ")}
+    ${!attr?.id ? `id="${id}-${key}"` : ""}
+  >${options}</select>
+  <input type="text"
+         class="formio-select-autocomplete-input"
+         ref="autocompleteInput"
+         ${attr?.autocomplete ? `autocomplete="${attr.autocomplete}"` : ""}
+         tabindex="-1"
+  />`;
+}

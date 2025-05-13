@@ -1,4 +1,6 @@
-declare const _default: {
-  form: (_ctx: import("../types").TemplateContext) => string;
-};
-export default _default;
+import { FieldsetContext } from "../../../types/contexts";
+interface Fieldset {
+    form: (context: FieldsetContext) => string;
+}
+declare const fieldset: Fieldset;
+export default fieldset;

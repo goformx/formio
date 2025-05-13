@@ -1,33 +1,30 @@
-interface RadioFormContext {
-  inline?: boolean;
-  values: Array<{
-    label: string;
-    value: string;
-    selected?: boolean;
-  }>;
-  input: {
-    type: string;
-    attr: {
-      type?: string;
-    };
-  };
-}
+import { RadioFormContext } from "../../../types/contexts";
 
-export default (ctx: RadioFormContext) => `<div class="fields ${ctx.inline ? "inline" : "grouped"}">
-  ${ctx.values
-    .map(
-      (item) => `
-    <div class="field">
-      <div class="ui ${ctx.input.attr.type === "radio" ? "radio" : ""} checkbox" ref="wrapper">
-        <${ctx.input.type}
-          type="${ctx.input.attr.type || "radio"}"
-          value="${item.value}"
-          ${item.selected ? "checked" : ""}
-        />
-        <label>${item.label}</label>
-      </div>
+export default function form(context: RadioFormContext): string {
+  const { component, input } = context;
+  const { key, label, values } = component;
+  const { name, value, ref } = input;
+
+  return `<div class="form-group">
+    <label for="${key}">${label}</label>
+    <div class="radio-group">
+      ${values
+        .map(
+          (item) => `
+        <div class="radio">
+          <input
+            type="radio"
+            id="${key}-${item.value}"
+            name="${name}"
+            value="${item.value}"
+            ref="${ref}"
+            ${value === item.value ? "checked" : ""}
+          />
+          <label for="${key}-${item.value}">${item.label}</label>
+        </div>
+      `
+        )
+        .join("")}
     </div>
-  `
-    )
-    .join("")}
-</div>`;
+  </div>`;
+}

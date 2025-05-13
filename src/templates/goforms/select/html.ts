@@ -1,10 +1,10 @@
-interface SelectHTMLContext {
-  value: string | number | null;
-  self: {
-    itemValueForHTMLMode: (value: string | number) => string;
-  };
-}
+import { SelectHTMLContext } from "../../../types/contexts";
 
-export default (ctx: SelectHTMLContext) => `<div ref="value">
-  ${ctx.value ? ctx.self.itemValueForHTMLMode(ctx.value) : "-"}
-</div>`;
+export default function html(context: SelectHTMLContext): string {
+  const { component, options } = context;
+  const { key } = component;
+
+  return `<div class="select-display" id="${key}">
+    ${options || "-"}
+  </div>`;
+}

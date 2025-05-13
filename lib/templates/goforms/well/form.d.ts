@@ -1,2 +1,6 @@
-declare const _default: (ctx: Record<string, any>) => string;
+interface WellFormContext {
+    nestedKey: string;
+    children: string;
+}
+declare const _default: (ctx: WellFormContext) => string;
 export default _default;

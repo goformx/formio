@@ -1,2 +1,2 @@
-declare const _default: (ctx: Record<string, any>) => string;
+declare const _default: (_ctx: Record<string, unknown>) => string;
 export default _default;

@@ -1,10 +1,2 @@
-interface TreeFormContext {
-  node: {
-    isRoot: boolean;
-  };
-  view: string;
-  content?: string;
-  childNodes?: string[];
-}
-declare const _default: (ctx: TreeFormContext) => string;
-export default _default;
+import { TreeFormContext } from "../../../types/contexts";
+export default function form(context: TreeFormContext): string;

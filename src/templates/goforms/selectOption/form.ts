@@ -1,16 +1,14 @@
-interface SelectOptionContext {
-  selected?: boolean;
-  option: {
-    value: string;
-    label: string;
-  };
-  attrs?: Record<string, string>;
-}
+import { SelectOptionContext } from "../../../types/contexts";
 
-export default (ctx: SelectOptionContext) => `<option ${ctx.selected ? 'selected="selected"' : ""}
-  value='${ctx.option.value}'
-  ${Object.entries(ctx.attrs || {})
-    .map(([attr, value]) => `${attr}="${value}"`)
-    .join(" ")}>
-  ${ctx.option.label}
-</option>`;
+export default function form(context: SelectOptionContext): string {
+  const { selected, option, attrs } = context;
+  const { value, label } = option;
+
+  return `<option ${selected ? 'selected="selected"' : ""}
+    value='${value}'
+    ${Object.entries(attrs || {})
+      .map(([attr, value]) => `${attr}="${value}"`)
+      .join(" ")}>
+    ${label}
+  </option>`;
+}
