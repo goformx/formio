@@ -4,6 +4,6 @@ interface GoForms {
     templates: Templates;
 }
 declare const goforms: GoForms;
-export default goforms;
 export { goforms };
+export default goforms;
 export * from "./components";
