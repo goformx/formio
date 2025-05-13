@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
-import { execSync } from "child_process";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
   build: {
@@ -33,16 +33,9 @@ export default defineConfig({
     sourcemap: true,
   },
   plugins: [
-    {
-      name: "generate-types",
-      buildEnd() {
-        try {
-          execSync("tsc --emitDeclarationOnly", { stdio: "inherit" });
-        } catch (error) {
-          console.error("Failed to generate type declarations:", error);
-          process.exit(1);
-        }
-      },
-    },
+    dts({
+      include: ["src/**/*.ts"],
+      outDir: "lib",
+    }),
   ],
 });
