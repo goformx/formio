@@ -1,7 +1,5 @@
 ---
-description: 
-globs: 
-alwaysApply: false
+description: Comprehensive guide for building, testing, and integrating the Form.io template library with build tools and deployment workflows 
 ---
 # Build and Deployment Guide
 
