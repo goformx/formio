@@ -47,6 +47,10 @@ export default [
           leadingUnderscore: "allow",
         },
       ],
+      // Migrated from TSLint
+      "max-lines-per-file": "off", // Replaces max-classes-per-file
+      "sort-keys": "off", // Replaces object-literal-sort-keys
+      "brace-style": ["error", "1tbs", { allowSingleLine: true }], // Replaces one-line
     },
   },
   prettier,

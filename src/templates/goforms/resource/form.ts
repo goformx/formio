@@ -1,4 +1,4 @@
-import { ResourceContext } from '../../../types/contexts';
+import { ResourceContext } from "../../../types/contexts";
 
 export default function form(context: ResourceContext): string {
   const { component, input } = context;
@@ -8,7 +8,7 @@ export default function form(context: ResourceContext): string {
   return `<div class="resource-form">
     <label for="${key}">${label}</label>
     <div class="resource-content">
-      ${value || '-'}
+      ${value || "-"}
     </div>
   </div>`;
-} 
+}

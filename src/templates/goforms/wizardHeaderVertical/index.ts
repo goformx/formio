@@ -1,8 +1,8 @@
-import { FormContext } from '../../../types/contexts';
+import { FormContext } from "../../../types/contexts";
 
-const form = (context: FormContext): string => {
+const form = (_context: FormContext): string => {
   // Implementation here
-  return '';
+  return "";
 };
 
 export default { form };

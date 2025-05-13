@@ -11,8 +11,9 @@ const goforms: GoForms = {
   templates,
 };
 
-export default goforms;
+// Export as both default and named export for compatibility
 export { goforms };
+export default goforms;
 
 // For CJS consumers
 if (typeof module !== "undefined" && module.exports) {
@@ -20,4 +21,5 @@ if (typeof module !== "undefined" && module.exports) {
   module.exports.default = goforms;
 }
 
+// Export all components for direct access
 export * from "./components";

@@ -8,12 +8,13 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       name: "GoFormsTemplate",
       fileName: "index",
-      formats: ["es", "umd"],
+      formats: ["es", "cjs"],
     },
     outDir: "lib",
     rollupOptions: {
       external: ["@formio/js"],
       output: {
+        exports: "named",
         globals: {
           "@formio/js": "Formio",
         },

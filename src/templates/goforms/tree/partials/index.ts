@@ -1,13 +1,13 @@
-import { TreeEditContext, TreeViewContext } from '../../../../types/contexts';
+import { TreeEditContext, TreeViewContext } from "../../../../types/contexts";
 
-const treeView = (context: TreeViewContext): string => {
+const treeView = (_context: TreeViewContext): string => {
   // Implementation here
-  return '';
+  return "";
 };
 
-const treeEdit = (context: TreeEditContext): string => {
+const treeEdit = (_context: TreeEditContext): string => {
   // Implementation here
-  return '';
+  return "";
 };
 
 export default {
