@@ -5,11 +5,11 @@
     "preserveConstEnums": true,
     "outDir": "lib",
     "noImplicitAny": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": true,
     "rootDir": "src",
     "moduleResolution": "node",
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "strict": false,
@@ -19,7 +19,7 @@
     "noUnusedParameters": false,
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": false,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
@@ -30,11 +30,13 @@
     "types": ["jest", "node"]
   },
   "include": [
-    "src/**/*"
+    "src/*.ts",
+    "src/*.ejs",
+    "src/**/*.ts",
+    "src/**/*.ejs"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "lib"
+    "**/*.spec.ts"
   ]
 }
