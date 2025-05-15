@@ -15,7 +15,6 @@
     "allowJs": true,
     "checkJs": false,
     "declarationMap": false,
-    "emitDeclarationOnly": true,
     "isolatedModules": true,
     "resolveJsonModule": true
   },
