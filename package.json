@@ -1,6 +1,6 @@
 {
   "name": "goforms-template",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Form.io template library",
   "type": "module",
   "main": "lib/index.js",
@@ -54,8 +54,8 @@
     "vite": "^6.3.5",
     "vite-plugin-dts": "^4.5.3"
   },
-  "dependencies": {
-    "@formio/js": "^5.0.0-beta.25"
+  "peerDependencies": {
+    "@formio/js": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
