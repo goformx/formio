@@ -29,7 +29,7 @@
     "goforms",
     "template"
   ],
-  "author": "",
+  "author": "Russell Jones <russell@web.net>",
   "license": "MIT",
   "sideEffects": false,
   "devDependencies": {
