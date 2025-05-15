@@ -1,42 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "moduleResolution": "node",
     "preserveConstEnums": true,
-    "outDir": "lib",
     "noImplicitAny": false,
     "sourceMap": false,
     "declaration": true,
-    "rootDir": "src",
-    "moduleResolution": "node",
-    "esModuleInterop": false,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "noImplicitThis": false,
-    "alwaysStrict": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": false,
-    "allowSyntheticDefaultImports": false,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": false,
-    "jsx": "preserve",
-    "lib": ["dom", "es2015", "es2016", "es2017"],
-    "allowJs": true,
-    "checkJs": false,
-    "types": ["jest", "node"]
+    "rootDir": "src"
   },
   "include": [
+    "src/*.ts",
+    "src/*.ejs",
     "src/**/*.ts",
-    "src/**/*.tsx",
     "src/**/*.ejs"
   ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts",
-    "**/*.test.ts"
+    "gulpfile.js",
   ]
 }

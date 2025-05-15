@@ -2,15 +2,41 @@
   "name": "goforms-template",
   "version": "0.1.0",
   "description": "Form.io template library",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/mjs/index.js",
+  "types": "lib/mjs/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/mjs/index.d.ts",
+      "import": "./lib/mjs/index.js",
+      "require": "./lib/cjs/index.js",
+      "default": "./lib/mjs/index.js",
+      "build": "./src/index.ts",
+      "vite": "./src/index.ts"
+    },
+    "./components": {
+      "types": "./lib/mjs/templates/components/index.d.ts",
+      "import": "./lib/mjs/templates/components/index.js",
+      "require": "./lib/cjs/templates/components/index.js",
+      "default": "./lib/mjs/templates/components/index.js",
+      "build": "./src/templates/components/index.ts",
+      "vite": "./src/templates/components/index.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/mjs/*.d.ts"
+      ]
+    }
+  },
   "files": [
     "lib",
     "dist"
   ],
   "scripts": {
     "clean": "rimraf lib dist",
-    "build": "npm run clean && tsc && gulp templates && webpack",
+    "build": "npm run clean && tsc --project tsconfig.cjs.json && tsc --project tsconfig.mjs.json && gulp templates && webpack",
     "watch": "gulp watch",
     "test:coverage": "nyc --reporter=text mocha --reporter spec './{,!(node_modules)/**/}*.spec.js'",
     "test": "mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",

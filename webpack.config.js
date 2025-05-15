@@ -1,12 +1,18 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.join(path.resolve(__dirname, 'lib'), 'index.js'),
+  entry: {
+    goforms: './lib/mjs/index.js',
+  },
   output: {
-    library: 'goforms',
+    library: {
+      name: '[name]',
+      type: 'var',
+      export: 'default',
+    },
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'goforms.js',
+    filename: '[name].js',
   },
   mode: 'production',
   performance: { hints: false },
