@@ -5,7 +5,7 @@ declare const _default: {
             framework: string;
             transform: (type: string, text: string) => any;
             defaultIconset: string;
-            iconClass: iconClass;
+            iconClass: typeof import("./templates/goforms/iconClass").default;
             cssClasses: {
                 form: string;
                 field: string;
@@ -55,7 +55,3 @@ declare const _default: {
     };
 };
 export default _default;
-
-declare function iconClass(iconName: string): string;
-
-export { }
