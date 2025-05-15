@@ -8,29 +8,29 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "goforms",
-      fileName: (format) => `goforms.${format}.js`,
+      fileName: "index",
     },
     rollupOptions: {
       external: ["@formio/js"],
       output: [
         {
+          // ESM build with preserved module structure
           format: "es",
           dir: "lib",
           preserveModules: true,
           preserveModulesRoot: "src",
-          entryFileNames: (chunkInfo) => {
-            const name = chunkInfo.name.replace("src/", "");
-            return name.endsWith(".js") ? name : `${name}.js`;
-          },
+          entryFileNames: "[name].js",
         },
         {
+          // UMD build for direct browser usage
           format: "umd",
           dir: "dist",
           name: "goforms",
+          entryFileNames: "goforms.umd.js",
           globals: {
             "@formio/js": "Formio",
           },
-        },
+        }
       ],
     },
     sourcemap: true,
@@ -42,7 +42,7 @@ export default defineConfig({
   plugins: [
     dts({
       include: ["src/**/*.ts"],
-      exclude: ["src/**/*.test.ts"],
+      exclude: ["src/**/*.test.ts", "src/**/*.spec.ts"],
       rollupTypes: true,
       outDir: "lib",
     }),
@@ -56,13 +56,11 @@ export default defineConfig({
   optimizeDeps: {
     include: ["@formio/js"],
   },
-  // Add configuration for handling EJS files in development
   server: {
     fs: {
       strict: false,
       allow: ['..']
     }
   },
-  // Configure how Vite handles different file types
   assetsInclude: ['**/*.ejs']
 });
