@@ -1,5 +1,5 @@
 declare const _default: {
-    form: (data?: Partial<EjsTemplateData>) => string;
-    builder: (data?: Partial<EjsTemplateData>) => string;
+    form: string;
+    builder: string;
 };
 export default _default;

@@ -1,9 +1,10 @@
 <div
   {% for (var attr in ctx.attrs) { %}
-    {% if (attr === "class") { %}
-      {{attr}}="ui message {{ctx.attrs[attr]}}"
-    {% } else { %}
-      {{attr}}="{{ctx.attrs[attr]}}"
-    {% } %}
+    {{attr}}="{{ctx.attrs[attr]}}"
   {% } %}
->{{ctx.message}}</div>
+>
+  {{ctx.message}}
+  {% if (ctx.options.vpat) { %}
+    <span class="visually-hidden" id="hotkey-i-{{ctx.form._id}}">{{ctx.t('errorListHotkey')}}</span>
+  {% } %}
+</div>

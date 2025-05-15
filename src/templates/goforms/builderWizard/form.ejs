@@ -1,15 +1,20 @@
-<div class="formio builder ui grid formbuilder">
-  <div class="four wide column formcomponents">
+<div class="formio builder row formbuilder">
+  <div class="col-xs-4 col-sm-3 col-md-2 formcomponents">
     {{ctx.sidebar}}
   </div>
-  <div class="twelve wide column formarea">
-    <div class="ui breadcrumb" style="margin-bottom: 0.5em">
+  <div class="col-xs-8 col-sm-9 col-md-10 formarea">
+    <ol class="breadcrumb wizard-pages">
       {% ctx.pages.forEach(function(page, pageIndex) { %}
-        <div title="{{page.title}}" class="{% if (pageIndex === ctx.self.page) { %} active section {% } else { %} section {% } %} wizard-page-label" ref="gotoPage">{{page.title}}</div>
-        <div class="divider">/</div>
+      <li>
+        <span title="{{page.title}}" class="me-2 badge {% if (pageIndex === ctx.self.page) { %}bg-primary{% } else { %}bg-info{% } %} wizard-page-label" ref="gotoPage">{{page.title}}</span>
+      </li>
       {% }) %}
-      <div title="{{ctx.t('Create Page')}}" class="section wizard-page-label" ref="addPage"><i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t('Page')}}</div>
-    </div>
+      <li class="wizard-add-page">
+        <span title="{{ctx.t('createPage')}}" class="me-2 badge bg-success wizard-page-label" ref="addPage">
+          <i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t('page')}}
+        </span>
+      </li>
+    </ol>
     <div ref="form">
       {{ctx.form}}
     </div>

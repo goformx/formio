@@ -1,3 +1,4 @@
+import address from './address';
 import builder from './builder';
 import builderComponent from './builderComponent';
 import builderComponents from './builderComponents';
@@ -10,23 +11,37 @@ import button from './button';
 import checkbox from './checkbox';
 import columns from './columns';
 import component from './component';
-import cssClasses from './cssClasses';
+import componentModal from './componentModal';
+import components from './components';
+import tableComponents from './tableComponents';
+import container from './container';
 import datagrid from './datagrid';
 import day from './day';
+import dialog from './dialog';
 import editgrid from './editgrid';
+import editgridTable from './editgridTable';
 import field from './field';
 import fieldset from './fieldset';
 import file from './file';
+import html from './html';
 import icon from './icon';
 import iconClass from './iconClass';
 import input from './input';
 import label from './label';
 import loader from './loader';
 import loading from './loading';
+import map from './map';
 import message from './message';
+import modaldialog from './modaldialog';
+import modaledit from './modaledit';
+import modalPreview from './modalPreview';
+import multipleMasksInput from './multipleMasksInput';
 import multiValueRow from './multiValueRow';
 import multiValueTable from './multiValueTable';
 import panel from './panel';
+import pdf from './pdf';
+import pdfBuilder from './pdfBuilder';
+import pdfBuilderUpload from './pdfBuilderUpload';
 import radio from './radio';
 import resourceAdd from './resourceAdd';
 import select from './select';
@@ -44,43 +59,32 @@ import wizardHeader from './wizardHeader';
 import wizardHeaderClassic from './wizardHeaderClassic';
 import wizardHeaderVertical from './wizardHeaderVertical';
 import wizardNav from './wizardNav';
-import alert from './alert';
+import cssClasses from './cssClasses';
 import errorsList from './errorsList';
+import alert from './alert';
 
 export default {
-  transform(type, text) {
+  transform(type, text, instance) {
     if (!text) {
       return text;
     }
-    const columns = {
-      1: 'one',
-      2: 'two',
-      3: 'three',
-      4: 'four',
-      5: 'five',
-      6: 'six',
-      7: 'seven',
-      8: 'eight',
-      9: 'nine',
-      10: 'ten',
-      11: 'eleven',
-      12: 'twelve',
-      13: 'thirteen',
-      14: 'fourteen',
-      15: 'fifteen',
-      16: 'sixteen',
-    };
+    let additionalClasses = '';
     switch (type) {
-      case 'columns':
-        return columns.hasOwnProperty(text.toString()) ? columns[text.toString()] : text;
       case 'class':
-        return this.cssClasses.hasOwnProperty(text.toString()) ? this.cssClasses[text.toString()] : text;
+        if (text === 'form-group') {
+          additionalClasses = 'mb-2 ';
+          if (instance && instance.component.block) {
+            additionalClasses += 'd-grid ';
+          }
+        }
+        return `${additionalClasses}${Object.prototype.hasOwnProperty.call(this.cssClasses, text.toString()) ? this.cssClasses[text.toString()] : text}`;
     }
     return text;
   },
-  defaultIconset: 'icon',
+  defaultIconset: 'bi',
   iconClass,
   cssClasses,
+  address,
   builder,
   builderComponent,
   builderComponents,
@@ -93,21 +97,36 @@ export default {
   checkbox,
   columns,
   component,
+  componentModal,
+  components,
+  tableComponents,
+  container,
   datagrid,
   day,
+  dialog,
   editgrid,
+  editgridTable,
   field,
   fieldset,
   file,
+  html,
   icon,
   input,
   label,
   loader,
   loading,
+  map,
   message,
+  modaledit,
+  modaldialog,
+  modalPreview,
+  multipleMasksInput,
   multiValueRow,
   multiValueTable,
   panel,
+  pdf,
+  pdfBuilder,
+  pdfBuilderUpload,
   radio,
   resourceAdd,
   select,
@@ -115,9 +134,9 @@ export default {
   signature,
   survey,
   tab,
+  table,
   tree,
   ...treePartials,
-  table,
   webform,
   well,
   wizard,
@@ -125,6 +144,6 @@ export default {
   wizardHeaderClassic,
   wizardHeaderVertical,
   wizardNav,
-  alert,
-  errorsList
+  errorsList,
+  alert
 };

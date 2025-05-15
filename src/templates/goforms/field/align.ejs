@@ -1,4 +1,4 @@
-<div class="field-wrapper
+<div class="field-wrapper flex-fill
   {{ctx.isRightPosition ? 'field-wrapper--reverse' : ''}}">
   {% if (!ctx.label.hidden) { %}
     <div class="field-label
@@ -16,11 +16,11 @@
     </div>
   {% } %}
 
-  <div class="filed-content" style="{{ctx.contentStyles}}">
+  <div class="field-content" style="{{ctx.contentStyles}}">
     {{ctx.element}}
   </div>
 </div>
 
 {% if (ctx.component.description) { %}
-  <div class="form-text text-muted">{{ctx.t(ctx.component.description)}}</div>
+  <div class="form-text text-muted">{{ctx.t(ctx.component.description, { _userInput: true })}}</div>
 {% } %}

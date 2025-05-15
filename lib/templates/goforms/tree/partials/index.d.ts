@@ -1,9 +1,9 @@
 declare const _default: {
     treeView: {
-        form: (data?: Partial<EjsTemplateData>) => string;
+        form: string;
     };
     treeEdit: {
-        form: (data?: Partial<EjsTemplateData>) => string;
+        form: string;
     };
 };
 export default _default;

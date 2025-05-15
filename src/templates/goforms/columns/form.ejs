@@ -1,7 +1,7 @@
-<div class="ui grid" style="width: 100%">
-    {% ctx.component.columns.forEach(function(column, index) { %}
-    <div class="{{ctx.transform('columns', column.width)}} wide column" ref="{{ctx.columnKey}}">
-      {{ctx.columnComponents[index]}}
-    </div>
-    {% }) %}
+{% ctx.component.columns.forEach(function(column, index) { %}
+<div class="col-{{column.size}}-{{column.currentWidth}}
+    offset-{{column.size}}-{{column.offset}}"
+    ref="{{ctx.columnKey}}">
+  {{ctx.columnComponents[index]}}
 </div>
+{% }) %}

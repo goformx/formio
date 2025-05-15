@@ -2,170 +2,229 @@ declare const _default: {
     framework: string;
     templates: {
         goforms: {
-            table: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-            };
             webform: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                builder: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                builder: string;
             };
             well: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             wizard: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                builder: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                builder: string;
             };
             wizardHeader: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             wizardHeaderClassic: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             wizardHeaderVertical: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             wizardNav: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-            };
-            alert: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             errorsList: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+            };
+            alert: {
+                form: string;
             };
             treeView: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             treeEdit: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
-            transform(type: any, text: any): any;
+            transform(type: any, text: any, instance: any): any;
             defaultIconset: string;
-            iconClass: (iconset: any, name: any, spinning: any) => string;
+            iconClass: (iconset: "bi" | "fa", name: string, spinning: boolean) => string;
             cssClasses: {
-                'has-error': string;
-                'is-invalid': string;
+                'border-default': string;
                 'formio-tab-panel-active': string;
                 'formio-tab-link-active': string;
                 'formio-tab-link-container-active': string;
+                'formio-form-error': string;
+                'formio-form-alert': string;
+                'formio-label-error': string;
+                'formio-input-error': string;
+                'formio-alert-danger': string;
+                'formio-alert-success': string;
+                'formio-alert-warning': string;
+                'formio-modal-cancel-button': string;
+                'formio-modal-confirm-button': string;
+                'form-group': string;
+            };
+            address: {
+                form: string;
+                html: string;
             };
             builder: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             builderComponent: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             builderComponents: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             builderEditForm: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             builderPlaceholder: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             builderSidebar: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             builderSidebarGroup: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             builderWizard: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             button: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             checkbox: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             columns: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             component: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+            };
+            componentModal: {
+                form: string;
+            };
+            components: {
+                form: string;
+            };
+            tableComponents: {
+                form: string;
+            };
+            container: {
+                form: string;
             };
             datagrid: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             day: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+            };
+            dialog: {
+                form: string;
             };
             editgrid: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
+            };
+            editgridTable: {
+                form: string;
+                html: string;
             };
             field: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                align: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                align: string;
             };
             fieldset: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             file: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+            };
+            html: {
+                form: string;
             };
             icon: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             input: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             label: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             loader: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             loading: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+            };
+            map: {
+                form: string;
             };
             message: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+            };
+            modaledit: {
+                form: string;
+            };
+            modaldialog: {
+                form: string;
+            };
+            modalPreview: {
+                form: string;
+            };
+            multipleMasksInput: {
+                form: string;
             };
             multiValueRow: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             multiValueTable: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             panel: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+            };
+            pdf: {
+                form: string;
+            };
+            pdfBuilder: {
+                form: string;
+            };
+            pdfBuilderUpload: {
+                form: string;
             };
             radio: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             resourceAdd: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
             select: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             selectOption: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             signature: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             survey: {
-                form: (data?: Partial<EjsTemplateData>) => string;
-                html: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
+                html: string;
             };
             tab: {
-                flat: (data?: Partial<EjsTemplateData>) => string;
-                form: (data?: Partial<EjsTemplateData>) => string;
+                flat: string;
+                form: string;
+            };
+            table: {
+                form: string;
             };
             tree: {
-                form: (data?: Partial<EjsTemplateData>) => string;
+                form: string;
             };
         };
     };

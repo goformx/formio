@@ -1,4 +1,4 @@
 declare const _default: {
-    form: (data?: Partial<EjsTemplateData>) => string;
+    form: string;
 };
 export default _default;

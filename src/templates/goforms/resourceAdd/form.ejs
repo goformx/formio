@@ -1,4 +1,4 @@
-<table class="ui table celled">
+<table class="table table-bordered">
   <tbody>
     <tr>
       <td>
@@ -7,9 +7,9 @@
     </tr>
     <tr>
       <td colspan="2">
-        <button class="ui button primary" ref="addResource">
+        <button class="btn btn-primary formio-button-add-resource" ref="addResource">
           <i class="{{ctx.iconClass('plus')}}"></i>
-          {{ctx.t(ctx.component.addResourceLabel || 'Add Resource')}}
+          {{ctx.t(ctx.component.addResourceLabel || 'addResource', { _userInput: !!ctx.component.addResourceLabel })}}
         </button>
       </td>
     </tr>

@@ -1,35 +1,40 @@
-<div class="editgrid-listgroup ui celled list">
+<ul class="editgrid-listgroup list-group
+    {{ ctx.component.striped ? 'table-striped' : ''}}
+    {{ ctx.component.bordered ? 'table-bordered' : ''}}
+    {{ ctx.component.hover ? 'table-hover' : ''}}
+    {{ ctx.component.condensed ? 'table-sm' : ''}}
+    ">
   {% if (ctx.header) { %}
-  <div class="item list-group-header">
+  <li class="list-group-item list-group-header">
     {{ctx.header}}
-  </div>
+  </li>
   {% } %}
   {% ctx.rows.forEach(function(row, rowIndex) { %}
-  <div class="item" ref="{{ctx.ref.row}}">
+  <li class="list-group-item" ref="{{ctx.ref.row}}">
     {{row}}
     {% if (ctx.openRows[rowIndex] && !ctx.readOnly) { %}
     <div class="editgrid-actions">
-      <button class="ui button primary" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'Save')}}</button>
+      <button class="btn btn-primary" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'save', { _userInput: !!ctx.component.saveRow })}}</button>
       {% if (ctx.component.removeRow) { %}
-      <button class="ui button secondary" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'Cancel')}}</button>
+      <button class="btn btn-danger" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'cancel', { _userInput: !!ctx.component.removeRow })}}</button>
       {% } %}
     </div>
     {% } %}
     <div class="has-error">
-      <div class="editgrid-row-error help-block">
+      <div class="editgrid-row-error">
         {{ctx.errors[rowIndex]}}
       </div>
     </div>
-  </div>
+  </li>
   {% }) %}
   {% if (ctx.footer) { %}
-  <div class="item list-group-footer">
+  <li class="list-group-item list-group-footer">
     {{ctx.footer}}
-  </div>
+  </li>
   {% } %}
-</div>
+</ul>
 {% if (!ctx.readOnly && ctx.hasAddButton) { %}
-<button class="ui button primary" ref="{{ctx.ref.addRow}}">
-  <i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t(ctx.component.addAnother || 'Add Another')}}
+<button class="btn btn-primary" ref="{{ctx.ref.addRow}}">
+  <i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t(ctx.component.addAnother || 'addAnother', { _userInput: !!ctx.component.addAnother})}}
 </button>
 {% } %}

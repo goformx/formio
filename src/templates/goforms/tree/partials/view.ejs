@@ -1,28 +1,22 @@
-<div class="ui grid">
-  <div class="row">
-    {% ctx.values.forEach(function(value) { %}
-    <div class="two wide column">
+<div class="row">
+  {% ctx.values.forEach(function(value) { %}
+    <div class="col-sm-2">
       {{ value }}
     </div>
-    {% }) %}
-    <div class="five wide column">
-      <div class="ui mini right floated buttons">
-        {% if (ctx.node.hasChildren) { %}
-        <button ref="toggleNode" class="ui button toggleNode">{{ ctx.t(ctx.node.collapsed ? 'Expand' : 'Collapse') }}</button>
-        <div class="or"></div>
-        {% } %}
-        {% if (!ctx.readOnly) { %}
-        <button ref="addChild" class="ui button primary addChild">{{ ctx.t('Add') }}</button>
-        <div class="or"></div>
-        <button ref="editNode" class="ui button editNode">{{ ctx.t('Edit') }}</button>
-        <div class="or"></div>
-        <button ref="removeNode" class="ui button negative removeNode">{{ ctx.t('Delete') }}</button>
+  {% }) %}
+  <div class="col-sm-3">
+    <div class="btn-group pull-right">
+      {% if (ctx.node.hasChildren) { %}
+        <button ref="toggleNode" class="btn btn-default btn-sm toggleNode">{{ ctx.t(ctx.node.collapsed ? 'expand' : 'collapse') }}</button>
+      {% } %}
+      {% if (!ctx.readOnly) { %}
+        <button ref="addChild" class="btn btn-default btn-sm addChild">{{ ctx.t('add') }}</button>
+        <button ref="editNode" class="btn btn-default btn-sm editNode">{{ ctx.t('edit') }}</button>
+        <button ref="removeNode" class="btn btn-danger btn-sm removeNode">{{ ctx.t('delete') }}</button>
         {% if (ctx.node.revertAvailable) { %}
-        <div class="or"></div>
-        <button ref="revertNode" class="ui button negative revertNode">{{ ctx.t('Revert') }}</button>
+          <button ref="revertNode" class="btn btn-danger btn-sm revertNode">{{ ctx.t('revert') }}</button>
         {% } %}
-        {% } %}
-      </div>
+      {% } %}
     </div>
   </div>
 </div>
