@@ -56,7 +56,7 @@
     "vite-plugin-ejs": "^1.7.0"
   },
   "peerDependencies": {
-    "@formio/js": "^5.0.0"
+    "@formio/js": "^5.1.1"
   },
   "engines": {
     "node": ">=18.0.0"

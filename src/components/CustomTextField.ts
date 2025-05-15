@@ -1,4 +1,4 @@
-import { Components } from "@formio/js";
+import { Components } from '@formio/js';
 
 export class CustomTextField extends Components.components.textfield {
   static schema() {
@@ -7,11 +7,11 @@ export class CustomTextField extends Components.components.textfield {
 
   static get builderInfo() {
     return {
-      title: "Custom Text Field",
-      group: "basic",
-      icon: "fa fa-font",
+      title: 'Custom Text Field',
+      group: 'basic',
+      icon: 'fa fa-font',
       weight: 0,
-      documentation: "https://formio.github.io/formio.js/app/examples/customcomponents.html",
+      documentation: 'https://formio.github.io/formio.js/app/examples/customcomponents.html',
       schema: CustomTextField.schema(),
     };
   }

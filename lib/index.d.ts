@@ -20,36 +20,36 @@ declare const _default: {
                 help: string;
             };
             button: {
-                form: string;
-                html: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
+                html: (data?: Partial<EjsTemplateData>) => string;
             };
             checkbox: {
-                form: string;
-                html: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
+                html: (data?: Partial<EjsTemplateData>) => string;
             };
             columns: {
-                form: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
             };
             component: {
-                form: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
             };
             fieldset: {
-                form: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
             };
             input: {
-                form: string;
-                html: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
+                html: (data?: Partial<EjsTemplateData>) => string;
             };
             panel: {
-                form: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
             };
             radio: {
-                form: string;
-                html: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
+                html: (data?: Partial<EjsTemplateData>) => string;
             };
             select: {
-                form: string;
-                html: string;
+                form: (data?: Partial<EjsTemplateData>) => string;
+                html: (data?: Partial<EjsTemplateData>) => string;
             };
         };
     };

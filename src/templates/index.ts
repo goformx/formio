@@ -1,4 +1,4 @@
-import goforms from "./goforms";
+import goforms from './goforms';
 
 export default {
   goforms,

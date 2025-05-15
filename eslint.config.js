@@ -7,7 +7,7 @@ import globals from "globals";
 export default [
   // Base config for all files
   {
-    ignores: ["lib/**", "dist/**", "node_modules/**", "*.d.ts", "*.spec.*", "*.test.*"],
+    ignores: ["lib/**", "dist/**", "node_modules/**", "*.d.ts"],
   },
   // JavaScript config
   js.configs.recommended,
@@ -28,6 +28,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.jest,
         ...globals.es2021,
       },
     },
@@ -35,7 +36,6 @@ export default [
       "prettier/prettier": "error",
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/explicit-module-boundary-types": "off",
-      quotes: ["error", "single", { avoidEscape: true, avoidTemplate: true }],
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": "off",
       camelcase: "off",
@@ -48,9 +48,9 @@ export default [
         },
       ],
       // Migrated from TSLint
-      "max-lines-per-file": "off", // Replaces max-classes-per-file
-      "sort-keys": "off", // Replaces object-literal-sort-keys
-      "brace-style": ["error", "1tbs", { allowSingleLine: true }], // Replaces one-line
+      "max-lines-per-file": "off",
+      "sort-keys": "off",
+      "brace-style": ["error", "1tbs", { allowSingleLine: true }],
     },
   },
   prettier,
