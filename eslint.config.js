@@ -32,7 +32,7 @@ module.exports = [
   },
   // TypeScript specific rules
   {
-    files: ["src/**/*.ts", "src/**/*.tsx"],
+    files: ["src/**/*.ts", "src/**/*.tsx", "**/*.spec.ts", "**/*.test.ts"],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -43,7 +43,8 @@ module.exports = [
       },
       globals: {
         ...globals.node,
-        ...globals.browser
+        ...globals.browser,
+        ...globals.jest
       }
     },
     plugins: {
@@ -66,23 +67,6 @@ module.exports = [
       'max-lines-per-file': 'off',
       'sort-keys': 'off',
       'brace-style': ['error', '1tbs', { allowSingleLine: true }],
-    }
-  },
-  // Test files
-  {
-    files: ["**/*.spec.ts", "**/*.test.ts"],
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        project: ["./tsconfig.test.json"],
-        tsconfigRootDir: ".",
-        ecmaVersion: 2020,
-        sourceType: "module"
-      },
-      globals: {
-        ...globals.node,
-        ...globals.jest
-      }
     }
   }
 ];
