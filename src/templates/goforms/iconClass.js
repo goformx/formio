@@ -132,9 +132,6 @@ exports.default = (function (iconset, name, spinning) {
         case 'microphone':
             biName = 'mic';
             break;
-        case 'folder-open':
-            biName = 'folder2-open';
-            break;
         case 'check-circle':
             biName = 'check-circle-fill';
             break;

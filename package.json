@@ -1,7 +1,7 @@
 {
-  "name": "goforms-template",
+  "name": "goforms",
   "version": "0.1.0",
-  "description": "Form.io template library",
+  "description": "GoForms form.io template library",
   "main": "lib/cjs/index.js",
   "module": "lib/mjs/index.js",
   "types": "lib/mjs/index.d.ts",
@@ -42,12 +42,9 @@
     "test": "mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "postinstall": "git config core.hooksPath .husky"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
   "keywords": [
     "formio",
     "goforms",
@@ -61,17 +58,16 @@
     "@types/ejs": "^3.1.5",
     "@types/gulp": "^4.0.17",
     "@types/gulp-rename": "^2.0.6",
-    "@types/jest": "^29.5.14",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.15.17",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
-    "copyfiles": "^2.4.1",
     "ejs": "^3.1.10",
+    "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
     "globals": "^16.1.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-ejs": "^5.1.0",
     "gulp-insert": "^0.5.0",
     "gulp-rename": "^2.0.0",
@@ -80,12 +76,9 @@
     "husky": "^9.1.7",
     "mocha": "^11.2.2",
     "nyc": "^17.1.0",
-    "pre-commit": "^1.2.2",
     "prettier": "^3.5.3",
     "raw-loader": "^4.0.2",
     "rimraf": "^5.0.5",
-    "through2": "^4.0.2",
-    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.32.1",
@@ -97,11 +90,13 @@
     "@formio/js": "^5.1.1"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "overrides": {
     "@formio/js": {
       "glob": "^10.3.10"
-    }
+    },
+    "glob": "^9.3.5",
+    "rimraf": "^5.0.5"
   }
 }

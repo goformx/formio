@@ -6,17 +6,33 @@
     "sourceMap": false,
     "declaration": true,
     "skipLibCheck": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "module": "commonjs",
+    "target": "es2020",
+    "lib": ["es2020", "dom"],
+    "strict": false,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "checkJs": false,
+    "declarationMap": false,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true
   },
   "include": [
-    "src/*.ts",
-    "src/*.ejs",
     "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.d.ts",
     "src/**/*.ejs"
   ],
   "exclude": [
     "node_modules",
+    "dist",
+    "lib",
     "**/*.spec.ts",
-    "gulpfile.js",
+    "**/*.test.ts",
+    "gulpfile.js"
   ]
 }
