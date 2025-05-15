@@ -1,13 +1,7 @@
 export default {
-  form: 'ui form',
-  field: 'field',
-  label: 'ui label',
-  input: 'ui input',
-  select: 'ui dropdown',
-  checkbox: 'ui checkbox',
-  radio: 'ui radio checkbox',
-  button: 'ui button',
-  message: 'ui message',
-  error: 'error',
-  help: 'help-block',
+  'has-error': 'error',
+  'is-invalid': 'error',
+  'formio-tab-panel-active': 'active',
+  'formio-tab-link-active': 'active',
+  'formio-tab-link-container-active': 'active',
 };
