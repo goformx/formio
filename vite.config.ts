@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
-import ejsPlugin from "./src/vite-plugin-ejs";
+import { ViteEjsPlugin } from "vite-plugin-ejs";
 
 export default defineConfig({
   build: {
@@ -46,7 +46,10 @@ export default defineConfig({
       rollupTypes: true,
       outDir: "lib",
     }),
-    ejsPlugin()
+    ViteEjsPlugin((viteConfig) => ({
+      // Add any template data here
+      root: viteConfig.root,
+    }))
   ],
   resolve: {
     alias: {

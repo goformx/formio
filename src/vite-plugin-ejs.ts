@@ -25,13 +25,13 @@ export default function ejsPlugin(): Plugin {
           const content = fs.readFileSync(realId, 'utf-8');
           return {
             code: `export default ${JSON.stringify(content)};`,
-            map: null
+            map: null,
           };
         } catch (error) {
           console.error(`Error loading EJS file: ${realId}`, error);
           throw error;
         }
       }
-    }
+    },
   };
-} 
+}
