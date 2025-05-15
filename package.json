@@ -12,11 +12,11 @@
     "clean": "rimraf lib dist",
     "build": "npm run clean && tsc && gulp templates && webpack",
     "watch": "gulp watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "nyc --reporter=text mocha --reporter spec './{,!(node_modules)/**/}*.spec.js'",
+    "test": "mocha --require ts-node/register --reporter spec './{,!(node_modules)/**/}*.spec.ts'",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "prepare": "npm run build"
+    "prepublish": "npm run build"
   },
   "pre-commit": [
     "lint",

@@ -1,57 +1,88 @@
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
-import prettier from "eslint-config-prettier";
-import prettierPlugin from "eslint-plugin-prettier";
-import globals from "globals";
+const js = require('@eslint/js');
+const tseslint = require('typescript-eslint');
+const prettier = require('eslint-config-prettier');
+const globals = require('globals');
 
-export default [
-  // Base config for all files
+/** @type {import('eslint').Config[]} */
+module.exports = [
+  // Base ignore patterns
   {
-    ignores: ["lib/**", "dist/**", "node_modules/**", "*.d.ts"],
+    ignores: ["lib/**", "dist/**", "node_modules/**", "*.d.ts"]
   },
-  // JavaScript config
+  // Base configs
   js.configs.recommended,
-  // TypeScript config
   ...tseslint.configs.recommended,
+  // Build and config files override
+  {
+    files: ["*.config.js", "gulpfile.js", "webpack.config.js"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: "commonjs",
+      globals: {
+        require: true,
+        module: true,
+        __dirname: true,
+        process: true,
+      }
+    },
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unused-vars": "off"
+    }
+  },
   // TypeScript specific rules
   {
     files: ["src/**/*.ts", "src/**/*.tsx"],
-    plugins: {
-      prettier: prettierPlugin,
-    },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: "./tsconfig.json",
+        project: ["./tsconfig.json"],
         tsconfigRootDir: ".",
+        ecmaVersion: 2020,
+        sourceType: "module"
       },
       globals: {
-        ...globals.browser,
         ...globals.node,
-        ...globals.jest,
-        ...globals.es2021,
-      },
+        ...globals.browser
+      }
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin
     },
     rules: {
-      "prettier/prettier": "error",
-      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "no-shadow": "off",
-      "@typescript-eslint/no-shadow": "off",
-      camelcase: "off",
-      "@typescript-eslint/naming-convention": [
-        "error",
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      'no-shadow': 'off',
+      '@typescript-eslint/no-shadow': 'off',
+      'camelcase': 'off',
+      '@typescript-eslint/naming-convention': [
+        'error',
         {
-          selector: "variable",
-          format: ["camelCase", "PascalCase"],
-          leadingUnderscore: "allow",
+          selector: 'variable',
+          format: ['camelCase', 'PascalCase'],
+          leadingUnderscore: 'allow',
         },
       ],
-      // Migrated from TSLint
-      "max-lines-per-file": "off",
-      "sort-keys": "off",
-      "brace-style": ["error", "1tbs", { allowSingleLine: true }],
-    },
+      'max-lines-per-file': 'off',
+      'sort-keys': 'off',
+      'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    }
   },
-  prettier,
+  // Test files
+  {
+    files: ["**/*.spec.ts", "**/*.test.ts"],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: ["./tsconfig.test.json"],
+        tsconfigRootDir: ".",
+        ecmaVersion: 2020,
+        sourceType: "module"
+      },
+      globals: {
+        ...globals.node,
+        ...globals.jest
+      }
+    }
+  }
 ];
