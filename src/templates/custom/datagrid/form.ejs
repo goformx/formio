@@ -1,23 +1,24 @@
-<table class="table datagrid-table table-bordered
-    {{ ctx.component.striped ? 'table-striped' : ''}}
-    {{ ctx.component.hover ? 'table-hover' : ''}}
-    {{ ctx.component.condensed ? 'table-sm' : ''}}
-    " {% if (ctx.component.layoutFixed || ctx.readOnly) { %}style="table-layout: fixed;"{% } %}>
+<% const cssClasses = require('../cssClasses'); %>
+<table class="<%= cssClasses['form-datagrid'] %>
+    {{ ctx.component.striped ? ' ' + cssClasses['form-datagrid-striped'] : ''}}
+    {{ ctx.component.hover ? ' ' + cssClasses['form-datagrid-hover'] : ''}}
+    {{ ctx.component.condensed ? ' ' + cssClasses['form-datagrid-condensed'] : ''}}
+    " {% if (ctx.component.layoutFixed || ctx.readOnly) { %}data-layout="fixed"{% } %}>
   {% if (ctx.hasHeader) { %}
-  <thead>
-    <tr>
-      {% if (ctx.component.reorder) { %}<th></th>{% } %}
+  <thead class="<%= cssClasses['form-datagrid-header'] %>">
+    <tr class="<%= cssClasses['form-datagrid-row'] %>">
+      {% if (ctx.component.reorder) { %}<th class="<%= cssClasses['form-datagrid-header-cell'] %>"></th>{% } %}
       {% ctx.columns.forEach(function(col) { %}
-        <th class="{{col.validate && col.validate.required ? 'field-required' : ''}}">
+        <th class="<%= cssClasses['form-datagrid-header-cell'] %> {{col.validate && col.validate.required ? cssClasses['form-datagrid-required'] : ''}}">
           {{ col.hideLabel ? '' : ctx.t(col.label || col.title, { _userInput: true }) }}
-          {% if (col.tooltip) { %} <i ref="tooltip" tabindex="0" data-title="{{col.tooltip}}" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{col.tooltip}}"></i>{% } %}
+          {% if (col.tooltip) { %} <i ref="tooltip" tabindex="0" data-title="{{col.tooltip}}" class="<%= cssClasses['form-datagrid-tooltip'] %>" data-tooltip="{{col.tooltip}}"></i>{% } %}
         </th>
       {% }) %}
       {% if (ctx.hasExtraColumn) { %}
-      <th>
-        <span class="visually-hidden">{{ ctx.t('addOrRemove') }}</span>
+      <th class="<%= cssClasses['form-datagrid-header-cell'] %>">
+        <span class="<%= cssClasses['form-datagrid-visually-hidden'] %>">{{ ctx.t('addOrRemove') }}</span>
         {% if (!ctx.builder && ctx.hasAddButton && ctx.hasTopSubmit) { %}
-        <button class="btn btn-primary formio-button-add-row" ref="{{ctx.datagridKey}}-addRow" tabindex="{{ctx.tabIndex}}">
+        <button class="<%= cssClasses['form-datagrid-add-row'] %>" ref="{{ctx.datagridKey}}-addRow" tabindex="{{ctx.tabIndex}}">
           <i class="{{ctx.iconClass('plus')}}"></i>{{ctx.t(ctx.component.addAnother || 'addAnother', { _userInput: !!ctx.component.addAnother })}}
         </button>
         {% } %}
@@ -26,37 +27,37 @@
     </tr>
   </thead>
   {% } %}
-  <tbody ref="{{ctx.datagridKey}}-tbody" data-key="{{ctx.datagridKey}}">
+  <tbody class="<%= cssClasses['form-datagrid-body'] %>" ref="{{ctx.datagridKey}}-tbody" data-key="{{ctx.datagridKey}}">
     {% ctx.rows.forEach(function(row, index) { %}
     {% if (ctx.hasGroups && ctx.groups[index]) { %}
-    <tr ref="{{ctx.datagridKey}}-group-header" class="datagrid-group-header{{ctx.hasToggle ? ' clickable' : ''}}">
+    <tr ref="{{ctx.datagridKey}}-group-header" class="<%= cssClasses['form-datagrid-group-header'] %>{{ctx.hasToggle ? ' ' + cssClasses['form-datagrid-group-header-clickable'] : ''}}">
       <td
         ref="{{ctx.datagridKey}}-group-label"
         colspan="{{ctx.numColumns}}"
-        class="datagrid-group-label">{{ctx.groups[index].label}}</td>
+        class="<%= cssClasses['form-datagrid-group-label'] %>">{{ctx.groups[index].label}}</td>
     </tr>
     {% } %}
-    <tr ref="{{ctx.datagridKey}}-row">
+    <tr ref="{{ctx.datagridKey}}-row" class="<%= cssClasses['form-datagrid-row'] %>">
       {% if (ctx.component.reorder) { %}
-        <td>
-          <button type="button" class="formio-drag-button btn btn-default bi bi-list" data-key="{{ctx.datagridKey}}" style="display: block; margin: 0 auto"></button>
+        <td class="<%= cssClasses['form-datagrid-cell'] %>">
+          <button type="button" class="<%= cssClasses['form-datagrid-drag-button'] %>" data-key="{{ctx.datagridKey}}"></button>
         </td>
       {% } %}
       {% ctx.columns.forEach(function(col) { %}
-        <td ref="{{ctx.datagridKey}}" {% if (col.key && col.overlay && col.overlay.width) { %} style="width: {{col.overlay.width + 'px'}}"{% } %} >
+        <td class="<%= cssClasses['form-datagrid-cell'] %>" ref="{{ctx.datagridKey}}" {% if (col.key && col.overlay && col.overlay.width) { %} data-width="{{col.overlay.width}}"{% } %}>
           {{row[col.key]}}
         </td>
       {% }) %}
       {% if (ctx.hasExtraColumn) { %}
         {% if (ctx.hasRemoveButtons) { %}
-        <td>
-          <button type="button" class="btn btn-secondary formio-button-remove-row" ref="{{ctx.datagridKey}}-removeRow" tabindex="{{ctx.tabIndex}}" aria-label="{{ctx.t('remove')}}" style="display: block; margin: 0 auto">
+        <td class="<%= cssClasses['form-datagrid-cell'] %>">
+          <button type="button" class="<%= cssClasses['form-datagrid-remove-row'] %>" ref="{{ctx.datagridKey}}-removeRow" tabindex="{{ctx.tabIndex}}" aria-label="{{ctx.t('remove')}}">
             <i class="{{ctx.iconClass('remove-circle')}}"></i>
           </button>
         </td>
         {% } %}
         {% if (ctx.canAddColumn) { %}
-        <td ref="{{ctx.key}}-container" class="col-md-3">
+        <td ref="{{ctx.key}}-container" class="<%= cssClasses['form-datagrid-cell'] %>">
           {{ctx.placeholder}}
         </td>
         {% } %}
@@ -65,10 +66,10 @@
     {% }) %}
   </tbody>
   {% if (!ctx.builder && ctx.hasAddButton && ctx.hasBottomSubmit) { %}
-  <tfoot>
-    <tr>
-      <td colspan="{{ctx.component.layoutFixed ? ctx.numColumns :  ctx.numColumns + 1}}">
-        <button class="btn btn-primary formio-button-add-row" ref="{{ctx.datagridKey}}-addRow" tabindex="{{ctx.tabIndex}}">
+  <tfoot class="<%= cssClasses['form-datagrid-footer'] %>">
+    <tr class="<%= cssClasses['form-datagrid-row'] %>">
+      <td colspan="{{ctx.component.layoutFixed ? ctx.numColumns :  ctx.numColumns + 1}}" class="<%= cssClasses['form-datagrid-cell'] %>">
+        <button class="<%= cssClasses['form-datagrid-add-row'] %>" ref="{{ctx.datagridKey}}-addRow" tabindex="{{ctx.tabIndex}}">
           <i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t(ctx.component.addAnother || 'addAnother', { _userInput: !!ctx.component.addAnother })}}
         </button>
       </td>

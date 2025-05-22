@@ -1,1 +1,6 @@
-<div id="{{ctx.mapId}}" style="min-height: 300px; height: calc(100vh - 600px);" ref="gmapElement"></div>
+<% const cssClasses = require('../cssClasses'); %>
+<div id="{{ctx.mapId}}" class="<%= cssClasses['form-map'] %>" style="min-height: 300px; height: calc(100vh - 600px);" ref="gmapElement">
+  <div class="<%= cssClasses['form-map-container'] %>"></div>
+  <div class="<%= cssClasses['form-map-search'] %>"></div>
+  <div class="<%= cssClasses['form-map-results'] %>"></div>
+</div>

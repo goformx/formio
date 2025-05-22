@@ -1,1 +1,2 @@
-<i ref="{{ctx.ref}}" class="{{ctx.className}}" style="{{ctx.styles}}">{{ctx.content}}</i>
+<% const cssClasses = require('../cssClasses'); %>
+<i ref="{{ctx.ref}}" class="<%= cssClasses['form-icon'] %> {{ctx.className}}" style="{{ctx.styles}}"><span class="<%= cssClasses['form-icon-content'] %>">{{ctx.content}}</span></i>

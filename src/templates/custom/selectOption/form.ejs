@@ -1,4 +1,5 @@
-<option {{ ctx.selected ? 'selected="selected"' : '' }}
+<% const cssClasses = require('../cssClasses'); %>
+<option class="<%= cssClasses['form-select-option'] %>" {{ ctx.selected ? 'selected="selected"' : '' }}
   value='{{ctx.useId ? ctx.id : ctx.option.value}}'
   {% for (var attr in ctx.attrs) { %}
   {{attr}}="{{ctx.attrs[attr]}}"

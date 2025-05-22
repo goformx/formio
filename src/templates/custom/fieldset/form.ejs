@@ -1,14 +1,15 @@
-<fieldset>
+<% const cssClasses = require('../cssClasses'); %>
+<fieldset class="<%= cssClasses['form-fieldset'] %>">
   {% if (ctx.component.legend) { %}
-  <legend ref="header" class="{{ctx.component.collapsible ? 'formio-clickable' : ''}}">
+  <legend ref="header" class="<%= cssClasses['form-fieldset-legend'] %> {{ctx.component.collapsible ? cssClasses['form-fieldset-legend-clickable'] : ''}}">
     {{ctx.t(ctx.component.legend, { _userInput: true })}}
     {% if (ctx.component.tooltip) { %}
-      <i ref="tooltip" tabindex="0" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{ctx.component.tooltip}}"></i>
+      <i ref="tooltip" tabindex="0" class="<%= cssClasses['form-fieldset-tooltip'] %> {{ctx.iconClass('question-sign')}}" data-tooltip="{{ctx.component.tooltip}}"></i>
     {% } %}
   </legend>
   {% } %}
   {% if (!ctx.collapsed) { %}
-  <div class="fieldset-body" ref="{{ctx.nestedKey}}">
+  <div class="<%= cssClasses['form-fieldset-body'] %>" ref="{{ctx.nestedKey}}">
     {{ctx.children}}
   </div>
   {% } %}

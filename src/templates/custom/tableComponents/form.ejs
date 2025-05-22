@@ -1,5 +1,6 @@
+<% const cssClasses = require('../cssClasses'); %>
 {% ctx.children.forEach(function(component) { %}
-  <td class="editgrid-table-column">
+  <td class="<%= cssClasses['form-table-component'] %>">
     {{ component }}
   </td>
 {% }) %}

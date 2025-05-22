@@ -1,56 +1,32 @@
-<div class="row">
-  <div class="col col-sm-6">
-    <p class="lead">{{ctx.t(ctx.componentInfo.title, { _userInput: true })}} {{ctx.t('component')}}</p>
-  </div>
-  {% if (ctx.helplinks) { %}
-  <div class="col col-sm-6">
-    <div class="float-end" style="margin-right: 20px; margin-top: 10px">
-      <a href="{{ctx.t(ctx.helplinks + ctx.componentInfo.documentation)}}" target="_blank" rel="noopener noreferrer">
-        <i class="{{ctx.iconClass('new-window')}}"></i> {{ctx.t('help')}}
-      </a>
+<div class="form-builder-edit">
+  <div class="form-builder-edit-header">
+    <div class="form-builder-edit-title">
+      {{ctx.component.label}}
     </div>
+    <button type="button" class="form-builder-edit-close" ref="closeButton" aria-label="{{ctx.t('close')}}">
+      <i class="{{ctx.iconClass('close')}}"></i>
+    </button>
   </div>
-  {% } %}
-</div>
-<div class="row">
-  <div class="col component-edit-tabs {{ (ctx.preview && ctx.showPreview) ? 'col-sm-6' : 'col-sm-12' }}">
-    <div ref="editForm">
-        {{ctx.editForm}}
-    </div>
-    {% if (!ctx.showPreview) { %}
-    <div style="margin-top: 10px;">
-      <button class="btn btn-success" style="margin-right: 10px;" ref="saveButton">{{ctx.t('save')}}</button>
-      <button class="btn btn-secondary" style="margin-right: 10px;" ref="cancelButton">{{ctx.t('cancel')}}</button>
-      <button class="btn btn-danger" ref="removeButton">{{ctx.t('remove')}}</button>
-      {% if (ctx.preview) { %}
-      <button class="btn btn-primary float-right" ref="previewButton">{{ctx.t('showPreview')}}</button>
+  <div class="form-builder-edit-content">
+    <div class="form-builder-edit-tabs">
+      {% for (var tab in ctx.tabs) { %}
+        <button 
+          type="button" 
+          class="form-builder-edit-tab {% if (tab === ctx.activeTab) { %}active{% } %}" 
+          data-tab="{{tab}}"
+          aria-selected="{{tab === ctx.activeTab ? 'true' : 'false'}}"
+          aria-controls="panel-{{tab}}"
+        >
+          {{ctx.tabs[tab].label}}
+        </button>
       {% } %}
     </div>
-    {% } %}
-  </div>
-  {% if (ctx.showPreview && ctx.preview) { %}
-  <div class="col col-sm-6">
-    <div class="card panel preview-panel">
-      <div class="card-header">
-        <h4 class="card-title mb-0">{{ctx.t('preview')}}</h4>
-      </div>
-      <div class="card-body">
-        <div class="component-preview" ref="preview">
-          {{ctx.preview}}
-        </div>
-      </div>
-    </div>
-    {% if (ctx.componentInfo.help) { %}
-    <div class="card card-body bg-light formio-settings-help">
-      {{ ctx.t(ctx.componentInfo.help) }}
-    </div>
-    {% } %}
-    <div style="margin-top: 10px;">
-      <button class="btn btn-success" style="margin-right: 10px;" ref="saveButton">{{ctx.t('save')}}</button>
-      <button class="btn btn-secondary" style="margin-right: 10px;" ref="cancelButton">{{ctx.t('cancel')}}</button>
-      <button class="btn btn-danger" ref="removeButton">{{ctx.t('remove')}}</button>
-      <button class="btn btn-primary float-end" ref="previewButton">{{ctx.t('hidePreview')}}</button>
+    <div class="form-builder-edit-panel" id="panel-{{ctx.activeTab}}">
+      {{ctx.panel}}
     </div>
   </div>
-  {% } %}
+  <div class="form-builder-edit-footer">
+    <button type="button" class="form-builder-edit-cancel" ref="cancelButton">{{ctx.t('cancel')}}</button>
+    <button type="button" class="form-builder-edit-save" ref="saveButton">{{ctx.t('save')}}</button>
+  </div>
 </div>
