@@ -1,8 +1,0 @@
-<div id="{{ctx.id}}" class="form-component {{ctx.classes}}"{% if (ctx.styles) { %} style="{{ctx.styles}}"{% } %} ref="component">
-  {% if (ctx.visible) { %}
-    <div class="form-component-children">
-      {{ctx.children}}
-    </div>
-    <div ref="messageContainer" class="form-component-errors"></div>
-  {% } %}
-</div>

@@ -1,5 +1,6 @@
 <{{ctx.input.type}}
   ref="button"
+  class="form-button form-button-{{ctx.component.theme || 'default'}} form-button-{{ctx.component.size || 'md'}}{% if (ctx.component.block) { %} form-button-block{% } %} {{ctx.component.className || ''}}"
   {% for (var attr in ctx.input.attr) { %}
   {{attr}}="{{ctx.input.attr[attr]}}"
   {% } %}
@@ -7,13 +8,13 @@
     aria-describedby="d-{{ctx.instance.id}}-{{ctx.component.key}}"
   {% } %}
 >
-{% if (ctx.component.leftIcon) { %}<span class="{{ctx.component.leftIcon}}"></span>&nbsp;{% } %}
-{{ctx.input.content}}
-{% if (ctx.component.tooltip) { %}
-  <i ref="tooltip" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{ctx.component.tooltip}}"></i>
-{% } %}
-{% if (ctx.component.rightIcon) { %}&nbsp;<span class="{{ctx.component.rightIcon}}"></span>{% } %}
+  {% if (ctx.component.leftIcon) { %}<span class="form-button-icon form-button-icon-left {{ctx.component.leftIcon}}"></span>&nbsp;{% } %}
+  <span class="form-button-content">{{ctx.input.content}}</span>
+  {% if (ctx.component.tooltip) { %}
+    <i ref="tooltip" class="form-button-tooltip {{ctx.iconClass('question-sign')}}" data-tooltip="{{ctx.component.tooltip}}"></i>
+  {% } %}
+  {% if (ctx.component.rightIcon) { %}&nbsp;<span class="form-button-icon form-button-icon-right {{ctx.component.rightIcon}}"></span>{% } %}
 </{{ctx.input.type}}>
 <div ref="buttonMessageContainer">
-  <span class="help-block" ref="buttonMessage"></span>
+  <span class="form-button-message" ref="buttonMessage"></span>
 </div>

@@ -1,21 +1,21 @@
-<div class="formio builder row formbuilder">
-  <div class="col-xs-4 col-sm-3 col-md-2 formcomponents">
+<div class="form-builder-wizard">
+  <div class="form-builder-wizard-sidebar">
     {{ctx.sidebar}}
   </div>
-  <div class="col-xs-8 col-sm-9 col-md-10 formarea">
-    <ol class="breadcrumb wizard-pages">
+  <div class="form-builder-wizard-main">
+    <ol class="form-builder-wizard-pages">
       {% ctx.pages.forEach(function(page, pageIndex) { %}
       <li>
-        <span title="{{page.title}}" class="me-2 badge {% if (pageIndex === ctx.self.page) { %}bg-primary{% } else { %}bg-info{% } %} wizard-page-label" ref="gotoPage">{{page.title}}</span>
+        <span title="{{page.title}}" class="form-builder-wizard-page-label{% if (pageIndex === ctx.self.page) { %} active{% } %}" ref="gotoPage">{{page.title}}</span>
       </li>
       {% }) %}
-      <li class="wizard-add-page">
-        <span title="{{ctx.t('createPage')}}" class="me-2 badge bg-success wizard-page-label" ref="addPage">
+      <li class="form-builder-wizard-add-page">
+        <span title="{{ctx.t('createPage')}}" class="form-builder-wizard-page-label add" ref="addPage">
           <i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t('page')}}
         </span>
       </li>
     </ol>
-    <div ref="form">
+    <div class="form-builder-wizard-form" ref="form">
       {{ctx.form}}
     </div>
   </div>

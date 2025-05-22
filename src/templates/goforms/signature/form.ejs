@@ -1,23 +1,25 @@
+<% const cssClasses = require('../cssClasses'); %>
 {{ctx.element}}
 <div
-  class="signature-pad-body"
-  style="width: {{ctx.component.width}};height: {{ctx.component.height}};padding:0;margin:0;"
+  class="<%= cssClasses['form-signature'] %>"
+  data-width="{{ctx.component.width}}"
+  data-height="{{ctx.component.height}}"
   tabindex="{{ctx.component.tabindex || 0}}"
   ref="padBody"
 >
-  <a class="btn btn-sm btn-light signature-pad-refresh" ref="refresh">
+  <a class="<%= cssClasses['form-signature-refresh'] %>" ref="refresh">
     <i class="{{ctx.iconClass('refresh')}}"></i>
   </a>
-  <canvas class="signature-pad-canvas" style="display: none;" height="{{ctx.component.height}}" ref="canvas"></canvas>
+  <canvas class="<%= cssClasses['form-signature-canvas'] %>" data-height="{{ctx.component.height}}" ref="canvas"></canvas>
   {% if (ctx.required) { %}
-  <span class="form-control-feedback text-danger">
+  <span class="<%= cssClasses['form-signature-required'] %>">
     <i class="{{ctx.iconClass('asterisk')}}"></i>
   </span>
   {% } %}
-  <img style="width: 100%;display: inherit;" ref="signatureImage">
+  <img class="<%= cssClasses['form-signature-image'] %>" ref="signatureImage">
 </div>
 {% if (ctx.component.footer) { %}
-  <div class="signature-pad-footer">
+  <div class="<%= cssClasses['form-signature-footer'] %>">
     {{ctx.t(ctx.component.footer, { _userInput: true })}}
   </div>
 {% } %}

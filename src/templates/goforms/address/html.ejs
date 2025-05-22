@@ -1,1 +1,7 @@
-<div ref="value">{% if (ctx.displayValue) { %}{{ctx.displayValue}}{% } else { %}-{% } %}</div>
+<div class="form-address-value" ref="value">
+  {% if (ctx.displayValue) { %}
+    {{ctx.displayValue}}
+  {% } else { %}
+    <span class="form-address-empty">-</span>
+  {% } %}
+</div>

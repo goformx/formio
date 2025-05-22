@@ -1,5 +1,6 @@
-<div class="card card-body bg-light mb-3">
-  <div ref="{{ctx.nestedKey}}">
+<% const cssClasses = require('../cssClasses'); %>
+<div class="<%= cssClasses['form-well'] %>">
+  <div ref="{{ctx.nestedKey}}" class="<%= cssClasses['form-well-content'] %>">
     {{ctx.children}}
   </div>
 </div>

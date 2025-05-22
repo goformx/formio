@@ -1,1 +1,7 @@
-{{ctx.t('loading')}}...
+<% const cssClasses = require('../cssClasses'); %>
+<div class="<%= cssClasses['form-loading'] %>">
+  <div class="<%= cssClasses['form-loading-overlay'] %>">
+    <div class="<%= cssClasses['form-loading-spinner'] %>"></div>
+    <div>{{ctx.t('loading')}}...</div>
+  </div>
+</div>

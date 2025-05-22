@@ -1,9 +1,10 @@
+<% const cssClasses = require('../cssClasses'); %>
 {% if (!ctx.label.hidden && ctx.label.labelPosition !== 'bottom') { %}
   {{ ctx.labelMarkup }}
 {% } %}
 
 {% if (ctx.label.hidden && ctx.label.className && ctx.component.validate.required) { %}
-  <label class="{{ctx.label.className}}"></label>
+  <label class="<%= cssClasses['form-field-hidden-label'] %> {{ctx.label.className}}"></label>
 {% } %}
 
 {{ctx.element}}
@@ -12,5 +13,5 @@
   {{ ctx.labelMarkup }}
 {% } %}
 {% if (ctx.component.description) { %}
-  <div id="d-{{ctx.instance.id}}-{{ctx.component.key}}" class="form-text text-muted">{{ctx.t(ctx.component.description, { _userInput: true })}}</div>
+  <div id="d-{{ctx.instance.id}}-{{ctx.component.key}}" class="<%= cssClasses['form-field-description'] %>">{{ctx.t(ctx.component.description, { _userInput: true })}}</div>
 {% } %}

@@ -1,6 +1,8 @@
-<div id="{{ctx.id}}" class="{{ctx.classes}}"{% if (ctx.styles) { %} style="{{ctx.styles}}"{% } %} ref="component">
+<div id="{{ctx.id}}" class="form-component {{ctx.classes}}"{% if (ctx.styles) { %} style="{{ctx.styles}}"{% } %} ref="component">
   {% if (ctx.visible) { %}
-  {{ctx.children}}
-  <div ref="messageContainer" class="formio-errors invalid-feedback"></div>
+    <div class="form-component-children">
+      {{ctx.children}}
+    </div>
+    <div ref="messageContainer" class="form-component-errors"></div>
   {% } %}
 </div>

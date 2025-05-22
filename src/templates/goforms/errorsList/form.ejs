@@ -1,12 +1,14 @@
-<p>{{ctx.t('error')}}
+<% const cssClasses = require('../cssClasses'); %>
+<p class="<%= cssClasses['form-errors-title'] %>">{{ctx.t('error')}}
   {% if (ctx.options.vpat) { %}
-  <span ref="errorTooltip" class="{{ctx.iconClass('question-sign')}}" tabindex="0"></span>
+  <span ref="errorTooltip" class="<%= cssClasses['form-errors-tooltip'] %> {{ctx.iconClass('question-sign')}}" tabindex="0"></span>
   {% } %}
 </p>
-<ul>
+<ul class="<%= cssClasses['form-errors-list'] %>">
   {% ctx.errors.forEach(function(err) { %}
-  <li>
+  <li class="<%= cssClasses['form-errors-item'] %>">
     <span
+      class="<%= cssClasses['form-errors-link'] %>"
       data-component-key = "{{err.keyOrPath}}"
       ref = "errorRef"
       tabIndex = "0"

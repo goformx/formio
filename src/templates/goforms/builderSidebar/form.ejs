@@ -1,8 +1,14 @@
-<div id="{{ctx.groupId}}" class="accordion builder-sidebar{{ctx.scrollEnabled ? ' builder-sidebar_scroll' : ''}}" ref="sidebar" role="tablist">
-  <input class="form-control builder-sidebar_search" type="search" ref="sidebar-search" placeholder="{{ctx.t('searchFields')}}" />
-  <div ref="sidebar-groups">
-    {% ctx.groups.forEach(function(group) { %}
-      {{ group }}
-    {% }) %}
+<div class="form-builder-sidebar" ref="sidebar">
+  <div class="form-builder-sidebar-header">
+    <input 
+      type="search" 
+      class="form-builder-sidebar-search" 
+      ref="search" 
+      placeholder="{{ctx.t('searchFields')}}"
+      aria-label="{{ctx.t('searchFields')}}"
+    />
+  </div>
+  <div class="form-builder-sidebar-content" ref="content">
+    {{ctx.content}}
   </div>
 </div>

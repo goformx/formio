@@ -1,10 +1,11 @@
-<div ref="container" class="formio-modaledit-view-container">
+<% const cssClasses = require('../cssClasses'); %>
+<div ref="container" class="<%= cssClasses['form-modal'] %>">
   <button
     ref="edit"
     type="button"
     role="button"
-    class="btn btn-xxs btn-warning formio-modaledit-edit">
+    class="<%= cssClasses['form-modal-edit'] %>">
     <i class="{{ctx.iconClass('edit')}}"></i>
   </button>
-  <div ref="input" class="modaledit-view-inner reset-margins">{{ctx.content}}</div>
+  <div ref="input" class="<%= cssClasses['form-modal-body'] %>">{{ctx.content}}</div>
 </div>
