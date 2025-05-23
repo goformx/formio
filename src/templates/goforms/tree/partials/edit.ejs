@@ -1,10 +1,10 @@
 <% const cssClasses = require('../../cssClasses'); %>
-<div class="<%= cssClasses['form-tree-edit'] %>">
-  <div ref="nodeEdit" class="<%= cssClasses['form-tree-edit-content'] %>">{{ ctx.children }}</div>
+<div class="{{ cssClasses['form-tree-edit'] }}">
+  <div ref="nodeEdit" class="{{ cssClasses['form-tree-edit-content'] }}">{{ ctx.children }}</div>
   {% if (!ctx.readOnly) { %}
-    <div class="<%= cssClasses['form-tree-edit-actions'] %>">
-      <button ref="saveNode" class="<%= cssClasses['form-tree-edit-save'] %>">{{ ctx.t('save') }}</button>
-      <button ref="cancelNode" class="<%= cssClasses['form-tree-edit-cancel'] %>">{{ ctx.t('cancel') }}</button>
+    <div class="{{ cssClasses['form-tree-edit-actions'] }}">
+      <button ref="saveNode" class="{{ cssClasses['form-tree-edit-save'] }}">{{ ctx.t('save') }}</button>
+      <button ref="cancelNode" class="{{ cssClasses['form-tree-edit-cancel'] }}">{{ ctx.t('cancel') }}</button>
     </div>
   {% } %}
 </div>

@@ -1,8 +1,8 @@
 <% const cssClasses = require('../cssClasses'); %>
-<div class="<%= cssClasses['form-dialog'] %>">
-  <div class="<%= cssClasses['form-dialog-overlay'] %>" ref="dialogOverlay"></div>
-  <div class="<%= cssClasses['form-dialog-content'] %>" ref="dialogContents" role="dialog">
+<div class="{{ cssClasses['form-dialog'] }}">
+  <div class="{{ cssClasses['form-dialog-overlay'] }}" ref="dialogOverlay"></div>
+  <div class="{{ cssClasses['form-dialog-content'] }}" ref="dialogContents" role="dialog">
     <div ref="dialogContents"></div>
-    <button class="<%= cssClasses['form-dialog-close'] %>" title="Close" aria-label="Close modal window." ref="dialogClose"></button>
+    <button class="{{ cssClasses['form-dialog-close'] }}" title="Close" aria-label="Close modal window." ref="dialogClose"></button>
   </div>
 </div>

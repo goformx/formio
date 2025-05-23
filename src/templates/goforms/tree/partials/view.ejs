@@ -1,21 +1,21 @@
 <% const cssClasses = require('../../cssClasses'); %>
-<div class="<%= cssClasses['form-tree-view'] %>">
+<div class="{{ cssClasses['form-tree-view'] }}">
   {% ctx.values.forEach(function(value) { %}
-    <div class="<%= cssClasses['form-tree-view-value'] %>">
+    <div class="{{ cssClasses['form-tree-view-value'] }}">
       {{ value }}
     </div>
   {% }) %}
-  <div class="<%= cssClasses['form-tree-view-actions'] %>">
-    <div class="<%= cssClasses['form-tree-view-buttons'] %>">
+  <div class="{{ cssClasses['form-tree-view-actions'] }}">
+    <div class="{{ cssClasses['form-tree-view-buttons'] }}">
       {% if (ctx.node.hasChildren) { %}
-        <button ref="toggleNode" class="<%= cssClasses['form-tree-view-toggle'] %>">{{ ctx.t(ctx.node.collapsed ? 'expand' : 'collapse') }}</button>
+        <button ref="toggleNode" class="{{ cssClasses['form-tree-view-toggle'] }}">{{ ctx.t(ctx.node.collapsed ? 'expand' : 'collapse') }}</button>
       {% } %}
       {% if (!ctx.readOnly) { %}
-        <button ref="addChild" class="<%= cssClasses['form-tree-view-add'] %>">{{ ctx.t('add') }}</button>
-        <button ref="editNode" class="<%= cssClasses['form-tree-view-edit'] %>">{{ ctx.t('edit') }}</button>
-        <button ref="removeNode" class="<%= cssClasses['form-tree-view-remove'] %>">{{ ctx.t('delete') }}</button>
+        <button ref="addChild" class="{{ cssClasses['form-tree-view-add'] }}">{{ ctx.t('add') }}</button>
+        <button ref="editNode" class="{{ cssClasses['form-tree-view-edit'] }}">{{ ctx.t('edit') }}</button>
+        <button ref="removeNode" class="{{ cssClasses['form-tree-view-remove'] }}">{{ ctx.t('delete') }}</button>
         {% if (ctx.node.revertAvailable) { %}
-          <button ref="revertNode" class="<%= cssClasses['form-tree-view-revert'] %>">{{ ctx.t('revert') }}</button>
+          <button ref="revertNode" class="{{ cssClasses['form-tree-view-revert'] }}">{{ ctx.t('revert') }}</button>
         {% } %}
       {% } %}
     </div>

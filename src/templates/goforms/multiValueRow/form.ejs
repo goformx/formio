@@ -1,11 +1,11 @@
 <% const cssClasses = require('../cssClasses'); %>
-<tr ref="row" class="<%= cssClasses['form-multi-value-row'] %>">
+<tr ref="row" class="{{ cssClasses['form-multi-value-row'] }}">
   <td>
     {{ctx.element}}
   </td>
   {% if (!ctx.disabled) { %}
   <td>
-    <button type="button" class="<%= cssClasses['form-multi-value-remove'] %>" ref="removeRow">
+    <button type="button" class="{{ cssClasses['form-multi-value-remove'] }}" ref="removeRow">
       <i class="{{ctx.iconClass('remove-circle')}}"></i>
     </button>
   </td>

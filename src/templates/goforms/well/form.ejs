@@ -1,6 +1,6 @@
 <% const cssClasses = require('../cssClasses'); %>
-<div class="<%= cssClasses['form-well'] %>">
-  <div ref="{{ctx.nestedKey}}" class="<%= cssClasses['form-well-content'] %>">
+<div class="{{ cssClasses['form-well'] }}">
+  <div ref="{{ctx.nestedKey}}" class="{{ cssClasses['form-well-content'] }}">
     {{ctx.children}}
   </div>
 </div>

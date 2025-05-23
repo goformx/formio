@@ -1,5 +1,5 @@
 <% const cssClasses = require('../cssClasses'); %>
-<div class="<%= cssClasses['form-day'] %>" role="group"
+<div class="{{ cssClasses['form-day'] }}" role="group"
   {% if (ctx.component.hideLabel) { %}
   aria-label="{{ctx.component.label}}"
   {% } else { %}
@@ -10,36 +10,36 @@
   {% } %}
   >
   {% if (ctx.dayFirst && ctx.showDay) { %}
-  <div class="<%= cssClasses['form-day-field'] %>">
+  <div class="{{ cssClasses['form-day-field'] }}">
     {% if (!ctx.component.hideInputLabels) { %}
-    <label for="{{ctx.component.key}}-day" class="<%= cssClasses['form-day-label'] %> {% if(ctx.component.fields.day.required) { %}<%= cssClasses['form-day-required'] %>{% } %}">{{ctx.t('day')}}</label>
+    <label for="{{ctx.component.key}}-day" class="{{ cssClasses['form-day-label'] }} {% if(ctx.component.fields.day.required) { %}{{ cssClasses['form-day-required'] }}{% } %}">{{ctx.t('day')}}</label>
     {% } %}
-    <div class="<%= cssClasses['form-day-input'] %>">{{ctx.day}}</div>
+    <div class="{{ cssClasses['form-day-input'] }}">{{ctx.day}}</div>
   </div>
   {% } %}
   {% if (ctx.showMonth) { %}
-  <div class="<%= cssClasses['form-day-field'] %>">
+  <div class="{{ cssClasses['form-day-field'] }}">
     {% if (!ctx.component.hideInputLabels) { %}
-    <label for="{{ctx.component.key}}-month" class="<%= cssClasses['form-day-label'] %> {% if(ctx.component.fields.month.required) { %}<%= cssClasses['form-day-required'] %>{% } %}">{{ctx.t('month')}}</label>
+    <label for="{{ctx.component.key}}-month" class="{{ cssClasses['form-day-label'] }} {% if(ctx.component.fields.month.required) { %}{{ cssClasses['form-day-required'] }}{% } %}">{{ctx.t('month')}}</label>
     {% } %}
-    <div class="<%= cssClasses['form-day-input'] %>">{{ctx.month}}</div>
+    <div class="{{ cssClasses['form-day-input'] }}">{{ctx.month}}</div>
   </div>
   {% } %}
   {% if (!ctx.dayFirst && ctx.showDay) { %}
-  <div class="<%= cssClasses['form-day-field'] %>">
+  <div class="{{ cssClasses['form-day-field'] }}">
     {% if (!ctx.component.hideInputLabels) { %}
-    <label for="{{ctx.component.key}}-day" class="<%= cssClasses['form-day-label'] %> {% if(ctx.component.fields.day.required) { %}<%= cssClasses['form-day-required'] %>{% } %}">{{ctx.t('day')}}</label>
+    <label for="{{ctx.component.key}}-day" class="{{ cssClasses['form-day-label'] }} {% if(ctx.component.fields.day.required) { %}{{ cssClasses['form-day-required'] }}{% } %}">{{ctx.t('day')}}</label>
     {% } %}
-    <div class="<%= cssClasses['form-day-input'] %>">{{ctx.day}}</div>
+    <div class="{{ cssClasses['form-day-input'] }}">{{ctx.day}}</div>
   </div>
   {% } %}
   {% if (ctx.showYear) { %}
-  <div class="<%= cssClasses['form-day-field'] %>">
+  <div class="{{ cssClasses['form-day-field'] }}">
     {% if (!ctx.component.hideInputLabels) { %}
-    <label for="{{ctx.component.key}}-year" class="<%= cssClasses['form-day-label'] %> {% if(ctx.component.fields.year.required) { %}<%= cssClasses['form-day-required'] %>{% } %}">{{ctx.t('year')}}</label>
+    <label for="{{ctx.component.key}}-year" class="{{ cssClasses['form-day-label'] }} {% if(ctx.component.fields.year.required) { %}{{ cssClasses['form-day-required'] }}{% } %}">{{ctx.t('year')}}</label>
     {% } %}
-    <div class="<%= cssClasses['form-day-input'] %>">{{ctx.year}}</div>
+    <div class="{{ cssClasses['form-day-input'] }}">{{ctx.year}}</div>
   </div>
   {% } %}
 </div>
-<input name="ctx.data[day]" type="hidden" class="<%= cssClasses['form-day-hidden'] %>" lang="en" value="" ref="input">
+<input name="ctx.data[day]" type="hidden" class="{{ cssClasses['form-day-hidden'] }}" lang="en" value="" ref="input">

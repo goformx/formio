@@ -1,23 +1,23 @@
 <% const cssClasses = require('../cssClasses'); %>
 {% if (ctx.options.vpat) { %}
-  <span tabindex="-1" class="<%= cssClasses['form-file-hidden'] %>" id="invisible-{{ctx.instance.id}}-{{ctx.component.key}}"></span>
+  <span tabindex="-1" class="{{ cssClasses['form-file-hidden'] }}" id="invisible-{{ctx.instance.id}}-{{ctx.component.key}}"></span>
 {% } %}
 {% if (!ctx.self.imageUpload) { %}
   {% if (ctx.options.vpat) { %}
     <div>{{(!ctx.component.filePattern || ctx.component.filePattern === '*') ? ctx.t('anyFileTypesAllowed') : ctx.t('allowedFileTypes') + ': ' + ctx.component.filePattern}}</div>
   {% } %}
-  <ul class="<%= cssClasses['form-file-list'] %>">
-    <li class="<%= cssClasses['form-file-header'] %>">
-      <div class="<%= cssClasses['form-file-row'] %>">
-        <div class="<%= cssClasses['form-file-name'] %>"><strong>{{ctx.t('fileName')}}</strong></div>
-        <div class="<%= cssClasses['form-file-size'] %>"><strong>{{ctx.t('size')}}</strong></div>
+  <ul class="{{ cssClasses['form-file-list'] }}">
+    <li class="{{ cssClasses['form-file-header'] }}">
+      <div class="{{ cssClasses['form-file-row'] }}">
+        <div class="{{ cssClasses['form-file-name'] }}"><strong>{{ctx.t('fileName')}}</strong></div>
+        <div class="{{ cssClasses['form-file-size'] }}"><strong>{{ctx.t('size')}}</strong></div>
         {% if (ctx.self.hasTypes) { %}
-          <div class="<%= cssClasses['form-file-type'] %>"><strong>{{ctx.t('type')}}</strong></div>
+          <div class="{{ cssClasses['form-file-type'] }}"><strong>{{ctx.t('type')}}</strong></div>
         {% } %}
-        <div class="<%= cssClasses['form-file-actions'] %>">
+        <div class="{{ cssClasses['form-file-actions'] }}">
           {% if (ctx.showSyncButton) { %}
             <button
-              class="<%= cssClasses['form-file-sync'] %>"
+              class="{{ cssClasses['form-file-sync'] }}"
               ref="syncNow"
               {% if (ctx.disabled || ctx.isSyncing) { %}disabled=true{% } %}
             >{{ctx.isSyncing ? ctx.t('syncing') : ctx.t('syncNow')}}</button>
@@ -26,21 +26,21 @@
       </div>
     </li>
     {% ctx.files.forEach(function(file) { %}
-      <li class="<%= cssClasses['form-file-item'] %>">
-        <div class="<%= cssClasses['form-file-row'] %>">
-          <div class="<%= cssClasses['form-file-name'] %>">
+      <li class="{{ cssClasses['form-file-item'] }}">
+        <div class="{{ cssClasses['form-file-row'] }}">
+          <div class="{{ cssClasses['form-file-name'] }}">
             {% if (ctx.component.uploadOnly) { %}
               {{file.originalName || file.name}}
             {% } else { %}
-              <a href="{{file.url || '#'}}" target="_blank" ref="fileLink" class="<%= cssClasses['form-file-link'] %>">
-                <span class="<%= cssClasses['form-file-hidden'] %>">{{ctx.t('pressToOpen') + ' '}}</span>{{file.originalName || file.name}}
+              <a href="{{file.url || '#'}}" target="_blank" ref="fileLink" class="{{ cssClasses['form-file-link'] }}">
+                <span class="{{ cssClasses['form-file-hidden'] }}">{{ctx.t('pressToOpen') + ' '}}</span>{{file.originalName || file.name}}
               </a>
             {% } %}
           </div>
-          <div class="<%= cssClasses['form-file-size'] %>">{{ctx.fileSize(file.size)}}</div>
+          <div class="{{ cssClasses['form-file-size'] }}">{{ctx.fileSize(file.size)}}</div>
           {% if (ctx.self.hasTypes && !ctx.disabled) { %}
-            <div class="<%= cssClasses['form-file-type'] %>">
-              <select class="<%= cssClasses['form-file-type-select'] %>" ref="fileType">
+            <div class="{{ cssClasses['form-file-type'] }}">
+              <select class="{{ cssClasses['form-file-type-select'] }}" ref="fileType">
                 {% ctx.component.fileTypes.map(function(type) { %}
                   <option value="{{ type.value }}" {% if (type.label === file.fileType) { %}selected="selected"{% } %}>{{ctx.t(type.label)}}</option>
                 {% }); %}
@@ -48,25 +48,25 @@
             </div>
           {% } %}
           {% if (ctx.self.hasTypes && ctx.disabled) { %}
-            <div class="<%= cssClasses['form-file-type'] %>">{{file.fileType}}</div>
+            <div class="{{ cssClasses['form-file-type'] }}">{{file.fileType}}</div>
           {% } %}
           {% if (!ctx.disabled) { %}
-            <div class="<%= cssClasses['form-file-actions'] %>"><i tabindex="0" class="<%= cssClasses['form-file-remove'] %> {{ctx.iconClass('remove')}}" ref="removeLink"></i></div>
+            <div class="{{ cssClasses['form-file-actions'] }}"><i tabindex="0" class="{{ cssClasses['form-file-remove'] }} {{ctx.iconClass('remove')}}" ref="removeLink"></i></div>
           {% } %}
         </div>
       </li>
     {% }) %}
     {% ctx.filesToDelete.forEach(function(file) { %}
-      <li class="<%= cssClasses['form-file-item'] %>">
-        <div class="<%= cssClasses['form-file-row'] %>">
-          <div class="<%= cssClasses['form-file-name'] %>">
+      <li class="{{ cssClasses['form-file-item'] }}">
+        <div class="{{ cssClasses['form-file-row'] }}">
+          <div class="{{ cssClasses['form-file-name'] }}">
             <div>{{file.originalName || file.name}}</div>
-            <div class="<%= cssClasses['form-file-status'] %> <%= cssClasses['form-file-status-' + file.status] %>">{{ctx.t(file.message)}}</div>
+            <div class="{{ cssClasses['form-file-status'] }} {{ cssClasses['form-file-status-' + file.status] }}">{{ctx.t(file.message)}}</div>
           </div>
-          <div class="<%= cssClasses['form-file-size'] %>">{{ctx.fileSize(file.size)}}</div>
+          <div class="{{ cssClasses['form-file-size'] }}">{{ctx.fileSize(file.size)}}</div>
           {% if (ctx.self.hasTypes) { %}
-            <div class="<%= cssClasses['form-file-type'] %>">
-              <select class="<%= cssClasses['form-file-type-select'] %>" ref="fileType">
+            <div class="{{ cssClasses['form-file-type'] }}">
+              <select class="{{ cssClasses['form-file-type-select'] }}" ref="fileType">
                 {% ctx.component.fileTypes.map(function(type) { %}
                   <option value="{{ type.value }}" {% if (type.label === file.fileType) { %}selected="selected"{% } %}>{{ctx.t(type.label)}}</option>
                 {% }); %}
@@ -74,30 +74,30 @@
             </div>
           {% } %}
           {% if (!ctx.isSyncing && file.status !== 'success') { %}
-            <div class="<%= cssClasses['form-file-actions'] %>"><i tabindex="0" class="<%= cssClasses['form-file-restore'] %> {{ctx.iconClass('arrow-counterclockwise')}}" ref="restoreFile"></i></div>
+            <div class="{{ cssClasses['form-file-actions'] }}"><i tabindex="0" class="{{ cssClasses['form-file-restore'] }} {{ctx.iconClass('arrow-counterclockwise')}}" ref="restoreFile"></i></div>
           {% } %}
         </div>
       </li>
     {% }) %}
     {% ctx.filesToUpload.forEach(function(file) { %}
-      <li class="<%= cssClasses['form-file-item'] %>">
-        <div class="<%= cssClasses['form-file-row'] %>">
-          <div class="<%= cssClasses['form-file-name'] %>">
+      <li class="{{ cssClasses['form-file-item'] }}">
+        <div class="{{ cssClasses['form-file-row'] }}">
+          <div class="{{ cssClasses['form-file-name'] }}">
             <div>{{file.originalName || file.name}}</div>
             {% if (file.status === 'progress') { %}
-              <div class="<%= cssClasses['form-file-progress'] %>">
-                <div id="{{file.id}}" class="<%= cssClasses['form-file-progress-bar'] %>" role="progressbar" aria-valuenow="{{file.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{file.progress}}%" ref="progress">
-                  <span class="<%= cssClasses['form-file-hidden'] %>">{{file.progress}}% {{ctx.t('completeStatus')}}</span>
+              <div class="{{ cssClasses['form-file-progress'] }}">
+                <div id="{{file.id}}" class="{{ cssClasses['form-file-progress-bar'] }}" role="progressbar" aria-valuenow="{{file.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{file.progress}}%" ref="progress">
+                  <span class="{{ cssClasses['form-file-hidden'] }}">{{file.progress}}% {{ctx.t('completeStatus')}}</span>
                 </div>
               </div>
             {% } else { %}
-              <div class="<%= cssClasses['form-file-status'] %> <%= cssClasses['form-file-status-' + file.status] %>">{{ctx.t(file.message)}}</div>
+              <div class="{{ cssClasses['form-file-status'] }} {{ cssClasses['form-file-status-' + file.status] }}">{{ctx.t(file.message)}}</div>
             {% } %}
           </div>
-          <div class="<%= cssClasses['form-file-size'] %>">{{ctx.fileSize(file.size)}}</div>
+          <div class="{{ cssClasses['form-file-size'] }}">{{ctx.fileSize(file.size)}}</div>
           {% if (ctx.self.hasTypes) { %}
-            <div class="<%= cssClasses['form-file-type'] %>">
-              <select class="<%= cssClasses['form-file-type-select'] %>" ref="fileType">
+            <div class="{{ cssClasses['form-file-type'] }}">
+              <select class="{{ cssClasses['form-file-type-select'] }}" ref="fileType">
                 {% ctx.component.fileTypes.map(function(type) { %}
                   <option value="{{ type.value }}" {% if (type.label === file.fileType) { %}selected="selected"{% } %}>{{ctx.t(type.label)}}</option>
                 {% }); %}
@@ -105,56 +105,56 @@
             </div>
           {% } %}
           {% if (file.status === 'progress') { %}
-            <div class="<%= cssClasses['form-file-actions'] %>"><i id="abort-{{file.id}}" tabindex="0" class="<%= cssClasses['form-file-abort'] %> {{ctx.iconClass('ban')}}"></i></div>
+            <div class="{{ cssClasses['form-file-actions'] }}"><i id="abort-{{file.id}}" tabindex="0" class="{{ cssClasses['form-file-abort'] }} {{ctx.iconClass('ban')}}"></i></div>
           {% } else if (!ctx.isSyncing && file.status !== 'success') { %}
-            <div class="<%= cssClasses['form-file-actions'] %>"><i tabindex="0" class="<%= cssClasses['form-file-remove'] %> {{ctx.iconClass('remove')}}" ref="fileToSyncRemove"></i></div>
+            <div class="{{ cssClasses['form-file-actions'] }}"><i tabindex="0" class="{{ cssClasses['form-file-remove'] }} {{ctx.iconClass('remove')}}" ref="fileToSyncRemove"></i></div>
           {% } %}
         </div>
       </li>
     {% }) %}
   </ul>
 {% } else { %}
-  <div class="<%= cssClasses['form-file-image-container'] %>">
+  <div class="{{ cssClasses['form-file-image-container'] }}">
     {% ctx.files.forEach(function(file) { %}
-      <div class="<%= cssClasses['form-file-image-wrapper'] %>">
-        <span class="<%= cssClasses['form-file-image'] %>">
+      <div class="{{ cssClasses['form-file-image-wrapper'] }}">
+        <span class="{{ cssClasses['form-file-image'] }}">
           <img ref="fileImage" src="" alt="{{file.originalName || file.name}}" style="width:{{ctx.component.imageSize}}px">
           {% if (!ctx.disabled) { %}
-            <i tabindex="0" class="<%= cssClasses['form-file-remove'] %> {{ctx.iconClass('remove')}}" ref="removeLink" aria-label="{{ctx.t('removeBtnPressToRemove') + ' ' + (file.originalName || file.name) + ' ' + ctx.t('file')}}"></i>
+            <i tabindex="0" class="{{ cssClasses['form-file-remove'] }} {{ctx.iconClass('remove')}}" ref="removeLink" aria-label="{{ctx.t('removeBtnPressToRemove') + ' ' + (file.originalName || file.name) + ' ' + ctx.t('file')}}"></i>
           {% } %}
         </span>
       </div>
     {% }) %}
     {% ctx.filesToUpload.forEach(function(file) { %}
       {% if (file.status === 'progress') { %}
-        <div class="<%= cssClasses['form-file-size'] %>">{{ctx.fileSize(file.size)}}</div>
-        <div class="<%= cssClasses['form-file-progress'] %>">
-          <div id="{{file.id}}" class="<%= cssClasses['form-file-progress-bar'] %>" role="progressbar" aria-valuenow="{{file.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{file.progress}}%" ref="progress">
-            <span class="<%= cssClasses['form-file-hidden'] %>">{{file.progress}}% {{ctx.t('completeStatus')}}</span>
+        <div class="{{ cssClasses['form-file-size'] }}">{{ctx.fileSize(file.size)}}</div>
+        <div class="{{ cssClasses['form-file-progress'] }}">
+          <div id="{{file.id}}" class="{{ cssClasses['form-file-progress-bar'] }}" role="progressbar" aria-valuenow="{{file.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{file.progress}}%" ref="progress">
+            <span class="{{ cssClasses['form-file-hidden'] }}">{{file.progress}}% {{ctx.t('completeStatus')}}</span>
           </div>
         </div>
       {% } else { %}
-        <div class="<%= cssClasses['form-file-status'] %> <%= cssClasses['form-file-status-' + file.status] %>">{{ctx.t(file.message)}}</div>
+        <div class="{{ cssClasses['form-file-status'] }} {{ cssClasses['form-file-status-' + file.status] }}">{{ctx.t(file.message)}}</div>
       {% } %}
     {% }) %}
   </div>
 {% } %}
 {% if (!ctx.disabled && (ctx.component.multiple || !ctx.files.length)) { %}
   {% if (ctx.self.useWebViewCamera) { %}
-    <div class="<%= cssClasses['form-file-selector'] %>">
-      <button class="<%= cssClasses['form-file-gallery'] %>" ref="galleryButton"><i class="{{ctx.iconClass('book')}}"></i> {{ctx.t('gallery')}}</button>
-      <button class="<%= cssClasses['form-file-camera'] %>" ref="cameraButton"><i class="{{ctx.iconClass('camera')}}"></i> {{ctx.t('camera')}}</button>
+    <div class="{{ cssClasses['form-file-selector'] }}">
+      <button class="{{ cssClasses['form-file-gallery'] }}" ref="galleryButton"><i class="{{ctx.iconClass('book')}}"></i> {{ctx.t('gallery')}}</button>
+      <button class="{{ cssClasses['form-file-camera'] }}" ref="cameraButton"><i class="{{ctx.iconClass('camera')}}"></i> {{ctx.t('camera')}}</button>
     </div>
   {% } else if (!ctx.self.cameraMode) { %}
-    <div class="<%= cssClasses['form-file-selector'] %>" ref="fileDrop" {{ctx.fileDropHidden ?'hidden' : ''}}>
+    <div class="{{ cssClasses['form-file-selector'] }}" ref="fileDrop" {{ctx.fileDropHidden ?'hidden' : ''}}>
       {% if (!ctx.self.isMobile.any) { %}
         <i class="{{ctx.iconClass('cloud-upload')}}"></i> {{ctx.t('dropFilesToAttach')}}
       {% } %}
       {% if (ctx.self.imageUpload && ctx.component.webcam) { %}
-        <a href="#" ref="toggleCameraMode" class="<%= cssClasses['form-file-camera-toggle'] %>"><i class="{{ctx.iconClass('camera')}}"></i>{{ctx.t('useCamera')}}</a>
+        <a href="#" ref="toggleCameraMode" class="{{ cssClasses['form-file-camera-toggle'] }}"><i class="{{ctx.iconClass('camera')}}"></i>{{ctx.t('useCamera')}}</a>
         {{ctx.t('or')}}
       {% } %}
-      <a href="#" ref="fileBrowse" class="<%= cssClasses['form-file-browse'] %>">
+      <a href="#" ref="fileBrowse" class="{{ cssClasses['form-file-browse'] }}">
         {% if (ctx.self.isMobile.any && ctx.component.capture) { %}
           {% if (ctx.component.filePattern && ctx.component.filePattern.includes("video")) { %}
             <i class="{{ctx.iconClass('video')}}"></i>{{ctx.t('captureVideo')}}
@@ -166,26 +166,26 @@
         {% } else { %}
           <i class="{{ctx.iconClass('folder-open')}}"></i>{{ctx.t('browseFiles')}}
         {% } %}
-        <span class="<%= cssClasses['form-file-hidden'] %>">
+        <span class="{{ cssClasses['form-file-hidden'] }}">
           {{ctx.t('browseToAttachFileFor') + ' ' + ctx.t(ctx.component.label, { _userInput: true }) + '. ' +
             (ctx.component.description ? ctx.t(ctx.component.description, { _userInput: true }) + '. ' : '') +
             ((!ctx.component.filePattern || ctx.component.filePattern === '*') ? ctx.t('anyFileTypesAllowed') : ctx.t('allowedFileTypes') + ': ' + ctx.component.filePattern)}}
         </span>
       </a>
-      <div ref="fileProcessingLoader" class="<%= cssClasses['form-file-loader-wrapper'] %>">
-        <div class="<%= cssClasses['form-file-loader'] %>"></div>
+      <div ref="fileProcessingLoader" class="{{ cssClasses['form-file-loader-wrapper'] }}">
+        <div class="{{ cssClasses['form-file-loader'] }}"></div>
       </div>
     </div>
   {% } else { %}
-    <div class="<%= cssClasses['form-file-video-container'] %>">
-      <video class="<%= cssClasses['form-file-video'] %>" autoplay="true" ref="videoPlayer" tabindex="-1"></video>
+    <div class="{{ cssClasses['form-file-video-container'] }}">
+      <video class="{{ cssClasses['form-file-video'] }}" autoplay="true" ref="videoPlayer" tabindex="-1"></video>
     </div>
-    <button class="<%= cssClasses['form-file-take-picture'] %>" ref="takePictureButton"><i class="{{ctx.iconClass('camera')}}"></i> {{ctx.t('takePicture')}}</button>
-    <button class="<%= cssClasses['form-file-camera-toggle'] %>" ref="toggleCameraMode">{{ctx.t('switchToFileUpload')}}</button>
+    <button class="{{ cssClasses['form-file-take-picture'] }}" ref="takePictureButton"><i class="{{ctx.iconClass('camera')}}"></i> {{ctx.t('takePicture')}}</button>
+    <button class="{{ cssClasses['form-file-camera-toggle'] }}" ref="toggleCameraMode">{{ctx.t('switchToFileUpload')}}</button>
   {% } %}
 {% } %}
 {% if (!ctx.component.storage || ctx.support.hasWarning) { %}
-  <div class="<%= cssClasses['form-file-warning'] %>">
+  <div class="{{ cssClasses['form-file-warning'] }}">
     {% if (!ctx.component.storage) { %}
       <p>{{ctx.t('noStorageSet')}}</p>
     {% } %}

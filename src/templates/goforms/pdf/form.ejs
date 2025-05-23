@@ -1,13 +1,13 @@
 <% const cssClasses = require('../cssClasses'); %>
-<div class="<%= cssClasses['form-pdf'] %> {{ctx.classes}}" ref="webform">
-	<div class="<%= cssClasses['form-pdf-toolbar'] %>">
-		<span data-noattach="true" ref="zoomIn" class="<%= cssClasses['form-pdf-zoom-in'] %>">
+<div class="{{ cssClasses['form-pdf'] }} {{ctx.classes}}" ref="webform">
+	<div class="{{ cssClasses['form-pdf-toolbar'] }}">
+		<span data-noattach="true" ref="zoomIn" class="{{ cssClasses['form-pdf-zoom-in'] }}">
 			<i class="{{ ctx.iconClass('zoom-in') }}"></i>
 		</span>
-		<span data-noattach="true" ref="zoomOut" class="<%= cssClasses['form-pdf-zoom-out'] %>">
+		<span data-noattach="true" ref="zoomOut" class="{{ cssClasses['form-pdf-zoom-out'] }}">
 			<i class="{{ ctx.iconClass('zoom-out') }}"></i>
 		</span>
 	</div>
-	<div class="<%= cssClasses['form-pdf-container'] %>" data-noattach="true" ref="iframeContainer"></div>
+	<div class="{{ cssClasses['form-pdf-container'] }}" data-noattach="true" ref="iframeContainer"></div>
 	{{ ctx.submitButton }}
 </div>

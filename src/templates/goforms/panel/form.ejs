@@ -1,7 +1,7 @@
 <% const cssClasses = require('../cssClasses'); %>
-<div class="<%= cssClasses['form-panel'] %>">
+<div class="{{ cssClasses['form-panel'] }}">
   {% if (!ctx.label.hidden || ctx.builder || ctx.component.collapsible || ctx.component.tooltip) { %}
-  <div class="<%= cssClasses['form-panel-header'] %> <%= ctx.transform('class', 'bg-' + ctx.component.theme) %>"
+  <div class="{{ cssClasses['form-panel-header'] }} {{ ctx.transform('class', 'bg-' + ctx.component.theme) }}"
     {% if (ctx.component.collapsible) { %}
     tabindex="0"
     {% } %}
@@ -10,21 +10,21 @@
     aria-controls="{{ctx.instance.id}}-{{ctx.component.key}}"
     ref="header"
   >
-    <span class="<%= cssClasses['form-panel-title'] %>">
+    <span class="{{ cssClasses['form-panel-title'] }}">
       {% if (ctx.component.collapsible) { %}
-        <i class="<%= cssClasses['form-icon'] %> {{ctx.iconClass(ctx.collapsed ? 'plus-square-o' : 'minus-square-o')}}" data-title="Collapse Panel"></i>
+        <i class="{{ cssClasses['form-icon'] }} {{ctx.iconClass(ctx.collapsed ? 'plus-square-o' : 'minus-square-o')}}" data-title="Collapse Panel"></i>
       {% } %}
       {% if (!ctx.label.hidden || ctx.builder) { %}
       {{ctx.t(ctx.component.title, { _userInput: true })}}
       {% } %}
       {% if (ctx.component.tooltip) { %}
-        <i ref="tooltip" tabindex="0" class="<%= cssClasses['form-label-tooltip'] %> {{ctx.iconClass('question-sign')}}" data-tooltip="{{ctx.component.tooltip}}"></i>
+        <i ref="tooltip" tabindex="0" class="{{ cssClasses['form-label-tooltip'] }} {{ctx.iconClass('question-sign')}}" data-tooltip="{{ctx.component.tooltip}}"></i>
       {% } %}
     </span>
   </div>
   {% } %}
   {% if (!ctx.collapsed || ctx.builder) { %}
-  <div class="<%= cssClasses['form-panel-body'] %>" ref="{{ctx.nestedKey}}" id="{{ctx.instance.id}}-{{ctx.component.key}}">
+  <div class="{{ cssClasses['form-panel-body'] }}" ref="{{ctx.nestedKey}}" id="{{ctx.instance.id}}-{{ctx.component.key}}">
     {{ctx.children}}
   </div>
   {% } %}
