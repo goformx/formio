@@ -1,6 +1,6 @@
 {
   "name": "@goformx/formio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "GoFormX form.io template library",
   "main": "lib/cjs/index.js",
   "module": "lib/mjs/index.js",
