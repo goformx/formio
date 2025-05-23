@@ -1,7 +1,7 @@
-<div class="form-builder-sidebar-group" ref="sidebar-group-{{ctx.groupKey}}">
-  <div class="form-builder-sidebar-group-header" id="heading-{{ctx.groupKey}}">
+<div class="accordion-item" ref="sidebar-group-{{ctx.groupKey}}">
+  <h2 class="accordion-header" id="heading-{{ctx.groupKey}}">
     <button
-      class="form-builder-sidebar-group-toggle"
+      class="accordion-button{{!ctx.group.default ? ' collapsed' : ''}}"
       type="button"
       aria-expanded="{{ctx.group.default}}"
       aria-controls="group-{{ctx.groupKey}}"
@@ -9,14 +9,14 @@
     >
       {{ctx.t(ctx.group.title, { _userInput: true })}}
     </button>
-  </div>
+  </h2>
   <div
     id="group-{{ctx.groupKey}}"
-    class="form-builder-sidebar-group-content{{ctx.group.default ? ' show' : ''}}"
+    class="accordion-collapse collapse{{ctx.group.default ? ' show' : ''}}"
     aria-labelledby="heading-{{ctx.groupKey}}"
     ref="sidebar-group"
   >
-    <div class="form-builder-sidebar-group-items" ref="sidebar-container">
+    <div class="accordion-body" ref="sidebar-container">
       {% if (ctx.group.componentOrder.length || ctx.subgroups.length) { %}
         {% !ctx.group.componentOrder || ctx.group.componentOrder.forEach(function(componentKey) { %}
           <span
@@ -24,7 +24,7 @@
             data-group="{{ctx.groupKey}}"
             data-key="{{ctx.group.components[componentKey].key}}"
             data-type="{{ctx.group.components[componentKey].schema.type}}"
-            class="form-builder-sidebar-component"
+            class="builder-sidebar-component"
             tabindex="{{ctx.keyboardActionsEnabled ? 0 : -1}}"
           >
             {% if (ctx.group.components[componentKey].icon) { %}
@@ -35,7 +35,7 @@
         {% }) %}
         {{ctx.subgroups.join('')}}
       {% } else { %}
-        <div class="form-builder-sidebar-no-matches">{{ctx.t('noMatchesFound')}}</div>
+        <div class="builder-sidebar-no-matches">{{ctx.t('noMatchesFound')}}</div>
       {% } %}
     </div>
   </div>

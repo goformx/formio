@@ -1,13 +1,13 @@
-<div class="form-builder-components">
+<div class="builder-components">
   {% for (var group in ctx.groups) { %}
-    <div class="form-builder-component-group">
-      <div class="form-builder-component-group-title">
+    <div class="builder-component-group">
+      <div class="builder-component-group-title">
         {{ctx.groups[group].title}}
       </div>
-      <div class="form-builder-component-group-items">
+      <div class="builder-component-group-items">
         {% for (var component in ctx.groups[group].components) { %}
           <div 
-            class="form-builder-component-item" 
+            class="builder-component-item" 
             data-type="{{ctx.groups[group].components[component].type}}"
             tabindex="0"
             role="button"
