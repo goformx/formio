@@ -5,16 +5,16 @@ This repository provides templates for form.io forms in GoFormX.
 ## Installation
 
 ```bash
-npm install goforms @formio/js
+npm install @goformx/formio @formio/js
 ```
 
 ## Usage
 
 ```typescript
 // Import the main package
-import goforms from "@goforms/formio";
+import goforms from "@goformx/formio";
 // Or import specific components
-import { components } from '@goforms/formio/components';
+import { components } from '@goformx/formio/components';
 
 // Use with Form.io
 import { Formio } from '@formio/js';
