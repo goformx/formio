@@ -1,10 +1,10 @@
-<tr ref="row" class="{{ ctx.cssClasses['form-multi-value-row'] }}">
+<tr ref="row">
   <td>
     {{ctx.element}}
   </td>
   {% if (!ctx.disabled) { %}
   <td>
-    <button type="button" class="{{ ctx.cssClasses['form-multi-value-remove'] }}" ref="removeRow">
+    <button type="button" class="btn btn-secondary" ref="removeRow">
       <i class="{{ctx.iconClass('remove-circle')}}"></i>
     </button>
   </td>

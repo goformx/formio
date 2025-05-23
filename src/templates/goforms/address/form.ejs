@@ -1,8 +1,7 @@
 {% if (ctx.mode.autocomplete) { %}
-  <div class="form-address-autocomplete">
+  <div class="address-autocomplete-container">
     <input
       ref="{{ ctx.ref.searchInput }}"
-      class="form-input form-address-input"
       {% for (var attr in ctx.inputAttributes) { %}
         {{attr}}="{{ctx.inputAttributes[attr]}}"
       {% } %}
@@ -11,20 +10,16 @@
       aria-label="{{ctx.t('autocomplete')}}"
     >
     {% if (!ctx.component.disableClearIcon) { %}
-      <button
-        type="button"
-        class="form-address-clear"
+      <i
+        class="address-autocomplete-remove-value-icon fa fa-times bi bi-x"
         tabindex="{{ ctx.inputAttributes.tabindex }}"
         ref="{{ ctx.ref.removeValueIcon }}"
-        aria-label="{{ctx.t('clear')}}"
-      >
-        <i class="{{ctx.iconClass('close')}}"></i>
-      </button>
+      ></i>
     {% } %}
   </div>
 {% } %}
 {% if (ctx.self.manualModeEnabled) { %}
-  <div class="form-check">
+  <div class="form-check checkbox">
     <label class="form-check-label">
       <input
         ref="{{ ctx.ref.modeSwitcher }}"
@@ -39,7 +34,7 @@
   </div>
 {% } %}
 {% if (ctx.self.manualMode) { %}
-  <div class="form-address-fields" ref="{{ ctx.nestedKey }}">
+  <div ref="{{ ctx.nestedKey }}">
     {{ ctx.children }}
   </div>
 {% } %}

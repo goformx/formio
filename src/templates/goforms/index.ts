@@ -68,9 +68,9 @@ export default {
     if (!text) {
       return text;
     }
-    let additionalClasses = '';
     switch (type) {
-      case 'class':
+      case 'class': {
+        let additionalClasses = '';
         if (text === 'form-group') {
           additionalClasses = 'mb-2 ';
           if (instance && instance.component.block) {
@@ -78,6 +78,7 @@ export default {
           }
         }
         return `${additionalClasses}${Object.prototype.hasOwnProperty.call(this.cssClasses, text.toString()) ? this.cssClasses[text.toString()] : text}`;
+      }
     }
     return text;
   },

@@ -1,13 +1,12 @@
-<p class="{{ ctx.cssClasses['form-errors-title'] }}">{{ctx.t('error')}}
+<p>{{ctx.t('error')}}
   {% if (ctx.options.vpat) { %}
-  <span ref="errorTooltip" class="{{ ctx.cssClasses['form-errors-tooltip'] }} {{ctx.iconClass('question-sign')}}" tabindex="0"></span>
+  <span ref="errorTooltip" class="{{ctx.iconClass('question-sign')}}" tabindex="0"></span>
   {% } %}
 </p>
-<ul class="{{ ctx.cssClasses['form-errors-list'] }}">
+<ul>
   {% ctx.errors.forEach(function(err) { %}
-  <li class="{{ ctx.cssClasses['form-errors-item'] }}">
+  <li>
     <span
-      class="{{ ctx.cssClasses['form-errors-link'] }}"
       data-component-key = "{{err.keyOrPath}}"
       ref = "errorRef"
       tabIndex = "0"

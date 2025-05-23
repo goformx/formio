@@ -1,5 +1,4 @@
 <select
-  class="{{ ctx.cssClasses['form-select'] }}"
   ref="{{ctx.input.ref ? ctx.input.ref : 'selectContainer'}}"
   {{ ctx.input.multiple ? 'multiple' : '' }}
   {% for (var attr in ctx.input.attr) { %}
@@ -14,7 +13,7 @@
   aria-required="{{ctx.input.ref === 'selectContainer' || !ctx.input.ref ? ctx.input.component.validate.required : ctx.component.fields[ctx.input.ref].required}}"
 >{{ctx.selectOptions}}</select>
 <input type="text"
-       class="{{ ctx.cssClasses['form-select-autocomplete'] }}"
+       class="formio-select-autocomplete-input"
        ref="autocompleteInput"
        {% if (ctx.input.attr.autocomplete) { %}
        autocomplete="{{ctx.input.attr.autocomplete}}"

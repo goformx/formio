@@ -1,13 +1,13 @@
-<div class="{{ ctx.cssClasses['form-modal'] }}">
-  <div ref="overlay" class="{{ ctx.cssClasses['form-modal-backdrop'] }}"></div>
-  <div ref="content" class="{{ ctx.cssClasses['form-modal-content'] }}">
+<div class="formio-dialog formio-dialog-theme-default formio-modaledit-dialog">
+  <div ref="overlay" class="formio-dialog-overlay"></div>
+  <div ref="content" class="formio-modaledit-content">
     <button
       ref="close"
       type="button"
       role="button"
-      class="{{ ctx.cssClasses['form-modal-close'] }}">
+      class="btn btn-primary btn-xs formio-modaledit-close">
       {{ctx.t('close')}}
     </button>
-    <div ref="inner" class="{{ ctx.cssClasses['form-modal-body'] }}"></div>
+    <div ref="inner" class="reset-margins"></div>
   </div>
 </div>

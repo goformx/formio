@@ -1,20 +1,20 @@
-<div class="{{ ctx.cssClasses['form-tree-view'] }}">
+<div class="row">
   {% ctx.values.forEach(function(value) { %}
-    <div class="{{ ctx.cssClasses['form-tree-view-value'] }}">
+    <div class="col-sm-2">
       {{ value }}
     </div>
   {% }) %}
-  <div class="{{ ctx.cssClasses['form-tree-view-actions'] }}">
-    <div class="{{ ctx.cssClasses['form-tree-view-buttons'] }}">
+  <div class="col-sm-3">
+    <div class="btn-group pull-right">
       {% if (ctx.node.hasChildren) { %}
-        <button ref="toggleNode" class="{{ ctx.cssClasses['form-tree-view-toggle'] }}">{{ ctx.t(ctx.node.collapsed ? 'expand' : 'collapse') }}</button>
+        <button ref="toggleNode" class="btn btn-default btn-sm toggleNode">{{ ctx.t(ctx.node.collapsed ? 'expand' : 'collapse') }}</button>
       {% } %}
       {% if (!ctx.readOnly) { %}
-        <button ref="addChild" class="{{ ctx.cssClasses['form-tree-view-add'] }}">{{ ctx.t('add') }}</button>
-        <button ref="editNode" class="{{ ctx.cssClasses['form-tree-view-edit'] }}">{{ ctx.t('edit') }}</button>
-        <button ref="removeNode" class="{{ ctx.cssClasses['form-tree-view-remove'] }}">{{ ctx.t('delete') }}</button>
+        <button ref="addChild" class="btn btn-default btn-sm addChild">{{ ctx.t('add') }}</button>
+        <button ref="editNode" class="btn btn-default btn-sm editNode">{{ ctx.t('edit') }}</button>
+        <button ref="removeNode" class="btn btn-danger btn-sm removeNode">{{ ctx.t('delete') }}</button>
         {% if (ctx.node.revertAvailable) { %}
-          <button ref="revertNode" class="{{ ctx.cssClasses['form-tree-view-revert'] }}">{{ ctx.t('revert') }}</button>
+          <button ref="revertNode" class="btn btn-danger btn-sm revertNode">{{ ctx.t('revert') }}</button>
         {% } %}
       {% } %}
     </div>

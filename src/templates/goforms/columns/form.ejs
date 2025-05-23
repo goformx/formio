@@ -1,5 +1,6 @@
 {% ctx.component.columns.forEach(function(column, index) { %}
-<div class="form-columns-col form-columns-col-{{column.size}}-{{column.currentWidth}}{% if (column.offset) { %} form-columns-col-offset-{{column.size}}-{{column.offset}}{% } %}"
+<div class="col-{{column.size}}-{{column.currentWidth}}
+    offset-{{column.size}}-{{column.offset}}"
     ref="{{ctx.columnKey}}">
   {{ctx.columnComponents[index]}}
 </div>

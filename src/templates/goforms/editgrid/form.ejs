@@ -1,40 +1,40 @@
-<ul class="{{ ctx.cssClasses['form-editgrid-list'] }}
-    {{ ctx.component.striped ? cssClasses['form-editgrid-striped'] : ''}}
-    {{ ctx.component.bordered ? cssClasses['form-editgrid-bordered'] : ''}}
-    {{ ctx.component.hover ? cssClasses['form-editgrid-hover'] : ''}}
-    {{ ctx.component.condensed ? cssClasses['form-editgrid-condensed'] : ''}}
+<ul class="editgrid-listgroup list-group
+    {{ ctx.component.striped ? 'table-striped' : ''}}
+    {{ ctx.component.bordered ? 'table-bordered' : ''}}
+    {{ ctx.component.hover ? 'table-hover' : ''}}
+    {{ ctx.component.condensed ? 'table-sm' : ''}}
     ">
   {% if (ctx.header) { %}
-  <li class="{{ ctx.cssClasses['form-editgrid-header'] }}">
+  <li class="list-group-item list-group-header">
     {{ctx.header}}
   </li>
   {% } %}
   {% ctx.rows.forEach(function(row, rowIndex) { %}
-  <li class="{{ ctx.cssClasses['form-editgrid-item'] }}" ref="{{ctx.ref.row}}">
+  <li class="list-group-item" ref="{{ctx.ref.row}}">
     {{row}}
     {% if (ctx.openRows[rowIndex] && !ctx.readOnly) { %}
-    <div class="{{ ctx.cssClasses['form-editgrid-actions'] }}">
-      <button class="{{ ctx.cssClasses['form-editgrid-save'] }}" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'save', { _userInput: !!ctx.component.saveRow })}}</button>
+    <div class="editgrid-actions">
+      <button class="btn btn-primary" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'save', { _userInput: !!ctx.component.saveRow })}}</button>
       {% if (ctx.component.removeRow) { %}
-      <button class="{{ ctx.cssClasses['form-editgrid-cancel'] }}" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'cancel', { _userInput: !!ctx.component.removeRow })}}</button>
+      <button class="btn btn-danger" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'cancel', { _userInput: !!ctx.component.removeRow })}}</button>
       {% } %}
     </div>
     {% } %}
-    <div class="{{ ctx.cssClasses['form-editgrid-error-container'] }}">
-      <div class="{{ ctx.cssClasses['form-editgrid-error'] }}">
+    <div class="has-error">
+      <div class="editgrid-row-error">
         {{ctx.errors[rowIndex]}}
       </div>
     </div>
   </li>
   {% }) %}
   {% if (ctx.footer) { %}
-  <li class="{{ ctx.cssClasses['form-editgrid-footer'] }}">
+  <li class="list-group-item list-group-footer">
     {{ctx.footer}}
   </li>
   {% } %}
 </ul>
 {% if (!ctx.readOnly && ctx.hasAddButton) { %}
-<button class="{{ ctx.cssClasses['form-editgrid-add'] }}" ref="{{ctx.ref.addRow}}">
+<button class="btn btn-primary" ref="{{ctx.ref.addRow}}">
   <i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t(ctx.component.addAnother || 'addAnother', { _userInput: !!ctx.component.addAnother})}}
 </button>
 {% } %}

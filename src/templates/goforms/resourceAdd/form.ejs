@@ -1,11 +1,17 @@
-<div class="{{ ctx.cssClasses['form-resource'] }}">
-  <div class="{{ ctx.cssClasses['form-resource-content'] }}">
-    {{ctx.element}}
-  </div>
-  <div class="{{ ctx.cssClasses['form-resource-actions'] }}">
-    <button class="{{ ctx.cssClasses['form-resource-add'] }}" ref="addResource">
-      <i class="{{ctx.iconClass('plus')}}"></i>
-      {{ctx.t(ctx.component.addResourceLabel || 'addResource', { _userInput: !!ctx.component.addResourceLabel })}}
-    </button>
-  </div>
-</div>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <td>
+        {{ctx.element}}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button class="btn btn-primary formio-button-add-resource" ref="addResource">
+          <i class="{{ctx.iconClass('plus')}}"></i>
+          {{ctx.t(ctx.component.addResourceLabel || 'addResource', { _userInput: !!ctx.component.addResourceLabel })}}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

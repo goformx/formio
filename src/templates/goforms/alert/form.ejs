@@ -1,15 +1,9 @@
 <div
-  class="form-alert form-alert-{{ctx.type}}"
   {% for (var attr in ctx.attrs) { %}
     {{attr}}="{{ctx.attrs[attr]}}"
   {% } %}
 >
-  {% if (ctx.icon) { %}
-    <i class="form-alert-icon {{ctx.iconClass(ctx.icon)}}"></i>
-  {% } %}
-  <div class="form-alert-content">
-    {{ctx.message}}
-  </div>
+  {{ctx.message}}
   {% if (ctx.options.vpat) { %}
     <span class="visually-hidden" id="hotkey-i-{{ctx.form._id}}">{{ctx.t('errorListHotkey')}}</span>
   {% } %}

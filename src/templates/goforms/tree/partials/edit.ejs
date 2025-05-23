@@ -1,9 +1,9 @@
-<div class="{{ ctx.cssClasses['form-tree-edit'] }}">
-  <div ref="nodeEdit" class="{{ ctx.cssClasses['form-tree-edit-content'] }}">{{ ctx.children }}</div>
+<div class="node-edit">
+  <div ref="nodeEdit">{{ ctx.children }}</div>
   {% if (!ctx.readOnly) { %}
-    <div class="{{ ctx.cssClasses['form-tree-edit-actions'] }}">
-      <button ref="saveNode" class="{{ ctx.cssClasses['form-tree-edit-save'] }}">{{ ctx.t('save') }}</button>
-      <button ref="cancelNode" class="{{ ctx.cssClasses['form-tree-edit-cancel'] }}">{{ ctx.t('cancel') }}</button>
+    <div class="node-actions">
+      <button ref="saveNode" class="btn btn-primary saveNode">{{ ctx.t('save') }}</button>
+      <button ref="cancelNode" class="btn btn-danger cancelNode">{{ ctx.t('cancel') }}</button>
     </div>
   {% } %}
 </div>

@@ -1,10 +1,10 @@
-<div class="{{ ctx.cssClasses['form-tab'] }}{{ ctx.component.verticalLayout ? ' ' + cssClasses['form-tab-vertical'] : ''}}">
-  <div class="{{ ctx.cssClasses['form-tab-header'] }}">
-    <ul class="{{ ctx.cssClasses['form-tab-navigation'] }}{{ ctx.component.verticalLayout ? ' ' + cssClasses['form-tab-navigation-vertical'] : ''}}" role="tablist">
+<div class="card{{ ctx.component.verticalLayout ? ' card-vertical' : ''}}">
+  <div class="card-header">
+    <ul class="tab-component-tabs nav nav-tabs card-header-tabs{{ ctx.component.verticalLayout ? ' nav-tabs-vertical' : ''}}" role="tablist">
       {% ctx.component.components.forEach(function(tab, index) { %}
-      <li class="{{ ctx.cssClasses['form-tab-item'] }}{{ctx.currentTab === index ? ' ' + cssClasses['form-tab-item-active'] : ''}}" role="tab" ref="{{ctx.tabLikey}}">
+      <li class="nav-item{{ctx.currentTab === index ? ' active' : ''}}" role="tab" ref="{{ctx.tabLikey}}">
         <a
-            class="{{ ctx.cssClasses['form-tab-link'] }}{{ctx.currentTab === index ? ' ' + cssClasses['form-tab-link-active'] : ''}}{{ ctx.component.verticalLayout ? ' ' + cssClasses['form-tab-link-vertical'] : ''}}"
+            class="nav-link{{ctx.currentTab === index ? ' active' : ''}}{{ ctx.component.verticalLayout ? ' nav-link-vertical' : ''}}"
             href="#{{tab.key}}"
             ref="{{ctx.tabLinkKey}}"
         >
@@ -17,7 +17,7 @@
   {% ctx.component.components.forEach(function(tab, index) { %}
   <div
     role="tabpanel"
-    class="{{ ctx.cssClasses['form-tab-panel'] }}"
+    class="card-body tab-pane"
     style="display: {{ctx.currentTab === index ? 'block' : 'none'}}"
     ref="{{ctx.tabKey}}"
   >

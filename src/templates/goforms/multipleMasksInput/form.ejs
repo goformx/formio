@@ -1,9 +1,9 @@
 <div
-  class="{{ ctx.cssClasses['form-multi-value'] }}"
+  class="input-group formio-multiple-mask-container"
   ref="{{ctx.input.ref ? ctx.input.ref : 'input'}}"
 >
   <select
-    class="{{ ctx.cssClasses['form-multi-value-select'] }}"
+    class="form-control formio-multiple-mask-select"
     id="{{ctx.key}}-mask"
     ref="select"
     {% if (ctx.input.attr.disabled) { %}disabled{% } %}>
@@ -13,7 +13,6 @@
   </select>
   <input
     ref="mask"
-    class="{{ ctx.cssClasses['form-multi-value-input'] }}"
     {% for (var attr in ctx.input.attr) { %}
     {{attr}}="{{ctx.input.attr[attr]}}"
     {% } %}

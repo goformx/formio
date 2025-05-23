@@ -1,6 +1,6 @@
-<div class="{{ ctx.cssClasses['form-panel'] }}">
+<div class="mb-2 card border">
   {% if (!ctx.label.hidden || ctx.builder || ctx.component.collapsible || ctx.component.tooltip) { %}
-  <div class="{{ ctx.cssClasses['form-panel-header'] }} {{ ctx.transform('class', 'bg-' + ctx.component.theme) }}"
+  <div class="card-header {{ctx.transform('class', 'bg-' + ctx.component.theme)}}"
     {% if (ctx.component.collapsible) { %}
     tabindex="0"
     {% } %}
@@ -9,21 +9,21 @@
     aria-controls="{{ctx.instance.id}}-{{ctx.component.key}}"
     ref="header"
   >
-    <span class="{{ ctx.cssClasses['form-panel-title'] }}">
+    <span class="mb-0 card-title {% if (ctx.component.theme && ctx.component.theme !== 'default') { %}text-light{% } %}">
       {% if (ctx.component.collapsible) { %}
-        <i class="{{ ctx.cssClasses['form-icon'] }} {{ctx.iconClass(ctx.collapsed ? 'plus-square-o' : 'minus-square-o')}}" data-title="Collapse Panel"></i>
+        <i class="formio-collapse-icon {{ctx.iconClass(ctx.collapsed ? 'plus-square-o' : 'minus-square-o')}} text-muted" data-title="Collapse Panel"></i>
       {% } %}
       {% if (!ctx.label.hidden || ctx.builder) { %}
       {{ctx.t(ctx.component.title, { _userInput: true })}}
       {% } %}
       {% if (ctx.component.tooltip) { %}
-        <i ref="tooltip" tabindex="0" class="{{ ctx.cssClasses['form-label-tooltip'] }} {{ctx.iconClass('question-sign')}}" data-tooltip="{{ctx.component.tooltip}}"></i>
+        <i ref="tooltip" tabindex="0" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{ctx.component.tooltip}}"></i>
       {% } %}
     </span>
   </div>
   {% } %}
   {% if (!ctx.collapsed || ctx.builder) { %}
-  <div class="{{ ctx.cssClasses['form-panel-body'] }}" ref="{{ctx.nestedKey}}" id="{{ctx.instance.id}}-{{ctx.component.key}}">
+  <div class="card-body" ref="{{ctx.nestedKey}}" id="{{ctx.instance.id}}-{{ctx.component.key}}">
     {{ctx.children}}
   </div>
   {% } %}
