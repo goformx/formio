@@ -1,2 +1,1 @@
-<% const cssClasses = require('../cssClasses'); %>
-<div id="e-{{ctx.instance.id}}-{{ctx.key}}" class="{{ cssClasses['form-message'] }} {{ cssClasses[`form-message-${ctx.level || 'error'}`] }}">{{ctx.message}}</div>
+<div id="e-{{ctx.instance.id}}-{{ctx.key}}" class="{{ ctx.cssClasses['form-message'] }} {{ ctx.cssClasses[`form-message-${ctx.level || 'error'}`] }}">{{ctx.message}}</div>

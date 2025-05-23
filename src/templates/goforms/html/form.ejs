@@ -1,6 +1,5 @@
-<% const cssClasses = require('../cssClasses'); %>
-<{{ctx.tag}} class="{{ cssClasses['form-html-element'] }} {{ ctx.component.className }}" ref="html"
+<{{ctx.tag}} class="{{ ctx.cssClasses['form-html-element'] }} {{ ctx.component.className }}" ref="html"
   {% ctx.attrs.forEach(function(attr) { %}
     {{attr.attr}}="{{attr.value}}"
   {% }) %}
-><span class="{{ cssClasses['form-html-element-content'] }}">{{ctx.t(ctx.content)}}</span>{% if (!ctx.singleTags || ctx.singleTags.indexOf(ctx.tag) === -1) { %}</{{ctx.tag}}>{% } %}
+><span class="{{ ctx.cssClasses['form-html-element-content'] }}">{{ctx.t(ctx.content)}}</span>{% if (!ctx.singleTags || ctx.singleTags.indexOf(ctx.tag) === -1) { %}</{{ctx.tag}}>{% } %}

@@ -1,8 +1,8 @@
-{% const cssClasses = require('../cssClasses'); %}
-<table class="{{ cssClasses['form-datagrid'] }}
-    {{ ctx.component.striped ? ' ' + cssClasses['form-datagrid-striped'] : ''}}
-    {{ ctx.component.hover ? ' ' + cssClasses['form-datagrid-hover'] : ''}}
-    {{ ctx.component.condensed ? ' ' + cssClasses['form-datagrid-condensed'] : ''}}
+<div class="{{ctx.classes}}">
+<table class="{{ ctx.classes['form-datagrid'] }}
+    {{ ctx.component.striped ? ' ' + ctx.classes['form-datagrid-striped'] : ''}}
+    {{ ctx.component.hover ? ' ' + ctx.classes['form-datagrid-hover'] : ''}}
+    {{ ctx.component.condensed ? ' ' + ctx.classes['form-datagrid-condensed'] : ''}}
     " {% if (ctx.component.layoutFixed || ctx.readOnly) { %}data-layout="fixed"{% } %}>
   {% if (ctx.hasHeader) { %}
   <thead class="{{ cssClasses['form-datagrid-header'] }}">
@@ -77,3 +77,4 @@
   </tfoot>
   {% } %}
 </table>
+</div>

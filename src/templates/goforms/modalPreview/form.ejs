@@ -1,16 +1,15 @@
-<% const cssClasses = require('../cssClasses'); %>
-<label id="l-{{ctx.component.key}}" class="{{ cssClasses['form-label'] }} {{ ctx.label.className }}">
+<label id="l-{{ctx.component.key}}" class="{{ ctx.cssClasses['form-label'] }} {{ ctx.label.className }}">
   {{ ctx.t(ctx.component.label, { _userInput: true }) }}<span ref="modalLabelValue" class="visually-hidden">. {{ ctx.component.type === 'signature' ? ctx.self.getValueAsString(ctx.previewText) : ctx.previewText }}</span>
 </label><br>
 <span class="visually-hidden" ref="modalPreviewLiveRegion" aria-live="assertive"></span>
 <button
   lang="en"
-  class="{{ cssClasses['form-modal-preview-button'] }} {{ctx.openModalBtnClasses || ''}}"
+  class="{{ ctx.cssClasses['form-modal-preview-button'] }} {{ctx.openModalBtnClasses || ''}}"
   ref="openModal"
   aria-labelledby="l-{{ctx.component.key}}"
 >
   {{ ctx.previewText }}
 </button>
-<div class="{{ cssClasses['form-message'] }} {{ cssClasses['form-message-error'] }}">
+<div class="{{ ctx.cssClasses['form-message'] }} {{ ctx.cssClasses['form-message-error'] }}">
   {{ ctx.messages }}
 </div>

@@ -1,14 +1,13 @@
-<% const cssClasses = require('../cssClasses'); %>
-<div class="{{ cssClasses['form-modal'] }}">
-  <div ref="overlay" class="{{ cssClasses['form-modal-backdrop'] }}"></div>
-  <div ref="content" class="{{ cssClasses['form-modal-content'] }}">
+<div class="{{ ctx.cssClasses['form-modal'] }}">
+  <div ref="overlay" class="{{ ctx.cssClasses['form-modal-backdrop'] }}"></div>
+  <div ref="content" class="{{ ctx.cssClasses['form-modal-content'] }}">
     <button
       ref="close"
       type="button"
       role="button"
-      class="{{ cssClasses['form-modal-close'] }}">
+      class="{{ ctx.cssClasses['form-modal-close'] }}">
       {{ctx.t('close')}}
     </button>
-    <div ref="inner" class="{{ cssClasses['form-modal-body'] }}"></div>
+    <div ref="inner" class="{{ ctx.cssClasses['form-modal-body'] }}"></div>
   </div>
 </div>

@@ -1,10 +1,9 @@
-<% const cssClasses = require('../cssClasses'); %>
-<div class="{{ cssClasses['form-resource'] }}">
-  <div class="{{ cssClasses['form-resource-content'] }}">
+<div class="{{ ctx.cssClasses['form-resource'] }}">
+  <div class="{{ ctx.cssClasses['form-resource-content'] }}">
     {{ctx.element}}
   </div>
-  <div class="{{ cssClasses['form-resource-actions'] }}">
-    <button class="{{ cssClasses['form-resource-add'] }}" ref="addResource">
+  <div class="{{ ctx.cssClasses['form-resource-actions'] }}">
+    <button class="{{ ctx.cssClasses['form-resource-add'] }}" ref="addResource">
       <i class="{{ctx.iconClass('plus')}}"></i>
       {{ctx.t(ctx.component.addResourceLabel || 'addResource', { _userInput: !!ctx.component.addResourceLabel })}}
     </button>

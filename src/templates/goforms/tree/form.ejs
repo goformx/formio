@@ -1,16 +1,15 @@
-<% const cssClasses = require('../cssClasses'); %>
 {% if (ctx.node.isRoot) { %}
-  <div ref="root" class="{{ cssClasses['form-tree-root'] }}">
+  <div ref="root" class="{{ ctx.cssClasses['form-tree-root'] }}">
 {% } else { %}
-  <li ref="node" class="{{ cssClasses['form-tree-node'] }} {{ cssClasses['form-tree-level'] }} {{ cssClasses['form-tree-level-' + (ctx.odd ? 'odd' : 'even')] }}">
+  <li ref="node" class="{{ ctx.cssClasses['form-tree-node'] }} {{ ctx.cssClasses['form-tree-level'] }} {{ ctx.cssClasses['form-tree-level-' + (ctx.odd ? 'odd' : 'even')] }}">
 {% } %}
   {% if (ctx.content) { %}
-    <div ref="content" class="{{ cssClasses['form-tree-node-content'] }}">
+    <div ref="content" class="{{ ctx.cssClasses['form-tree-node-content'] }}">
       {{ ctx.content }}
     </div>
   {% } %}
   {% if (ctx.childNodes && ctx.childNodes.length) { %}
-    <ul ref="childNodes" class="{{ cssClasses['form-tree-node-children'] }}">
+    <ul ref="childNodes" class="{{ ctx.cssClasses['form-tree-node-children'] }}">
       {{ ctx.childNodes.join('') }}
     </ul>
   {% } %}

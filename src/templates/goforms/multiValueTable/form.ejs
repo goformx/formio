@@ -1,11 +1,10 @@
-<% const cssClasses = require('../cssClasses'); %>
-<table class="{{ cssClasses['form-multi-value-table'] }}">
+<table class="{{ ctx.cssClasses['form-multi-value-table'] }}">
   <tbody>
   {{ctx.rows}}
   {% if (!ctx.disabled) { %}
   <tr>
     <td colspan="2">
-      <button class="{{ cssClasses['form-multi-value-add'] }}" ref="addButton"><i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t(ctx.addAnother, { _userInput: true })}}</button>
+      <button class="{{ ctx.cssClasses['form-multi-value-add'] }}" ref="addButton"><i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t(ctx.addAnother, { _userInput: true })}}</button>
     </td>
   </tr>
   {% } %}

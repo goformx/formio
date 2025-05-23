@@ -1,6 +1,5 @@
-<% const cssClasses = require('../cssClasses'); %>
 {% ctx.children.forEach(function(component) { %}
-  <td class="{{ cssClasses['form-table-component'] }}">
+  <td class="{{ ctx.cssClasses['form-table-component'] }}">
     {{ component }}
   </td>
 {% }) %}
