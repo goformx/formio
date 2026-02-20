@@ -43,7 +43,7 @@
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "prepublishOnly": "npm run build",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "keywords": [
     "formio",
