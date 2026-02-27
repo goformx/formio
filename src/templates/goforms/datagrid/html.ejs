@@ -1,15 +1,15 @@
-<table class="table datagrid-table table-bordered
-    {{ ctx.component.striped ? 'table-striped' : ''}}
-    {{ ctx.component.hover ? 'table-hover' : ''}}
-    {{ ctx.component.condensed ? 'table-sm' : ''}}
+<table class="w-full text-sm datagrid-table [&_th]:border [&_th]:border-border [&_td]:border [&_td]:border-border
+    {{ ctx.component.striped ? '[&_tbody_tr:nth-child(odd)]:bg-muted/50' : ''}}
+    {{ ctx.component.hover ? '[&_tbody_tr:hover]:bg-muted' : ''}}
+    {{ ctx.component.condensed ? '[&_th]:px-2 [&_th]:py-1 [&_td]:px-2 [&_td]:py-1' : '[&_th]:px-4 [&_th]:py-2 [&_td]:px-4 [&_td]:py-2'}}
     ">
   {% if (ctx.hasHeader) { %}
   <thead>
     <tr>
       {% ctx.columns.forEach(function(col) { %}
-        <th class="{{col.validate && col.validate.required ? 'field-required' : ''}}">
+        <th class="{{col.validate && col.validate.required ? 'after:content-[\"*\"] after:ml-0.5 after:text-destructive' : ''}}">
           {{ col.hideLabel ? '' : ctx.t(col.label || col.title, { _userInput: true }) }}
-          {% if (col.tooltip) { %} <i ref="tooltip" tabindex="0" data-title="{{col.tooltip}}" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{col.tooltip}}"></i>{% } %}
+          {% if (col.tooltip) { %} <i ref="tooltip" tabindex="0" data-title="{{col.tooltip}}" class="{{ctx.iconClass('question-sign')}} text-muted-foreground" data-tooltip="{{col.tooltip}}"></i>{% } %}
         </th>
       {% }) %}
     </tr>

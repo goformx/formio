@@ -1,10 +1,10 @@
 <div class="editgrid-table-container">
-  <div class="table-responsive">
-    <table class="table
-      {{ ctx.component.striped ? 'table-striped' : ''}}
-      {{ ctx.component.bordered ? 'table-bordered' : ''}}
-      {{ ctx.component.hover ? 'table-hover' : ''}}
-      {{ ctx.component.condensed ? 'table-sm' : ''}}
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm
+      {{ ctx.component.striped ? '[&_tbody_tr:nth-child(odd)]:bg-muted/50' : ''}}
+      {{ ctx.component.bordered ? '[&_th]:border [&_th]:border-border [&_td]:border [&_td]:border-border' : ''}}
+      {{ ctx.component.hover ? '[&_tbody_tr:hover]:bg-muted' : ''}}
+      {{ ctx.component.condensed ? '[&_th]:px-2 [&_th]:py-1 [&_td]:px-2 [&_td]:py-1' : '[&_th]:px-4 [&_th]:py-2 [&_td]:px-4 [&_td]:py-2'}}
     ">
       {% if (ctx.header) { %}
       <thead class="editgrid-table-head">
@@ -18,17 +18,17 @@
           {% if (ctx.openRows[rowIndex] && !ctx.readOnly) { %}
           <td class="editgrid-table-column">
             <div class="editgrid-actions">
-              <button class="btn btn-primary" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'save', { _userInput: !!ctx.component.saveRow })}}</button>
+              <button class="inline-flex items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-primary/90 transition-colors" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'save', { _userInput: !!ctx.component.saveRow })}}</button>
               {% if (ctx.component.removeRow) { %}
-              <button class="btn btn-danger" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'cancel', { _userInput: !!ctx.component.removeRow })}}</button>
+              <button class="inline-flex items-center justify-center gap-2 rounded-md bg-destructive text-destructive-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-destructive/90 transition-colors" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'cancel', { _userInput: !!ctx.component.removeRow })}}</button>
               {% } %}
             </div>
           </td>
           {% } %}
           {% if (ctx.errors[rowIndex]) { %}
           <td class="editgrid-table-column">
-            <div class="has-error">
-              <div class="editgrid-row-error help-block">
+            <div class="text-destructive">
+              <div class="editgrid-row-error text-sm text-destructive">
                 {{ctx.errors[rowIndex]}}
               </div>
             </div>
@@ -42,7 +42,7 @@
         <tr>
           {{ctx.footer}}
          </tr>
-      <tfoot>
+      </tfoot>
       {% } %}
     </table>
   </div>
