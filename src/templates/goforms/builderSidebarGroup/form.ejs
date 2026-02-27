@@ -1,12 +1,9 @@
-<div class="card form-builder-panel accordion-item" ref="group-panel-{{ctx.groupKey}}">
-  <div class="card-header form-builder-group-header p-0" id="heading-{{ctx.groupKey}}">
-    <h5 class="mb-0 mt-0 d-grid accordion-header">
+<div class="border-b border-border form-builder-panel" ref="group-panel-{{ctx.groupKey}}">
+  <div class="form-builder-group-header p-0" id="heading-{{ctx.groupKey}}">
+    <h5 class="mb-0 mt-0 grid">
       <button
-        class="btn builder-group-button"
+        class="inline-flex w-full items-center justify-start px-3 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors builder-group-button"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#group-{{ctx.groupKey}}"
-        data-bs-parent="#{{ctx.groupId}}"
         aria-expanded="{{ctx.group.default}}"
         aria-controls="group-{{ctx.groupKey}}"
         ref="sidebar-anchor"
@@ -17,13 +14,12 @@
   </div>
   <div
     id="group-{{ctx.groupKey}}"
-    class="accordion-collapse collapse {{ctx.group.default ? ' show' : ''}}"
-    data-bs-parent="#{{ctx.groupId}}"
+    class="overflow-hidden transition-all{{ctx.group.default ? '' : ' hidden'}}"
     data-default="{{ctx.group.default}}"
     aria-labelledby="heading-{{ctx.groupKey}}"
     ref="sidebar-group"
   >
-    <div id="group-container-{{ctx.groupKey}}" class="d-grid gap-1 no-drop p-2 w-100" ref="sidebar-container">
+    <div id="group-container-{{ctx.groupKey}}" class="grid gap-1 no-drop p-2 w-full" ref="sidebar-container">
       {% if (ctx.group.componentOrder.length || ctx.subgroups.length) { %}
         {% !ctx.group.componentOrder || ctx.group.componentOrder.forEach(function(componentKey) { %}
           <span
@@ -31,7 +27,7 @@
             data-group="{{ctx.groupKey}}"
             data-key="{{ctx.group.components[componentKey].key}}"
             data-type="{{ctx.group.components[componentKey].schema.type}}"
-            class="btn btn-outline-primary btn-sm formcomponent drag-copy m-0"
+            class="inline-flex items-center justify-start gap-1 rounded-md border border-primary text-primary bg-transparent px-3 py-1.5 text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors formcomponent drag-copy m-0"
             tabindex="{{ctx.keyboardActionsEnabled ? 0 : -1}}"
           >
             {% if (ctx.group.components[componentKey].icon) { %}

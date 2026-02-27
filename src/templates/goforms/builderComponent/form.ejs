@@ -5,7 +5,7 @@
         role="button"
         aria-label="Remove button. Click to remove component from the form"
         tabindex="-1"
-        class="btn btn-xxs btn-danger component-settings-button component-settings-button-remove"
+        class="inline-flex items-center justify-center rounded-md bg-destructive text-destructive-foreground px-1.5 py-0.5 text-xs shadow-sm hover:bg-destructive/90 transition-colors component-settings-button component-settings-button-remove"
         ref="removeComponent"
       >
         <i class="{{ctx.iconClass('remove')}}"></i>
@@ -15,7 +15,7 @@
           role="button"
           aria-label="Copy button. Click to copy component"
           tabindex="-1"
-          class="btn btn-xxs btn-default component-settings-button component-settings-button-copy"
+          class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-1.5 py-0.5 text-xs shadow-sm hover:bg-accent transition-colors component-settings-button component-settings-button-copy"
           ref="copyComponent"
         >
           <i class="{{ctx.iconClass('copy')}}"></i>
@@ -24,7 +24,7 @@
           role="button"
           aria-label="Paste below button. Click to paste component below the current component"
           tabindex="-1"
-          class="btn btn-xxs btn-default component-settings-button component-settings-button-paste"
+          class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-1.5 py-0.5 text-xs shadow-sm hover:bg-accent transition-colors component-settings-button component-settings-button-paste"
           ref="pasteComponent"
         >
           <i class="{{ctx.iconClass('save')}}"></i>
@@ -34,7 +34,7 @@
             role="button"
             aria-label="Edit json button. Click to edit json of the current component"
             tabindex="-1"
-            class="btn btn-xxs btn-default component-settings-button component-settings-button-edit-json" 
+            class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-1.5 py-0.5 text-xs shadow-sm hover:bg-accent transition-colors component-settings-button component-settings-button-edit-json"
             ref="editJson"
           >
             <i class="{{ctx.iconClass('wrench')}}"></i>
@@ -45,7 +45,7 @@
         role="button"
         aria-label="Move button"
         tabindex="-1"
-        class="btn btn-xxs btn-default component-settings-button component-settings-button-move"
+        class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-1.5 py-0.5 text-xs shadow-sm hover:bg-accent transition-colors component-settings-button component-settings-button-move"
         ref="moveComponent"
       >
         <i class="{{ctx.iconClass('move')}}"></i>
@@ -55,7 +55,7 @@
           role="button"
           aria-label="Edit button. Click to open component settings modal window"
           tabindex="-1"
-          class="btn btn-xxs btn-secondary component-settings-button component-settings-button-edit"
+          class="inline-flex items-center justify-center rounded-md bg-secondary text-secondary-foreground px-1.5 py-0.5 text-xs shadow-sm hover:bg-secondary/80 transition-colors component-settings-button component-settings-button-edit"
           ref="editComponent"
         >
           <i class="{{ctx.iconClass('cog')}}"></i>

@@ -1,5 +1,5 @@
-<div id="{{ctx.groupId}}" class="accordion builder-sidebar{{ctx.scrollEnabled ? ' builder-sidebar_scroll' : ''}}" ref="sidebar" role="tablist">
-  <input class="form-control builder-sidebar_search" type="search" ref="sidebar-search" placeholder="{{ctx.t('searchFields')}}" />
+<div id="{{ctx.groupId}}" class="divide-y divide-border rounded-lg border border-border builder-sidebar{{ctx.scrollEnabled ? ' builder-sidebar_scroll' : ''}}" ref="sidebar" role="tablist">
+  <input class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring builder-sidebar_search" type="search" ref="sidebar-search" placeholder="{{ctx.t('searchFields')}}" />
   <div ref="sidebar-groups">
     {% ctx.groups.forEach(function(group) { %}
       {{ group }}
