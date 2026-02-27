@@ -1,9 +1,9 @@
 <fieldset>
   {% if (ctx.component.legend) { %}
-  <legend ref="header" class="{{ctx.component.collapsible ? 'formio-clickable' : ''}}">
+  <legend ref="header" class="{{ctx.component.collapsible ? 'formio-clickable cursor-pointer' : ''}}">
     {{ctx.t(ctx.component.legend, { _userInput: true })}}
     {% if (ctx.component.tooltip) { %}
-      <i ref="tooltip" tabindex="0" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{ctx.component.tooltip}}"></i>
+      <i ref="tooltip" tabindex="0" class="{{ctx.iconClass('question-sign')}} text-muted-foreground" data-tooltip="{{ctx.component.tooltip}}"></i>
     {% } %}
   </legend>
   {% } %}

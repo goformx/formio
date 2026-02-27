@@ -1,10 +1,10 @@
-<table class="table
-    {{ ctx.component.striped ? 'table-striped' : ''}}
-    {{ ctx.component.bordered ? 'table-bordered' : ''}}
-    {{ ctx.component.hover ? 'table-hover' : ''}}
-    {{ ctx.component.condensed ? 'table-sm' : ''}}
+<table class="w-full text-sm
+    {{ ctx.component.striped ? '[&_tbody_tr:nth-child(odd)]:bg-muted/50' : ''}}
+    {{ ctx.component.bordered ? 'border border-border [&_th]:border [&_th]:border-border [&_td]:border [&_td]:border-border' : ''}}
+    {{ ctx.component.hover ? '[&_tbody_tr]:hover:bg-muted/50' : ''}}
+    {{ ctx.component.condensed ? '[&_th]:px-2 [&_th]:py-1 [&_td]:px-2 [&_td]:py-1' : ''}}
   ">
-  <caption class="visually-hidden">{{ctx.t(ctx.component.label)}}</caption>
+  <caption class="sr-only">{{ctx.t(ctx.component.label)}}</caption>
   {% if (ctx.component.header && ctx.component.header.length > 0) { %}
   <thead>
     <tr>

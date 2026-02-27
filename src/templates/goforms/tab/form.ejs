@@ -1,10 +1,10 @@
-<div class="card{{ ctx.component.verticalLayout ? ' card-vertical' : ''}}">
-  <div class="card-header">
-    <ul class="tab-component-tabs nav nav-tabs card-header-tabs{{ ctx.component.verticalLayout ? ' nav-tabs-vertical' : ''}}" role="tablist">
+<div class="rounded-lg border border-border bg-card{{ ctx.component.verticalLayout ? ' flex flex-row' : ''}}">
+  <div class="border-b border-border">
+    <ul class="tab-component-tabs flex{{ ctx.component.verticalLayout ? ' flex-col border-b-0 border-r border-border' : ''}}" role="tablist">
       {% ctx.component.components.forEach(function(tab, index) { %}
-      <li class="nav-item{{ctx.currentTab === index ? ' active' : ''}}" role="tab" ref="{{ctx.tabLikey}}">
+      <li class="{{ctx.currentTab === index ? ' active' : ''}}" role="tab" ref="{{ctx.tabLikey}}">
         <a
-            class="nav-link{{ctx.currentTab === index ? ' active' : ''}}{{ ctx.component.verticalLayout ? ' nav-link-vertical' : ''}}"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border-b-2 border-transparent transition-colors{{ctx.currentTab === index ? ' border-primary text-foreground' : ''}}{{ ctx.component.verticalLayout ? ' border-b-0 border-r-2' : ''}}"
             href="#{{tab.key}}"
             ref="{{ctx.tabLinkKey}}"
         >
@@ -17,7 +17,7 @@
   {% ctx.component.components.forEach(function(tab, index) { %}
   <div
     role="tabpanel"
-    class="card-body tab-pane"
+    class="p-4"
     style="display: {{ctx.currentTab === index ? 'block' : 'none'}}"
     ref="{{ctx.tabKey}}"
   >

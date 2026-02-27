@@ -1,6 +1,6 @@
-<div class="mb-2 card border">
+<div class="mb-3 rounded-lg border border-border bg-card text-card-foreground shadow-sm">
   {% if (!ctx.label.hidden || ctx.builder || ctx.component.collapsible || ctx.component.tooltip) { %}
-  <div class="card-header {{ctx.transform('class', 'bg-' + ctx.component.theme)}}"
+  <div class="flex items-center justify-between border-b border-border px-4 py-3 {{ctx.transform('class', 'bg-' + ctx.component.theme)}}"
     {% if (ctx.component.collapsible) { %}
     tabindex="0"
     {% } %}
@@ -9,21 +9,21 @@
     aria-controls="{{ctx.instance.id}}-{{ctx.component.key}}"
     ref="header"
   >
-    <span class="mb-0 card-title {% if (ctx.component.theme && ctx.component.theme !== 'default') { %}text-light{% } %}">
+    <span class="mb-0 text-sm font-semibold {% if (ctx.component.theme && ctx.component.theme !== 'default') { %}text-primary-foreground{% } %}">
       {% if (ctx.component.collapsible) { %}
-        <i class="formio-collapse-icon {{ctx.iconClass(ctx.collapsed ? 'plus-square-o' : 'minus-square-o')}} text-muted" data-title="Collapse Panel"></i>
+        <i class="formio-collapse-icon {{ctx.iconClass(ctx.collapsed ? 'plus-square-o' : 'minus-square-o')}} text-muted-foreground" data-title="Collapse Panel"></i>
       {% } %}
       {% if (!ctx.label.hidden || ctx.builder) { %}
       {{ctx.t(ctx.component.title, { _userInput: true })}}
       {% } %}
       {% if (ctx.component.tooltip) { %}
-        <i ref="tooltip" tabindex="0" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{ctx.component.tooltip}}"></i>
+        <i ref="tooltip" tabindex="0" class="{{ctx.iconClass('question-sign')}} text-muted-foreground" data-tooltip="{{ctx.component.tooltip}}"></i>
       {% } %}
     </span>
   </div>
   {% } %}
   {% if (!ctx.collapsed || ctx.builder) { %}
-  <div class="card-body" ref="{{ctx.nestedKey}}" id="{{ctx.instance.id}}-{{ctx.component.key}}">
+  <div class="p-4" ref="{{ctx.nestedKey}}" id="{{ctx.instance.id}}-{{ctx.component.key}}">
     {{ctx.children}}
   </div>
   {% } %}
