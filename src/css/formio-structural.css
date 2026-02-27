@@ -13,7 +13,7 @@
 .formio-dialog-overlay {
   position: fixed;
   inset: 0;
-  background-color: hsl(var(--foreground) / 0.5);
+  background-color: color-mix(in srgb, var(--foreground) 50%, transparent);
   z-index: -1;
 }
 
@@ -25,8 +25,8 @@
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  background-color: hsl(var(--background));
-  border: 1px solid hsl(var(--border));
+  background-color: var(--background);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
@@ -82,26 +82,90 @@
 
 /* Choices.js select widget overrides */
 .choices__inner {
-  background-color: hsl(var(--background)) !important;
-  border-color: hsl(var(--input)) !important;
+  background-color: var(--background) !important;
+  border-color: var(--input) !important;
   border-radius: var(--radius) !important;
   min-height: 2.5rem !important;
   padding: 0.25rem 0.5rem !important;
   font-size: 0.875rem !important;
 }
 .choices__list--dropdown {
-  background-color: hsl(var(--background)) !important;
-  border-color: hsl(var(--input)) !important;
+  background-color: var(--background) !important;
+  border-color: var(--input) !important;
   border-radius: var(--radius) !important;
   z-index: 100 !important;
 }
 .choices__item--selectable.is-highlighted {
-  background-color: hsl(var(--accent)) !important;
-  color: hsl(var(--accent-foreground)) !important;
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
 }
 .choices__input {
   background-color: transparent !important;
   font-size: 0.875rem !important;
+}
+
+/* Form controls — applied by @formio/js core JS, not our templates */
+.form-control {
+  display: flex;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--input);
+  background-color: var(--background);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: var(--foreground);
+}
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* Buttons — applied by @formio/js core JS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  border: none;
+}
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn-primary:hover { opacity: 0.9; }
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.btn-secondary:hover { opacity: 0.8; }
+.btn-danger {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+.btn-danger:hover { opacity: 0.9; }
+
+/* Form check — applied by @formio/js core */
+.form-check-input {
+  height: 1rem;
+  width: 1rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary);
+  accent-color: var(--primary);
+}
+.form-check-input[type="radio"] {
+  border-radius: 50%;
 }
 
 /* Collapse animation (replaces Bootstrap collapse) */
@@ -109,17 +173,17 @@
 
 /* Signature pad */
 .signature-pad-body { position: relative; }
-.signature-pad-canvas { border: 1px solid hsl(var(--border)); border-radius: var(--radius); }
+.signature-pad-canvas { border: 1px solid var(--border); border-radius: var(--radius); }
 .signature-pad-refresh { position: absolute; top: 0.25rem; right: 0.25rem; z-index: 1; }
 
 /* File upload */
 .fileSelector {
   padding: 1rem;
-  border: 2px dashed hsl(var(--border));
+  border: 2px dashed var(--border);
   border-radius: var(--radius);
   text-align: center;
 }
-.fileSelector:hover { border-color: hsl(var(--primary)); }
+.fileSelector:hover { border-color: var(--primary); }
 
 /* Inline icon styling */
 .formio-icon {
