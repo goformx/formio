@@ -72,9 +72,9 @@ export default {
       case 'class': {
         let additionalClasses = '';
         if (text === 'form-group') {
-          additionalClasses = 'mb-2 ';
+          additionalClasses = 'mb-3 ';
           if (instance && instance.component.block) {
-            additionalClasses += 'd-grid ';
+            additionalClasses += 'grid ';
           }
         }
         return `${additionalClasses}${Object.prototype.hasOwnProperty.call(this.cssClasses, text.toString()) ? this.cssClasses[text.toString()] : text}`;
@@ -82,7 +82,7 @@ export default {
     }
     return text;
   },
-  defaultIconset: 'bi',
+  defaultIconset: 'lucide',
   iconClass,
   cssClasses,
   address,
