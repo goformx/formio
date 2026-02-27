@@ -10,10 +10,10 @@
 {% if (ctx.component.leftIcon) { %}<span class="{{ctx.component.leftIcon}}"></span>&nbsp;{% } %}
 {{ctx.input.content}}
 {% if (ctx.component.tooltip) { %}
-  <i ref="tooltip" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{ctx.component.tooltip}}"></i>
+  <i ref="tooltip" class="{{ctx.iconClass('question-sign')}} text-muted-foreground" data-tooltip="{{ctx.component.tooltip}}"></i>
 {% } %}
 {% if (ctx.component.rightIcon) { %}&nbsp;<span class="{{ctx.component.rightIcon}}"></span>{% } %}
 </{{ctx.input.type}}>
 <div ref="buttonMessageContainer">
-  <span class="help-block" ref="buttonMessage"></span>
+  <span class="text-sm text-muted-foreground" ref="buttonMessage"></span>
 </div>
