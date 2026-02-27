@@ -21,7 +21,8 @@
       "default": "./lib/mjs/templates/components/index.js",
       "build": "./src/templates/components/index.ts",
       "vite": "./src/templates/components/index.ts"
-    }
+    },
+    "./css": "./src/css/formio-structural.css"
   },
   "typesVersions": {
     "*": {
@@ -32,7 +33,8 @@
   },
   "files": [
     "lib",
-    "dist"
+    "dist",
+    "src/css"
   ],
   "scripts": {
     "clean": "rimraf lib dist",
