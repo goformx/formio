@@ -1,6 +1,6 @@
 {
   "name": "@goformx/formio",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "GoFormX form.io template library",
   "main": "lib/cjs/index.js",
   "module": "lib/mjs/index.js",
@@ -54,7 +54,9 @@
   ],
   "author": "Russell Jones <info@goformx.com>",
   "license": "MIT",
-  "sideEffects": false,
+  "sideEffects": [
+    "./src/css/**/*.css"
+  ],
   "devDependencies": {
     "@eslint/js": "^9.26.0",
     "@types/chai": "^4.3.11",
