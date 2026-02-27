@@ -4,7 +4,7 @@
   </div>
   {% if (ctx.helplinks) { %}
   <div class="col-span-6">
-    <div class="float-right" style="margin-right: 20px; margin-top: 10px">
+    <div class="float-right mr-5 mt-2.5">
       <a href="{{ctx.t(ctx.helplinks + ctx.componentInfo.documentation)}}" target="_blank" rel="noopener noreferrer">
         <i class="{{ctx.iconClass('new-window')}}"></i> {{ctx.t('help')}}
       </a>
@@ -18,9 +18,9 @@
         {{ctx.editForm}}
     </div>
     {% if (!ctx.showPreview) { %}
-    <div style="margin-top: 10px;">
-      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-green-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-green-700 transition-colors" style="margin-right: 10px;" ref="saveButton">{{ctx.t('save')}}</button>
-      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-secondary text-secondary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-secondary/80 transition-colors" style="margin-right: 10px;" ref="cancelButton">{{ctx.t('cancel')}}</button>
+    <div class="mt-2.5">
+      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-green-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-green-700 transition-colors mr-2.5" ref="saveButton">{{ctx.t('save')}}</button>
+      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-secondary text-secondary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-secondary/80 transition-colors mr-2.5" ref="cancelButton">{{ctx.t('cancel')}}</button>
       <button class="inline-flex items-center justify-center gap-2 rounded-md bg-destructive text-destructive-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-destructive/90 transition-colors" ref="removeButton">{{ctx.t('remove')}}</button>
       {% if (ctx.preview) { %}
       <button class="inline-flex items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-primary/90 transition-colors float-right" ref="previewButton">{{ctx.t('showPreview')}}</button>
@@ -45,9 +45,9 @@
       {{ ctx.t(ctx.componentInfo.help) }}
     </div>
     {% } %}
-    <div style="margin-top: 10px;">
-      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-green-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-green-700 transition-colors" style="margin-right: 10px;" ref="saveButton">{{ctx.t('save')}}</button>
-      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-secondary text-secondary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-secondary/80 transition-colors" style="margin-right: 10px;" ref="cancelButton">{{ctx.t('cancel')}}</button>
+    <div class="mt-2.5">
+      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-green-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-green-700 transition-colors mr-2.5" ref="saveButton">{{ctx.t('save')}}</button>
+      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-secondary text-secondary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-secondary/80 transition-colors mr-2.5" ref="cancelButton">{{ctx.t('cancel')}}</button>
       <button class="inline-flex items-center justify-center gap-2 rounded-md bg-destructive text-destructive-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-destructive/90 transition-colors" ref="removeButton">{{ctx.t('remove')}}</button>
       <button class="inline-flex items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-primary/90 transition-colors float-right" ref="previewButton">{{ctx.t('hidePreview')}}</button>
     </div>

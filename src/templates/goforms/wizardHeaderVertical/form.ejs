@@ -2,7 +2,7 @@
   <ul class="flex flex-col gap-1">
     {% ctx.panels.forEach(function(panel, index) { %}
     <li class="{{ctx.currentPage === index ? ' active' : ''}}" style="cursor: pointer;">
-      <span class="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium border border-input hover:bg-accent transition-colors{{ctx.currentPage === index ? ' bg-primary text-primary-foreground border-primary hover:bg-primary/90' : ''}}" ref="{{ctx.wizardKey}}-link" style="margin-left: 0px;">
+      <span class="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium border border-input hover:bg-accent transition-colors ml-0{{ctx.currentPage === index ? ' bg-primary text-primary-foreground border-primary hover:bg-primary/90' : ''}}" ref="{{ctx.wizardKey}}-link">
         {{ctx.t(panel.title, { _userInput: true })}}
         {% if (panel.tooltip && ctx.currentPage === index) { %}
         <i ref="{{ctx.wizardKey}}-tooltip" class="{{ctx.iconClass('question-sign')}} text-muted-foreground" data-tooltip="{{panel.tooltip}}"></i>

@@ -31,7 +31,7 @@
             tabindex="{{ctx.keyboardActionsEnabled ? 0 : -1}}"
           >
             {% if (ctx.group.components[componentKey].icon) { %}
-              <i class="{{ctx.iconClass(ctx.group.components[componentKey].icon)}}" style="margin-right: 5px;"></i>
+              <i class="{{ctx.iconClass(ctx.group.components[componentKey].icon)}} mr-1"></i>
             {% } %}
             {{ctx.t(ctx.group.components[componentKey].title, { _userInput: true })}}
           </span>
