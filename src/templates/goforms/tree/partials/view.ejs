@@ -1,20 +1,20 @@
-<div class="row">
+<div class="grid grid-cols-12 gap-4">
   {% ctx.values.forEach(function(value) { %}
-    <div class="col-sm-2">
+    <div class="col-span-2">
       {{ value }}
     </div>
   {% }) %}
-  <div class="col-sm-3">
-    <div class="btn-group pull-right">
+  <div class="col-span-3">
+    <div class="flex gap-1 ml-auto">
       {% if (ctx.node.hasChildren) { %}
-        <button ref="toggleNode" class="btn btn-default btn-sm toggleNode">{{ ctx.t(ctx.node.collapsed ? 'expand' : 'collapse') }}</button>
+        <button ref="toggleNode" class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent transition-colors toggleNode">{{ ctx.t(ctx.node.collapsed ? 'expand' : 'collapse') }}</button>
       {% } %}
       {% if (!ctx.readOnly) { %}
-        <button ref="addChild" class="btn btn-default btn-sm addChild">{{ ctx.t('add') }}</button>
-        <button ref="editNode" class="btn btn-default btn-sm editNode">{{ ctx.t('edit') }}</button>
-        <button ref="removeNode" class="btn btn-danger btn-sm removeNode">{{ ctx.t('delete') }}</button>
+        <button ref="addChild" class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent transition-colors addChild">{{ ctx.t('add') }}</button>
+        <button ref="editNode" class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent transition-colors editNode">{{ ctx.t('edit') }}</button>
+        <button ref="removeNode" class="inline-flex items-center justify-center rounded-md bg-destructive text-destructive-foreground px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-destructive/90 transition-colors removeNode">{{ ctx.t('delete') }}</button>
         {% if (ctx.node.revertAvailable) { %}
-          <button ref="revertNode" class="btn btn-danger btn-sm revertNode">{{ ctx.t('revert') }}</button>
+          <button ref="revertNode" class="inline-flex items-center justify-center rounded-md bg-destructive text-destructive-foreground px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-destructive/90 transition-colors revertNode">{{ ctx.t('revert') }}</button>
         {% } %}
       {% } %}
     </div>

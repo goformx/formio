@@ -5,12 +5,12 @@
   tabindex="{{ctx.component.tabindex || 0}}"
   ref="padBody"
 >
-  <a class="btn btn-sm btn-light signature-pad-refresh" ref="refresh">
+  <a class="inline-flex items-center justify-center rounded-md border border-input bg-background text-foreground px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent transition-colors signature-pad-refresh" ref="refresh">
     <i class="{{ctx.iconClass('refresh')}}"></i>
   </a>
   <canvas class="signature-pad-canvas" style="display: none;" height="{{ctx.component.height}}" ref="canvas"></canvas>
   {% if (ctx.required) { %}
-  <span class="form-control-feedback text-danger">
+  <span class="text-destructive">
     <i class="{{ctx.iconClass('asterisk')}}"></i>
   </span>
   {% } %}

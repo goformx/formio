@@ -2,8 +2,8 @@
   <div ref="nodeEdit">{{ ctx.children }}</div>
   {% if (!ctx.readOnly) { %}
     <div class="node-actions">
-      <button ref="saveNode" class="btn btn-primary saveNode">{{ ctx.t('save') }}</button>
-      <button ref="cancelNode" class="btn btn-danger cancelNode">{{ ctx.t('cancel') }}</button>
+      <button ref="saveNode" class="inline-flex items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-primary/90 transition-colors saveNode">{{ ctx.t('save') }}</button>
+      <button ref="cancelNode" class="inline-flex items-center justify-center gap-2 rounded-md bg-destructive text-destructive-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-destructive/90 transition-colors cancelNode">{{ ctx.t('cancel') }}</button>
     </div>
   {% } %}
 </div>

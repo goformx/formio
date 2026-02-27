@@ -1,26 +1,26 @@
-<ul class="editgrid-listgroup list-group
-    {{ ctx.component.striped ? 'table-striped' : ''}}
-    {{ ctx.component.bordered ? 'table-bordered' : ''}}
-    {{ ctx.component.hover ? 'table-hover' : ''}}
-    {{ ctx.component.condensed ? 'table-sm' : ''}}
+<ul class="divide-y divide-border rounded-lg border border-border editgrid-listgroup
+    {{ ctx.component.striped ? '[&>li:nth-child(odd)]:bg-muted/50' : ''}}
+    {{ ctx.component.bordered ? '' : ''}}
+    {{ ctx.component.hover ? '[&>li]:hover:bg-muted/50' : ''}}
+    {{ ctx.component.condensed ? '' : ''}}
     ">
   {% if (ctx.header) { %}
-  <li class="list-group-item list-group-header">
+  <li class="px-4 py-3 font-semibold bg-muted/50">
     {{ctx.header}}
   </li>
   {% } %}
   {% ctx.rows.forEach(function(row, rowIndex) { %}
-  <li class="list-group-item" ref="{{ctx.ref.row}}">
+  <li class="px-4 py-3" ref="{{ctx.ref.row}}">
     {{row}}
     {% if (ctx.openRows[rowIndex] && !ctx.readOnly) { %}
     <div class="editgrid-actions">
-      <button class="btn btn-primary" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'save', { _userInput: !!ctx.component.saveRow })}}</button>
+      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-primary/90 transition-colors" ref="{{ctx.ref.saveRow}}">{{ctx.t(ctx.component.saveRow || 'save', { _userInput: !!ctx.component.saveRow })}}</button>
       {% if (ctx.component.removeRow) { %}
-      <button class="btn btn-danger" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'cancel', { _userInput: !!ctx.component.removeRow })}}</button>
+      <button class="inline-flex items-center justify-center gap-2 rounded-md bg-destructive text-destructive-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-destructive/90 transition-colors" ref="{{ctx.ref.cancelRow}}">{{ctx.t(ctx.component.removeRow || 'cancel', { _userInput: !!ctx.component.removeRow })}}</button>
       {% } %}
     </div>
     {% } %}
-    <div class="has-error">
+    <div class="text-destructive">
       <div class="editgrid-row-error">
         {{ctx.errors[rowIndex]}}
       </div>
@@ -28,13 +28,13 @@
   </li>
   {% }) %}
   {% if (ctx.footer) { %}
-  <li class="list-group-item list-group-footer">
+  <li class="px-4 py-3">
     {{ctx.footer}}
   </li>
   {% } %}
 </ul>
 {% if (!ctx.readOnly && ctx.hasAddButton) { %}
-<button class="btn btn-primary" ref="{{ctx.ref.addRow}}">
+<button class="inline-flex items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-primary/90 transition-colors" ref="{{ctx.ref.addRow}}">
   <i class="{{ctx.iconClass('plus')}}"></i> {{ctx.t(ctx.component.addAnother || 'addAnother', { _userInput: !!ctx.component.addAnother})}}
 </button>
 {% } %}

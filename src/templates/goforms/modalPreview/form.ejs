@@ -1,15 +1,15 @@
-<label id="l-{{ctx.component.key}}" class="control-label {{ ctx.label.className }}">
-  {{ ctx.t(ctx.component.label, { _userInput: true }) }}<span ref="modalLabelValue" class="visually-hidden">. {{ ctx.component.type === 'signature' ? ctx.self.getValueAsString(ctx.previewText) : ctx.previewText }}</span>
+<label id="l-{{ctx.component.key}}" class="text-sm font-medium {{ ctx.label.className }}">
+  {{ ctx.t(ctx.component.label, { _userInput: true }) }}<span ref="modalLabelValue" class="sr-only">. {{ ctx.component.type === 'signature' ? ctx.self.getValueAsString(ctx.previewText) : ctx.previewText }}</span>
 </label><br>
-<span class="visually-hidden" ref="modalPreviewLiveRegion" aria-live="assertive"></span>
+<span class="sr-only" ref="modalPreviewLiveRegion" aria-live="assertive"></span>
 <button
   lang="en"
-  class="btn btn-light btn-md open-modal-button form-control {{ctx.openModalBtnClasses || ''}}"
+  class="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background text-foreground px-4 py-2 text-sm font-medium shadow-sm hover:bg-accent transition-colors open-modal-button {{ctx.openModalBtnClasses || ''}}"
   ref="openModal"
   aria-labelledby="l-{{ctx.component.key}}"
 >
   {{ ctx.previewText }}
 </button>
-<div class="formio-errors invalid-feedback">
+<div class="formio-errors text-sm text-destructive">
   {{ ctx.messages }}
 </div>

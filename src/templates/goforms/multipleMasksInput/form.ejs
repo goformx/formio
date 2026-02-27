@@ -1,9 +1,9 @@
 <div
-  class="input-group formio-multiple-mask-container"
+  class="flex items-stretch formio-multiple-mask-container"
   ref="{{ctx.input.ref ? ctx.input.ref : 'input'}}"
 >
   <select
-    class="form-control formio-multiple-mask-select"
+    class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground formio-multiple-mask-select"
     id="{{ctx.key}}-mask"
     ref="select"
     {% if (ctx.input.attr.disabled) { %}disabled{% } %}>
